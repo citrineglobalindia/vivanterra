@@ -35,10 +35,10 @@ export default function Reveal({
     },
   };
 
-  const MotionTag = motion[as] as typeof motion.div;
+  void as;
 
   return (
-    <MotionTag
+    <motion.div
       className={className}
       variants={variants}
       initial="hidden"
@@ -46,6 +46,6 @@ export default function Reveal({
       viewport={{ once: true, margin: "-10% 0px" }}
     >
       {children}
-    </MotionTag>
+    </motion.div>
   );
 }
