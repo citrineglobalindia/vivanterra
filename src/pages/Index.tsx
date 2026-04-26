@@ -4,6 +4,7 @@ import Hero from "@/components/sections/Hero";
 import Residences from "@/components/sections/Residences";
 import Collaborations from "@/components/sections/Collaborations";
 import CollaborationsGrid from "@/components/sections/CollaborationsGrid";
+import ExecutiveImpactCarousel from "@/components/ui/executive-impact-carousel";
 import GlobalPresence from "@/components/sections/GlobalPresence";
 import Standard from "@/components/sections/Standard";
 import WhyCity from "@/components/sections/WhyCity";
@@ -17,6 +18,7 @@ const Index = () => {
       <Nav />
       <Hero />
       <Residences />
+      <ExecutiveImpactCarousel />
       <CollaborationsGrid />
       <GlobalPresence />
       <Collaborations />
