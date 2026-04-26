@@ -3,6 +3,7 @@ import Footer from "@/components/ui/Footer";
 import Hero from "@/components/sections/Hero";
 import Residences from "@/components/sections/Residences";
 import Collaborations from "@/components/sections/Collaborations";
+import CollaborationsGrid from "@/components/sections/CollaborationsGrid";
 import GlobalPresence from "@/components/sections/GlobalPresence";
 import Standard from "@/components/sections/Standard";
 import WhyCity from "@/components/sections/WhyCity";
@@ -16,8 +17,9 @@ const Index = () => {
       <Nav />
       <Hero />
       <Residences />
-      <Collaborations />
+      <CollaborationsGrid />
       <GlobalPresence />
+      <Collaborations />
       <Standard />
       <WhyCity />
       <Press />
