@@ -20,13 +20,13 @@ const PARTNERS: Partner[] = [
   { name: "Partner 08", alt: "Beach pavilion",         image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=70", logo: "/logos/partner-08.svg" },
 ];
 
-function rangeFor(i: number): readonly [number, number] {
+function rangeFor(i: number): [number, number] {
   const seed = (i * 9301 + 49297) % 233280;
   const r = seed / 233280;
   const speed = 0.35 + r * 0.45;
   const sign = i % 2 === 0 ? -1 : -1;
   const end = sign * speed * 40;
-  return [0, end] as const;
+  return [0, end];
 }
 
 function usePrefersReducedMotion() {
@@ -72,7 +72,7 @@ function ParallaxCard({
 }) {
   const raw = useTransform(scrollYProgress, [0, 1], rangeFor(i));
   const smooth = useSpring(raw, { damping: 28, stiffness: 120, mass: 0.4 });
-  const yPct = useTransform(smooth, (v) => `${v}%`);
+  const yPct = useTransform(smooth, (v: number) => `${v}%`);
 
   return (
     <motion.button
