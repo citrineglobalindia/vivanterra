@@ -71,6 +71,7 @@ export default function SplitText({
           </span>
         );
       })}
+      </motion.span>
     </Tag>
   );
 }
