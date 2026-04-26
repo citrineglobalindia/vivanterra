@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { ArrowUpRight } from "lucide-react";
 import Reveal from "../ui/Reveal";
+import Magnetic from "../ui/Magnetic";
 
 export default function CTA() {
   const [submitted, setSubmitted] = useState(false);
@@ -44,10 +45,12 @@ export default function CTA() {
                       className="w-full bg-transparent border-b border-paper/30 pb-3 text-[16px] outline-none focus:border-paper transition-colors placeholder:text-paper/30"
                     />
                   </div>
-                  <button type="submit" className="btn btn-light shrink-0">
-                    Subscribe
-                    <ArrowUpRight className="btn-arrow" size={16} />
-                  </button>
+                  <Magnetic className="inline-block shrink-0">
+                    <button type="submit" className="btn btn-light shrink-0">
+                      Subscribe
+                      <ArrowUpRight className="btn-arrow" size={16} />
+                    </button>
+                  </Magnetic>
                 </form>
               )}
             </Reveal>
@@ -71,10 +74,12 @@ export default function CTA() {
               </div>
             </Reveal>
             <Reveal delay={0.3}>
-              <a href="#footer" className="btn btn-light">
-                Book a viewing
-                <ArrowUpRight className="btn-arrow" size={16} />
-              </a>
+              <Magnetic className="inline-block">
+                <a href="#footer" className="btn btn-light">
+                  Book a viewing
+                  <ArrowUpRight className="btn-arrow" size={16} />
+                </a>
+              </Magnetic>
             </Reveal>
           </div>
         </div>
