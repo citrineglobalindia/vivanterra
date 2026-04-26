@@ -25,7 +25,7 @@ export default function WhyCity() {
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : ["8%", "-8%"]);
+  const y = useTransform(scrollYProgress, [0, 1], reduced ? ["0%", "0%"] : ["8%", "-8%"]);
 
   return (
     <section ref={ref} className="bg-paper text-ink py-24 md:py-[180px] overflow-hidden">
