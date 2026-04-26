@@ -8,12 +8,18 @@ export default {
     container: {
       center: true,
       padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
+      screens: { "2xl": "1440px" },
     },
     extend: {
+      fontFamily: {
+        display: ['"Playfair Display"', "Times New Roman", "serif"],
+        body: ['Inter', "system-ui", "sans-serif"],
+      },
       colors: {
+        ink: "var(--ink)",
+        paper: "var(--paper)",
+        gold: "var(--gold)",
+        line: "var(--line)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -32,7 +38,7 @@ export default {
           foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
+          DEFAULT: "hsl(var(--muted-bg))",
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
@@ -65,25 +71,27 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "scroll-indicator": {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(100%)" },
+        },
+        "pulse-soft": {
+          "0%, 100%": { opacity: "0.4", transform: "scale(1)" },
+          "50%": { opacity: "1", transform: "scale(1.4)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "scroll-indicator": "scroll-indicator 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite",
+        "pulse-soft": "pulse-soft 2.6s ease-in-out infinite",
       },
     },
   },
