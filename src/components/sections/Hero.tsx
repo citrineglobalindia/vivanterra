@@ -7,6 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import SplitText from "../ui/SplitText";
+import Magnetic from "../ui/Magnetic";
 
 /**
  * Top-of-page editable slide list. Replace `video` URLs with your real files.
@@ -78,13 +79,38 @@ export default function Hero() {
               />
               <div
                 className="absolute inset-0"
-                style={{ background: "linear-gradient(to top, rgba(14,14,16,0.75) 0%, rgba(14,14,16,0.15) 50%, rgba(14,14,16,0.45) 100%)" }}
+                style={{ background: "linear-gradient(to top, rgba(14,14,16,0.85) 0%, rgba(14,14,16,0.15) 45%, rgba(14,14,16,0.55) 100%)" }}
                 aria-hidden="true"
+              />
+              {/* Gold ambient glow */}
+              <motion.div
+                aria-hidden="true"
+                className="absolute -bottom-1/3 left-1/2 -translate-x-1/2 w-[120vw] h-[80vh] pointer-events-none"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at center, rgba(196,165,115,0.18) 0%, rgba(196,165,115,0.06) 35%, rgba(14,14,16,0) 70%)",
+                  filter: "blur(40px)",
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0.6, 1, 0.7] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              />
+              {/* Subtle film grain via SVG noise */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 opacity-[0.08] mix-blend-overlay pointer-events-none"
+                style={{
+                  backgroundImage:
+                    "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.7'/></svg>\")",
+                }}
               />
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
+
+      {/* Animated corner brackets */}
+      <CornerMarks />
 
       {/* Vertical scroll indicator (top-right) */}
       <div
@@ -118,10 +144,12 @@ export default function Hero() {
               />
             </div>
             <div className="md:col-span-3 md:text-right">
-              <a href="#residences" className="btn btn-light">
-                Discover the residence
-                <ArrowUpRight className="btn-arrow" size={16} />
-              </a>
+              <Magnetic className="inline-block" strength={0.3}>
+                <a href="#residences" className="btn btn-light">
+                  Discover the residence
+                  <ArrowUpRight className="btn-arrow" size={16} />
+                </a>
+              </Magnetic>
             </div>
           </div>
 
@@ -161,5 +189,25 @@ export default function Hero() {
         @media (max-width: 640px) { h1.font-display { font-size: clamp(40px, 11vw, 64px); } }
       `}</style>
     </section>
+  );
+}
+
+function CornerMarks() {
+  const common = {
+    initial: { opacity: 0, scale: 0.6 },
+    animate: { opacity: 1, scale: 1 },
+    transition: { delay: 2.4, duration: 1.2, ease: [0.2, 0.8, 0.2, 1] as const },
+  };
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10">
+      {/* TL */}
+      <motion.div {...common} className="absolute top-24 left-6 md:top-32 md:left-12 w-8 h-8 border-l border-t border-paper/40" />
+      {/* TR */}
+      <motion.div {...common} className="absolute top-24 right-6 md:top-32 md:right-12 w-8 h-8 border-r border-t border-paper/40" />
+      {/* BL */}
+      <motion.div {...common} className="absolute bottom-6 left-6 md:bottom-12 md:left-12 w-8 h-8 border-l border-b border-paper/40" />
+      {/* BR */}
+      <motion.div {...common} className="absolute bottom-6 right-6 md:bottom-12 md:right-12 w-8 h-8 border-r border-b border-paper/40" />
+    </div>
   );
 }
