@@ -12,8 +12,18 @@ export default function CTA() {
   }
 
   return (
-    <section id="contact" className="bg-ink text-paper py-24 md:py-[160px] relative">
-      <div className="max-w-page container-x">
+    <section id="contact" className="bg-ink text-paper py-24 md:py-[160px] relative overflow-hidden">
+      {/* Gold ambient glow */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-1/3 left-1/2 -translate-x-1/2 w-[120vw] h-[100vh]"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, rgba(196,165,115,0.12) 0%, rgba(196,165,115,0.04) 40%, rgba(14,14,16,0) 70%)",
+          filter: "blur(60px)",
+        }}
+      />
+      <div className="max-w-page container-x relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-0 relative">
           {/* Gold divider on desktop */}
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px" style={{ backgroundColor: "var(--gold)", opacity: 0.55 }} aria-hidden="true" />

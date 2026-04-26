@@ -16,7 +16,19 @@ export default function Standard() {
   const words = PARAGRAPH.split(" ");
 
   return (
-    <section ref={ref} id="standard" className="bg-ink text-paper relative" style={{ height: "200vh" }}>
+    <section ref={ref} id="standard" className="bg-ink text-paper relative overflow-hidden" style={{ height: "200vh" }}>
+      {/* Drifting gold orb */}
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1/4 -left-1/4 w-[60vw] h-[60vw] rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(196,165,115,0.18) 0%, rgba(196,165,115,0.05) 40%, rgba(14,14,16,0) 70%)",
+          filter: "blur(60px)",
+        }}
+        animate={{ x: [0, 120, 0], y: [0, -40, 0] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+      />
       <div className="sticky top-0 h-screen flex items-center">
         <div className="max-w-page container-x w-full">
           <div className="eyebrow text-paper/60 mb-10">The Meridian Standard</div>
