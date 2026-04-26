@@ -5,6 +5,7 @@ import Residences from "@/components/sections/Residences";
 import Collaborations from "@/components/sections/Collaborations";
 import CollaborationsGrid from "@/components/sections/CollaborationsGrid";
 import ExecutiveImpactCarousel from "@/components/ui/executive-impact-carousel";
+import StickyScroll from "@/components/ui/sticky-scroll";
 import GlobalPresence from "@/components/sections/GlobalPresence";
 import Standard from "@/components/sections/Standard";
 import WhyCity from "@/components/sections/WhyCity";
@@ -19,6 +20,7 @@ const Index = () => {
       <Hero />
       <Residences />
       <ExecutiveImpactCarousel />
+      <StickyScroll />
       <CollaborationsGrid />
       <GlobalPresence />
       <Collaborations />
