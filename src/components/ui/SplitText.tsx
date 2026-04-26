@@ -32,7 +32,6 @@ export default function SplitText({
   once = true,
 }: SplitTextProps) {
   const reduced = useReducedMotion();
-  const Tag = motion[as] as typeof motion.h2;
 
   const pieces = useMemo(() => {
     if (by === "word") return text.split(/(\s+)/); // keep whitespace
@@ -41,18 +40,19 @@ export default function SplitText({
 
   const effectiveStagger = stagger ?? (by === "word" ? 0.04 : 0.025);
 
+  const Tag: keyof JSX.IntrinsicElements = as;
+
   return (
-    <Tag
-      key={triggerKey}
-      className={className}
-      aria-label={text}
-      initial="hidden"
-      whileInView={once ? "show" : undefined}
-      animate={!once || triggerKey !== undefined ? "show" : undefined}
-      viewport={{ once: true, margin: "-10% 0px" }}
-      transition={{ staggerChildren: reduced ? 0 : effectiveStagger, delayChildren: delay }}
-      variants={{ hidden: {}, show: {} }}
-    >
+    <Tag key={triggerKey} className={className} aria-label={text}>
+      <motion.span
+        style={{ display: "inline" }}
+        initial="hidden"
+        whileInView={once ? "show" : undefined}
+        animate={!once || triggerKey !== undefined ? "show" : undefined}
+        viewport={{ once: true, margin: "-10% 0px" }}
+        transition={{ staggerChildren: reduced ? 0 : effectiveStagger, delayChildren: delay }}
+        variants={{ hidden: {}, show: {} }}
+      >
       {pieces.map((piece, i) => {
         if (/^\s+$/.test(piece)) {
           return <span key={i} aria-hidden="true">{piece}</span>;
@@ -71,6 +71,7 @@ export default function SplitText({
           </span>
         );
       })}
+      </motion.span>
     </Tag>
   );
 }
