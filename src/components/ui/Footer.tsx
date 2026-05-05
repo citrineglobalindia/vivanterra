@@ -34,7 +34,7 @@ export default function Footer() {
             viewport={{ once: true, margin: "-10% 0px" }}
             transition={{ duration: 1.1, ease: [0.2, 0.8, 0.2, 1] }}
           >
-            IVANTERRA
+            VIVANTERRA
           </motion.h2>
         </div>
 

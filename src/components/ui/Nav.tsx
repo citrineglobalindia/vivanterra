@@ -77,7 +77,7 @@ export default function Nav() {
         <div className="relative max-w-page container-x">
           <div className="flex items-center justify-between h-[72px] md:h-[88px]">
             <Link to="/" className="font-display italic" style={{ fontSize: 24, fontWeight: 500 }}>
-              ivanterra
+              Vivanterra
             </Link>
 
             <nav className="hidden lg:flex items-center gap-8">
@@ -164,7 +164,7 @@ export default function Nav() {
           >
             <div className="container-x max-w-page flex h-[72px] items-center justify-between">
               <span className="font-display italic" style={{ fontSize: 24 }}>
-                ivanterra
+                Vivanterra
               </span>
               <button onClick={() => setOpen(false)} aria-label="Close menu" className="p-2 -mr-2">
                 <X size={22} />
