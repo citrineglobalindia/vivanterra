@@ -51,7 +51,7 @@ export default function Loader() {
         >
           <div className="container-x max-w-page w-full pb-8 md:pb-14">
             <div className="flex items-end justify-between">
-              <span className="eyebrow text-paper/60">Meridian Estates</span>
+              <span className="eyebrow text-paper/60">Velociti Real Estate</span>
               <span
                 className="font-display text-paper tabular-nums"
                 style={{ fontSize: "clamp(120px, 22vw, 320px)", lineHeight: 0.85, fontWeight: 300 }}
