@@ -19,8 +19,8 @@ import { ArrowUpRight, Loader2, Sparkles, X } from "lucide-react";
    Suppressed for 7 days after dismiss/submit. Skipped on /contact.
    ============================================================ */
 
-const SEEN_KEY = "vivanterra:lead:dismissed";
-const SUBMIT_KEY = "vivanterra:lead:submitted";
+const SEEN_KEY = "vivanterra:lead:dismissed:v2";
+const SUBMIT_KEY = "vivanterra:lead:submitted:v2";
 const DISMISS_DAYS = 7;
 const TIME_TRIGGER_MS = 3_000;
 const SCROLL_TRIGGER = 0.45;
@@ -183,7 +183,7 @@ export default function LeadPopup() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
-          className="fixed inset-0 z-[9995] flex items-center justify-center p-4 md:p-8"
+          className="fixed inset-0 z-[10050] flex items-center justify-center p-4 md:p-8"
           aria-modal="true"
           role="dialog"
           aria-labelledby="lead-title"
