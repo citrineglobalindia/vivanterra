@@ -234,10 +234,14 @@
   .text-ink { color: var(--ink); }
   .text-paper { color: var(--paper); }
   .text-gold { color: var(--gold); }
+  .text-sage { color: var(--sage); }
+  .text-sand { color: var(--sand); }
   .text-muted-soft { color: var(--muted); }
   .bg-ink { background-color: var(--ink); }
   .bg-paper { background-color: var(--paper); }
   .bg-gold { background-color: var(--gold); }
+  .bg-sage { background-color: var(--sage); }
+  .bg-sand { background-color: var(--sand); }
   .border-line { border-color: var(--line); }
   .border-line-dark { border-color: var(--line-dark); }
 }
