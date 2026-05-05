@@ -5,40 +5,64 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useLocation } from "react-router-dom";
 import { toast } from "sonner";
-import { ArrowUpRight, Loader2, Sparkles, X } from "lucide-react";
+import {
+  ArrowUpRight,
+  Building2,
+  Loader2,
+  Mail,
+  MapPin,
+  Phone,
+  Tag,
+  User,
+  X,
+} from "lucide-react";
 
 /* ============================================================
-   Vivanterra LeadPopup — invitation-only early-access modal.
-   Cinematic split: image with slow zoom + gold monogram + film grain
-   on one side, editorial form with staggered fields on the other.
+   Vivanterra LeadPopup — single-column premium lead card.
+   Image header with gold badge + property line, icon-prefixed
+   form, configuration select, full-width CTA.
 
    Triggers (first to fire wins):
-     • 18 seconds on page
+     • 3 seconds on page
      • 45% scroll
      • Desktop exit-intent
-   Suppressed for 7 days after dismiss/submit. Skipped on /contact.
+   Suppressed for 7 days after dismiss/submit. Homepage only.
    ============================================================ */
 
-const SEEN_KEY = "vivanterra:lead:dismissed:v2";
-const SUBMIT_KEY = "vivanterra:lead:submitted:v2";
+const SEEN_KEY = "vivanterra:lead:dismissed:v3";
+const SUBMIT_KEY = "vivanterra:lead:submitted:v3";
 const DISMISS_DAYS = 7;
 const TIME_TRIGGER_MS = 3_000;
 const SCROLL_TRIGGER = 0.45;
 
 const HERO_IMG =
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=85";
+  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85";
+
+const PROPERTY = {
+  badge: "PRIVATE BRIEF",
+  name: "Vivanterra Sadashiva Nagar",
+  location: "13th Cross Rd, Bengaluru",
+  price: "By appointment",
+};
+
+const CONFIGURATIONS = [
+  "2 BHK Residence",
+  "3 BHK Residence",
+  "4 BHK Residence",
+  "Penthouse",
+  "Villa",
+] as const;
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please share your name"),
-  email: z.string().trim().email("A valid email, please"),
   phone: z
     .string()
     .trim()
-    .optional()
-    .refine((v) => !v || /^[+\d\s\-()]{7,20}$/.test(v), "Check the phone number"),
-  consent: z.literal(true, {
-    errorMap: () => ({ message: "Please accept to continue" }),
-  }),
+    .min(7, "Please share a phone number")
+    .regex(/^[+\d\s\-()]{7,20}$/, "Check the phone number"),
+  email: z.string().trim().email("A valid email, please"),
+  project: z.string().trim().min(1),
+  configuration: z.string().trim().min(1, "Please choose a configuration"),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -66,15 +90,6 @@ function markDismissed(key: string) {
   }
 }
 
-const fieldFx = {
-  hidden: { opacity: 0, y: 14 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, delay: 0.08 * i + 0.25, ease: [0.2, 0.8, 0.2, 1] },
-  }),
-};
-
 export default function LeadPopup() {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
@@ -88,6 +103,10 @@ export default function LeadPopup() {
     reset,
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
+    defaultValues: {
+      project: PROPERTY.name,
+      configuration: "",
+    },
     mode: "onTouched",
   });
 
@@ -151,7 +170,7 @@ export default function LeadPopup() {
       const first =
         dialogRef.current?.querySelector<HTMLInputElement>("input[name='name']");
       first?.focus();
-    }, 700);
+    }, 500);
 
     return () => {
       document.body.style.overflow = prev;
@@ -173,7 +192,7 @@ export default function LeadPopup() {
       description: "We'll be in touch with our next release.",
     });
     setOpen(false);
-    reset();
+    reset({ project: PROPERTY.name, configuration: "" });
   }
 
   return (
@@ -184,317 +203,234 @@ export default function LeadPopup() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
-          className="fixed inset-0 z-[10050] flex items-center justify-center p-4 md:p-8"
+          transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
+          className="fixed inset-0 z-[10050] flex items-center justify-center p-4"
           aria-modal="true"
           role="dialog"
           aria-labelledby="lead-title"
           onClick={() => closeIt(true)}
         >
-          {/* Rich backdrop with film-grain */}
+          {/* Backdrop */}
           <div
             aria-hidden
-            className="absolute inset-0 bg-ink/80 backdrop-blur-[6px]"
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
-            style={{
-              backgroundImage:
-                "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.7'/></svg>\")",
-            }}
+            className="absolute inset-0 bg-ink/70 backdrop-blur-sm"
           />
 
-          {/* Dialog */}
+          {/* Card */}
           <motion.div
             ref={dialogRef}
-            initial={{ opacity: 0, y: 40, scale: 0.96 }}
+            initial={{ opacity: 0, y: 30, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 40, scale: 0.96 }}
-            transition={{ duration: 0.7, ease: [0.2, 0.8, 0.2, 1] }}
+            exit={{ opacity: 0, y: 30, scale: 0.97 }}
+            transition={{ duration: 0.55, ease: [0.2, 0.8, 0.2, 1] }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-[960px] max-h-[88vh] overflow-hidden bg-paper grid md:grid-cols-12 ring-1 ring-gold/30"
+            className="relative w-full max-w-[460px] max-h-[92vh] overflow-y-auto bg-paper rounded-sm overflow-x-hidden"
             style={{
               boxShadow:
-                "0 60px 140px -40px rgba(78,115,83,0.7), 0 0 0 1px rgba(196,169,106,0.25), 0 0 80px -20px rgba(196,169,106,0.25)",
+                "0 40px 100px -30px rgba(78,115,83,0.6), 0 0 0 1px rgba(196,169,106,0.25)",
             }}
           >
-            {/* Close button — high contrast, always visible */}
+            {/* Close */}
             <button
               type="button"
               onClick={() => closeIt(true)}
               aria-label="Close"
-              className="absolute top-3 right-3 md:top-4 md:right-4 z-50 w-10 h-10 md:w-11 md:h-11 rounded-full bg-ink text-paper flex items-center justify-center hover:bg-gold hover:text-ink transition-all duration-300 hover:rotate-90"
+              className="absolute top-3 right-3 z-30 w-9 h-9 rounded-full bg-paper text-ink shadow-md flex items-center justify-center hover:bg-gold hover:text-ink hover:rotate-90 transition-all duration-300"
               style={{
                 boxShadow:
-                  "0 0 0 1px rgba(196,169,106,0.5), 0 8px 24px -8px rgba(14,14,16,0.5)",
+                  "0 0 0 1px rgba(78,115,83,0.18), 0 4px 12px -4px rgba(14,14,16,0.25)",
               }}
             >
-              <X size={16} strokeWidth={2.4} />
+              <X size={15} strokeWidth={2.4} />
             </button>
 
-            {/* ── Image side ────────────────────────────── */}
-            <div className="hidden md:block md:col-span-5 relative bg-ink overflow-hidden">
-              {/* Slow ken-burns */}
+            {/* ── Image header ── */}
+            <div className="relative h-[200px] sm:h-[220px] overflow-hidden bg-ink">
               <motion.img
                 src={HERO_IMG}
                 alt=""
                 className="absolute inset-0 w-full h-full object-cover"
-                initial={{ scale: 1.18, opacity: 0 }}
-                animate={{ scale: 1, opacity: 0.78 }}
-                transition={{ duration: 8, ease: "easeOut" }}
+                initial={{ scale: 1.1 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 6, ease: "easeOut" }}
                 loading="eager"
               />
-
-              {/* Sage→ink atmospheric gradient */}
+              {/* Bottom-up dark gradient for readable text */}
               <div
                 aria-hidden
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(150deg, rgba(78,115,83,0.55) 0%, rgba(14,14,16,0.30) 45%, rgba(14,14,16,0.85) 100%)",
+                    "linear-gradient(180deg, rgba(14,14,16,0.15) 0%, rgba(14,14,16,0.25) 35%, rgba(14,14,16,0.85) 100%)",
                 }}
               />
-
-              {/* Pulsing gold ambient glow */}
-              <motion.div
-                aria-hidden
-                className="absolute -top-1/4 -right-1/4 w-[80%] h-[80%] pointer-events-none"
-                style={{
-                  background:
-                    "radial-gradient(ellipse at center, rgba(196,169,106,0.30) 0%, rgba(196,169,106,0.08) 40%, rgba(0,0,0,0) 70%)",
-                  filter: "blur(40px)",
-                }}
-                animate={{ opacity: [0.7, 1, 0.7] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              />
-
-              {/* Film grain */}
+              {/* Gold ambient */}
               <div
                 aria-hidden
-                className="absolute inset-0 opacity-[0.10] mix-blend-overlay pointer-events-none"
+                className="absolute -top-12 -right-12 w-[60%] h-[80%] pointer-events-none"
                 style={{
-                  backgroundImage:
-                    "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.7'/></svg>\")",
+                  background:
+                    "radial-gradient(ellipse at center, rgba(196,169,106,0.22) 0%, rgba(196,169,106,0) 65%)",
+                  filter: "blur(30px)",
                 }}
               />
 
-              {/* Refined corner marks */}
-              <span className="absolute top-6 left-6 w-6 h-6 border-l border-t border-gold/60" />
-              <span className="absolute bottom-6 left-6 w-6 h-6 border-l border-b border-gold/60" />
-              <span className="absolute top-6 right-6 w-6 h-6 border-r border-t border-gold/60" />
-
-              {/* Top monogram + invitation seal */}
+              {/* Premium badge (top-left) */}
               <motion.div
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="absolute top-8 left-8 right-8 flex items-start justify-between"
+                transition={{ delay: 0.3, duration: 0.5 }}
+                className="absolute top-5 left-5"
               >
-                <div className="relative w-12 h-12 rounded-full border border-gold/70 flex items-center justify-center backdrop-blur-sm">
-                  <span
-                    className="font-display italic text-gold"
-                    style={{ fontSize: 22, lineHeight: 1, fontWeight: 400 }}
-                  >
-                    V
-                  </span>
-                  <span className="absolute -inset-1 rounded-full border border-gold/20" />
-                </div>
-                <div className="text-right text-paper/80">
-                  <div className="text-[10px] tracking-[0.22em] text-gold tabular-nums">
-                    INVITATION
-                  </div>
-                  <div className="text-[10px] tracking-[0.22em] text-paper/60 tabular-nums mt-1">
-                    No. 001 / 100
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Caption */}
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, delay: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
-                className="absolute bottom-10 left-8 right-8 text-paper"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="h-px w-10 bg-gold" />
-                  <span className="text-[10px] tracking-[0.22em] text-gold tabular-nums">
-                    EARLY ACCESS · 2026
-                  </span>
-                </div>
-                <p
-                  className="font-display italic font-light"
-                  style={{
-                    fontSize: "clamp(22px, 2.4vw, 30px)",
-                    lineHeight: 1.18,
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  "A residence is composed
-                  <br />
-                  in private, long before
-                  <br />
-                  it is shown."
-                </p>
-                <p className="eyebrow text-paper/60 mt-5">— The studio</p>
-              </motion.div>
-            </div>
-
-            {/* ── Form side ───────────────────────────── */}
-            <div className="md:col-span-7 px-6 pt-10 pb-7 md:px-10 md:pt-10 md:pb-8 overflow-y-auto relative">
-              {/* Soft gold halo behind headline */}
-              <div
-                aria-hidden
-                className="absolute -top-24 -right-24 w-[400px] h-[400px] pointer-events-none"
-                style={{
-                  background:
-                    "radial-gradient(ellipse at center, rgba(196,169,106,0.10) 0%, rgba(196,169,106,0) 60%)",
-                  filter: "blur(20px)",
-                }}
-              />
-
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="flex items-center gap-3 mb-4 relative"
-              >
-                <Sparkles size={13} className="text-gold" />
-                <span className="eyebrow text-muted-soft">
-                  Reserve your invitation
+                <span className="inline-flex items-center gap-1.5 bg-gold text-ink px-3 py-1.5 text-[10px] tracking-[0.18em] font-semibold uppercase">
+                  {PROPERTY.badge}
                 </span>
               </motion.div>
 
-              <motion.h2
-                id="lead-title"
-                initial={{ opacity: 0, y: 18 }}
+              {/* Property block (bottom) */}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.25, ease: [0.2, 0.8, 0.2, 1] }}
-                className="font-display text-ink relative"
+                transition={{ delay: 0.4, duration: 0.6 }}
+                className="absolute left-5 right-5 bottom-5 text-paper"
+              >
+                <h2
+                  id="lead-title"
+                  className="font-display font-light leading-tight"
+                  style={{
+                    fontSize: "clamp(24px, 4vw, 30px)",
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  {PROPERTY.name}
+                </h2>
+
+                <div className="mt-3 pl-3 border-l-2 border-gold space-y-1.5">
+                  <div className="flex items-center gap-2 text-paper/95 text-[13px]">
+                    <MapPin size={13} className="text-gold shrink-0" />
+                    <span>{PROPERTY.location}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-paper text-[13px] font-medium">
+                    <Tag size={13} className="text-gold shrink-0" />
+                    <span>{PROPERTY.price}</span>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* ── Form ── */}
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              noValidate
+              className="p-5 sm:p-6 space-y-3"
+            >
+              <IconField
+                icon={<User size={16} />}
+                error={errors.name?.message}
+              >
+                <input
+                  type="text"
+                  autoComplete="name"
+                  placeholder="Full Name*"
+                  className={inputCls}
+                  {...register("name")}
+                />
+              </IconField>
+
+              <IconField
+                icon={<Phone size={16} />}
+                error={errors.phone?.message}
+              >
+                <input
+                  type="tel"
+                  autoComplete="tel"
+                  placeholder="Phone Number*"
+                  className={inputCls}
+                  {...register("phone")}
+                />
+              </IconField>
+
+              <IconField
+                icon={<Mail size={16} />}
+                error={errors.email?.message}
+              >
+                <input
+                  type="email"
+                  autoComplete="email"
+                  placeholder="Email Address*"
+                  className={inputCls}
+                  {...register("email")}
+                />
+              </IconField>
+
+              <IconField
+                icon={<Building2 size={16} />}
+                error={errors.project?.message}
+              >
+                <input
+                  type="text"
+                  readOnly
+                  className={`${inputCls} cursor-default`}
+                  {...register("project")}
+                />
+              </IconField>
+
+              <IconField
+                icon={<Tag size={16} />}
+                error={errors.configuration?.message}
+              >
+                <select
+                  className={`${inputCls} appearance-none cursor-pointer pr-8 bg-[image:linear-gradient(45deg,transparent_50%,#4E7353_50%),linear-gradient(135deg,#4E7353_50%,transparent_50%)] bg-[position:calc(100%_-_15px)_center,calc(100%_-_10px)_center] bg-[size:5px_5px,5px_5px] bg-no-repeat`}
+                  defaultValue=""
+                  {...register("configuration")}
+                >
+                  <option value="" disabled>
+                    Select Configuration*
+                  </option>
+                  {CONFIGURATIONS.map((c) => (
+                    <option key={c} value={c}>
+                      {c}
+                    </option>
+                  ))}
+                </select>
+              </IconField>
+
+              {/* CTA */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="group relative mt-4 w-full h-[52px] rounded-sm bg-ink text-paper font-semibold text-[13px] tracking-[0.18em] uppercase overflow-hidden disabled:opacity-60 disabled:cursor-not-allowed"
                 style={{
-                  fontSize: "clamp(26px, 2.8vw, 38px)",
-                  fontWeight: 300,
-                  letterSpacing: "-0.02em",
-                  lineHeight: 1.05,
+                  boxShadow:
+                    "0 0 0 1px rgba(196,169,106,0.4), 0 16px 40px -16px rgba(78,115,83,0.55)",
                 }}
               >
-                Receive a <span className="italic text-gold">private brief</span>
-                <br />
-                before public release.
-              </motion.h2>
-
-              <form
-                onSubmit={handleSubmit(onSubmit)}
-                noValidate
-                className="mt-7 space-y-5 relative"
-              >
-                <Field index={0} num="01" label="Name" error={errors.name?.message}>
-                  <input
-                    type="text"
-                    autoComplete="name"
-                    placeholder="Your full name"
-                    className={inputCls}
-                    {...register("name")}
-                  />
-                </Field>
-
-                <Field index={1} num="02" label="Email" error={errors.email?.message}>
-                  <input
-                    type="email"
-                    autoComplete="email"
-                    placeholder="you@example.com"
-                    className={inputCls}
-                    {...register("email")}
-                  />
-                </Field>
-
-                <Field
-                  index={2}
-                  num="03"
-                  label="Phone (optional)"
-                  error={errors.phone?.message}
-                >
-                  <input
-                    type="tel"
-                    autoComplete="tel"
-                    placeholder="+91 ·····"
-                    className={inputCls}
-                    {...register("phone")}
-                  />
-                </Field>
-
-                <motion.div
-                  custom={3}
-                  variants={fieldFx}
-                  initial="hidden"
-                  animate="show"
-                >
-                  <label className="flex items-start gap-2.5 cursor-pointer text-muted-soft text-[13px] leading-snug">
-                    <input
-                      type="checkbox"
-                      className="mt-[3px] w-4 h-4 accent-[var(--gold)] shrink-0"
-                      {...register("consent")}
-                    />
-                    <span>
-                      I'd like to receive private briefs. We'll never share your
-                      details.
-                    </span>
-                  </label>
-                  {errors.consent && (
-                    <p className="mt-1 text-[12px] tracking-wide text-[hsl(var(--destructive))]">
-                      {errors.consent.message as string}
-                    </p>
+                <span
+                  aria-hidden
+                  className="absolute inset-0 bg-gold scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out"
+                />
+                <span className="relative z-10 inline-flex items-center justify-center gap-2 group-hover:text-ink transition-colors duration-500">
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={16} className="animate-spin" />
+                      Sending
+                    </>
+                  ) : (
+                    <>
+                      Get VIP Access
+                      <ArrowUpRight
+                        size={15}
+                        className="transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      />
+                    </>
                   )}
-                </motion.div>
+                </span>
+              </button>
 
-                <motion.div
-                  custom={4}
-                  variants={fieldFx}
-                  initial="hidden"
-                  animate="show"
-                  className="flex flex-wrap items-center gap-5 pt-1"
-                >
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="group relative inline-flex items-center gap-2 h-12 px-7 rounded-full bg-ink text-paper font-medium text-[12px] tracking-[0.10em] uppercase overflow-hidden transition-transform duration-300 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
-                    style={{
-                      boxShadow:
-                        "0 20px 50px -20px rgba(78,115,83,0.55), 0 0 0 1px rgba(196,169,106,0.35)",
-                    }}
-                  >
-                    <span
-                      aria-hidden
-                      className="absolute inset-0 bg-gold scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out"
-                    />
-                    <span className="relative z-10 inline-flex items-center gap-2 group-hover:text-ink transition-colors duration-500">
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="animate-spin" size={16} />
-                          Reserving
-                        </>
-                      ) : (
-                        <>
-                          Reserve my invitation
-                          <ArrowUpRight
-                            size={16}
-                            className="transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                          />
-                        </>
-                      )}
-                    </span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => closeIt(true)}
-                    className="text-sm text-muted-soft hover:text-ink transition-colors underline-offset-4 hover:underline"
-                  >
-                    Maybe later
-                  </button>
-                </motion.div>
-              </form>
-            </div>
+              <p className="text-center text-[11px] text-muted-soft pt-1">
+                We respect your privacy. Used solely for this enquiry.
+              </p>
+            </form>
           </motion.div>
         </motion.div>
       )}
@@ -505,40 +441,35 @@ export default function LeadPopup() {
 /* ── Bits ────────────────────────────────────────────── */
 
 const inputCls =
-  "w-full bg-transparent border-0 border-b border-ink/20 focus:border-gold py-2 text-base text-ink outline-none transition-colors placeholder:text-ink/30";
+  "w-full bg-transparent border-0 outline-none text-ink text-[14px] py-3 pl-11 pr-3 placeholder:text-ink/45";
 
-function Field({
-  num,
-  label,
-  index,
+function IconField({
+  icon,
   error,
   children,
 }: {
-  num: string;
-  label: string;
-  index: number;
+  icon: React.ReactNode;
   error?: string;
   children: React.ReactNode;
 }) {
   return (
-    <motion.div
-      custom={index}
-      variants={fieldFx}
-      initial="hidden"
-      animate="show"
-    >
-      <div className="flex items-baseline gap-3 mb-1.5">
-        <span className="text-[10px] tracking-[0.22em] text-gold tabular-nums">
-          {num}
+    <div>
+      <div
+        className={[
+          "relative rounded-sm border bg-[rgba(78,115,83,0.04)] focus-within:border-gold focus-within:bg-paper transition-colors",
+          error ? "border-[hsl(var(--destructive))]" : "border-line-dark",
+        ].join(" ")}
+      >
+        <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink/45 pointer-events-none">
+          {icon}
         </span>
-        <span className="eyebrow text-muted-soft">{label}</span>
+        {children}
       </div>
-      {children}
       {error && (
-        <p className="mt-1 text-[12px] tracking-wide text-[hsl(var(--destructive))]">
+        <p className="mt-1 text-[11px] tracking-wide text-[hsl(var(--destructive))] pl-1">
           {error}
         </p>
       )}
-    </motion.div>
+    </div>
   );
 }
