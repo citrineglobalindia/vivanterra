@@ -71,7 +71,7 @@ export default function PageShell({ eyebrow, title, intro, children }: PageShell
             >
               <div className="md:col-span-7">
                 <p className="text-2xl md:text-3xl font-display font-light leading-snug text-ink">
-                  This page is part of the upcoming ivanterra experience. Detailed content,
+                  This page is part of the upcoming Vivanterra experience. Detailed content,
                   imagery and interactions will be added during the next production phase.
                 </p>
               </div>

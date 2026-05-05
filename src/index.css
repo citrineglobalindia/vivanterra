@@ -9,7 +9,7 @@
 
 @layer base {
   :root {
-    /* ivanterra brand palette
+    /* Vivanterra brand palette
        Note: --ink is the brand "dark" (deep sage), --paper is the cream base.
        Existing components use these tokens — flipping the values rebrands the site. */
     --ink: #4E7353;          /* DEEP SAGE — headers, primary surfaces */

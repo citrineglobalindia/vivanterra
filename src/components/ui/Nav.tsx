@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import logoLight from "@/assets/logo-light.png"; // cream wordmark on green — for dark backgrounds
+import logoDark from "@/assets/logo-dark.png";   // green wordmark on cream — for light backgrounds
 
 type NavItem = {
   label: string;
@@ -76,8 +78,13 @@ export default function Nav() {
         />
         <div className="relative max-w-page container-x">
           <div className="flex items-center justify-between h-[72px] md:h-[88px]">
-            <Link to="/" className="font-display italic" style={{ fontSize: 24, fontWeight: 500 }}>
-              ivanterra
+            <Link to="/" aria-label="Vivanterra — home" className="flex items-center">
+              <img
+                src={onHome ? logoLight : logoDark}
+                alt="Vivanterra"
+                className="h-8 md:h-10 w-auto select-none"
+                draggable={false}
+              />
             </Link>
 
             <nav className="hidden lg:flex items-center gap-8">
@@ -163,9 +170,7 @@ export default function Nav() {
             transition={{ duration: 0.6, ease: [0.77, 0, 0.18, 1] }}
           >
             <div className="container-x max-w-page flex h-[72px] items-center justify-between">
-              <span className="font-display italic" style={{ fontSize: 24 }}>
-                ivanterra
-              </span>
+              <img src={logoLight} alt="Vivanterra" className="h-8 w-auto" draggable={false} />
               <button onClick={() => setOpen(false)} aria-label="Close menu" className="p-2 -mr-2">
                 <X size={22} />
               </button>

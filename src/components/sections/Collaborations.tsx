@@ -28,7 +28,7 @@ export default function Collaborations() {
           <div className="md:col-span-5 md:pt-3">
             <Reveal delay={0.15}>
               <p className="text-paper/75 max-w-[480px] text-[15px] leading-[1.7]">
-                Each ivanterra residence is shaped in dialogue with a small circle
+                Each Vivanterra residence is shaped in dialogue with a small circle
                 of ateliers, fabricators and design studios we have known for years.
                 We choose partners for the same reasons we choose materials:
                 quiet conviction, precise craft, and a refusal to take shortcuts
