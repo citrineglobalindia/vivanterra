@@ -140,7 +140,10 @@ export default function LeadPopup() {
     document.body.style.overflow = "hidden";
 
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeIt(true);
+      if (e.key === "Escape") {
+        setOpen(false);
+        markDismissed(SEEN_KEY);
+      }
     };
     window.addEventListener("keydown", onKey);
 
@@ -155,7 +158,6 @@ export default function LeadPopup() {
       window.removeEventListener("keydown", onKey);
       window.clearTimeout(t);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
   function closeIt(persist: boolean) {
@@ -464,7 +466,7 @@ export default function LeadPopup() {
                   >
                     <span
                       aria-hidden
-                      className="absolute inset-0 bg-gold scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]"
+                      className="absolute inset-0 bg-gold scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out"
                     />
                     <span className="relative z-10 inline-flex items-center gap-2 group-hover:text-ink transition-colors duration-500">
                       {isSubmitting ? (
