@@ -6,15 +6,15 @@ import SplitText from "../ui/SplitText";
 const PILLARS = [
   {
     label: "Climate",
-    text: "Three hundred and fifty days of pure light per year shape every facade we draw — from shading to material temperature.",
+    text: "A temperate plateau. Mild light, gentle monsoons and breeze-fed evenings shape every courtyard, terrace and wood-screened facade we draw.",
   },
   {
     label: "Connectivity",
-    text: "Eight hours from London, four from Mumbai, two from Riyadh. A meeting place for the patient and the global.",
+    text: "A two-hour flight from any major south-Indian city, four from the Gulf, eight from London. A quiet, patient capital with global reach.",
   },
   {
     label: "Culture",
-    text: "A young city that takes craft seriously. Galleries, ateliers and a generation of collectors writing a new chapter.",
+    text: "A garden city of ateliers, craftspeople and a new generation of collectors. Bengaluru takes its makers seriously — we build for them.",
   },
 ];
 
@@ -49,7 +49,7 @@ export default function WhyCity() {
             </Reveal>
             <SplitText
               as="h2"
-              text="Why Dubai."
+              text="Why Bengaluru."
               className="font-display text-ink mb-12"
               by="word"
             />

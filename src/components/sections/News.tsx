@@ -4,21 +4,21 @@ import SplitText from "../ui/SplitText";
 
 const NEWS = [
   {
-    date: "March 2026",
+    date: "April 2026",
     title: "Inside the studio: a year of materials.",
     dek: "Our head of design walks through twelve months of stone, brass and oak.",
     image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    date: "February 2026",
-    title: "Aurelia Bay tops out in Dubai Marina.",
+    date: "March 2026",
+    title: "Aurelia Bay tops out in Sadashiva Nagar.",
     dek: "The first of our 2027 deliveries reaches its full height ahead of schedule.",
     image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    date: "January 2026",
+    date: "February 2026",
     title: "A conversation with our founding architect.",
-    dek: "On patience, restraint and the future of the gulf skyline.",
+    dek: "On patience, restraint and the future of Bengaluru's skyline.",
     image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=80",
   },
 ];

@@ -10,12 +10,12 @@ import SplitText from "../ui/SplitText";
 
 /** Editable list — swap one line per project. */
 const RESIDENCES = [
-  { name: "Aurelia Bay", location: "Dubai Marina", image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80" },
-  { name: "The Cypress", location: "Downtown", image: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80" },
-  { name: "Sable Heights", location: "Palm Jumeirah", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" },
-  { name: "Linnea Place", location: "Business Bay", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" },
-  { name: "Olin Park", location: "Emirates Hills", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80" },
-  { name: "Vermilion Court", location: "JBR", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" },
+  { name: "Aurelia Bay", location: "Sadashiva Nagar", image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80" },
+  { name: "The Cypress", location: "Indiranagar", image: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80" },
+  { name: "Sable Heights", location: "Whitefield", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" },
+  { name: "Linnea Place", location: "Koramangala", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" },
+  { name: "Olin Park", location: "Jayanagar", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80" },
+  { name: "Vermilion Court", location: "Sarjapur Road", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" },
 ];
 
 export default function Residences() {
