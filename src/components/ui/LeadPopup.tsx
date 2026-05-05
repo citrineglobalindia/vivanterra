@@ -22,7 +22,7 @@ import { ArrowUpRight, Loader2, Sparkles, X } from "lucide-react";
 const SEEN_KEY = "vivanterra:lead:dismissed";
 const SUBMIT_KEY = "vivanterra:lead:submitted";
 const DISMISS_DAYS = 7;
-const TIME_TRIGGER_MS = 18_000;
+const TIME_TRIGGER_MS = 3_000;
 const SCROLL_TRIGGER = 0.45;
 
 const HERO_IMG =
@@ -91,9 +91,9 @@ export default function LeadPopup() {
     mode: "onTouched",
   });
 
-  /* Trigger setup */
+  /* Trigger setup — homepage only */
   useEffect(() => {
-    if (pathname === "/contact") return;
+    if (pathname !== "/") return;
     if (recentlyDismissed()) return;
 
     let timeT: number | null = null;

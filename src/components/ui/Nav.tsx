@@ -1,6 +1,15 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import {
+  ArrowUpRight,
+  ChevronDown,
+  Mail,
+  Menu,
+  MessageCircle,
+  Phone,
+  Plus,
+  X,
+} from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import logoLight from "@/assets/logo-light.png"; // cream wordmark on green — for dark backgrounds
 import logoDark from "@/assets/logo-dark.png";   // green wordmark on cream — for light backgrounds
@@ -159,66 +168,353 @@ export default function Nav() {
         </div>
       </motion.header>
 
-      {/* Mobile panel */}
+      {/* ───────── Mobile panel ───────── */}
       <AnimatePresence>
         {open && (
-          <motion.div
-            className="fixed inset-0 z-[150] bg-ink text-paper lg:hidden"
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ duration: 0.6, ease: [0.77, 0, 0.18, 1] }}
-          >
-            <div className="container-x max-w-page flex h-[72px] items-center justify-between">
-              <img src={logoLight} alt="Vivanterra" className="h-8 w-auto" draggable={false} />
-              <button onClick={() => setOpen(false)} aria-label="Close menu" className="p-2 -mr-2">
-                <X size={22} />
-              </button>
-            </div>
-            <div className="hairline" />
-            <nav className="container-x max-w-page mt-10 flex flex-col gap-5 overflow-y-auto pb-12">
-              {NAV_LINKS.map((l, i) => (
-                <motion.div
-                  key={l.to}
-                  initial={{ y: 30, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.2 + i * 0.05, duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
-                >
-                  <Link
-                    to={l.to}
-                    onClick={() => setOpen(false)}
-                    className="font-display block"
-                    style={{ fontSize: 32, fontWeight: 400, letterSpacing: "-0.02em" }}
-                  >
-                    {l.label}
-                  </Link>
-                  {l.children && (
-                    <div className="mt-2 ml-4 flex flex-col gap-2">
-                      {l.children.map((c) => (
-                        <Link
-                          key={c.to}
-                          to={c.to}
-                          onClick={() => setOpen(false)}
-                          className="text-sm text-paper/70 uppercase tracking-[0.16em]"
-                        >
-                          {c.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </motion.div>
-              ))}
-              <div className="hairline mt-8" />
-              <a href="mailto:hello@velociti.com" className="text-paper/70 mt-4 text-sm">
-                hello@velociti.com
-              </a>
-              <a href="tel:+919986666774" className="text-paper/70 text-sm">
-                +91 99866 66774
-              </a>
-            </nav>
-          </motion.div>
+          <MobileMenu
+            currentPath={location.pathname}
+            onClose={() => setOpen(false)}
+          />
         )}
       </AnimatePresence>
     </>
+  );
+}
+
+/* ============================================================
+   Mobile menu — editorial slide-in with numbered links,
+   accordion children, contact tiles and brand block.
+   ============================================================ */
+function MobileMenu({
+  currentPath,
+  onClose,
+}: {
+  currentPath: string;
+  onClose: () => void;
+}) {
+  const [expanded, setExpanded] = useState<string | null>(null);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose]);
+
+  return (
+    <motion.div
+      className="fixed inset-0 z-[150] lg:hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Site menu"
+    >
+      {/* Backdrop */}
+      <button
+        type="button"
+        aria-label="Close menu"
+        onClick={onClose}
+        className="absolute inset-0 bg-ink/60 backdrop-blur-sm"
+      />
+
+      {/* Panel */}
+      <motion.aside
+        initial={{ x: "100%" }}
+        animate={{ x: 0 }}
+        exit={{ x: "100%" }}
+        transition={{ duration: 0.55, ease: [0.77, 0, 0.18, 1] }}
+        className="absolute right-0 top-0 h-full w-full max-w-[420px] bg-ink text-paper flex flex-col overflow-hidden"
+        style={{
+          boxShadow: "-30px 0 80px -20px rgba(0,0,0,0.6)",
+        }}
+      >
+        {/* Pulsing gold ambient glow */}
+        <div
+          aria-hidden
+          className="absolute -top-1/4 -right-1/3 w-[80%] h-[60%] pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(196,169,106,0.18) 0%, rgba(196,169,106,0.05) 40%, rgba(0,0,0,0) 75%)",
+            filter: "blur(40px)",
+          }}
+        />
+        {/* Subtle film grain */}
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.7'/></svg>\")",
+          }}
+        />
+        {/* Left gold rule */}
+        <div
+          aria-hidden
+          className="absolute left-0 top-24 bottom-24 w-px bg-gradient-to-b from-transparent via-gold/60 to-transparent"
+        />
+
+        {/* Header */}
+        <div className="relative px-6 pt-5 pb-4 flex items-center justify-between">
+          <Link to="/" onClick={onClose} aria-label="Vivanterra — home">
+            <img
+              src={logoLight}
+              alt="Vivanterra"
+              className="h-8 w-auto"
+              draggable={false}
+            />
+          </Link>
+          <button
+            onClick={onClose}
+            aria-label="Close menu"
+            className="w-10 h-10 rounded-full border border-paper/25 flex items-center justify-center hover:bg-gold hover:text-ink hover:border-gold transition-all duration-300 hover:rotate-90"
+          >
+            <X size={16} strokeWidth={2.4} />
+          </button>
+        </div>
+
+        <div className="hairline opacity-30" />
+
+        {/* Eyebrow */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25, duration: 0.5 }}
+          className="relative px-6 pt-6 flex items-center gap-3"
+        >
+          <span className="h-px w-8 bg-gold" />
+          <span className="eyebrow text-paper/60">Menu</span>
+        </motion.div>
+
+        {/* Nav list */}
+        <nav className="relative flex-1 overflow-y-auto px-6 pt-3 pb-4">
+          <ul className="flex flex-col">
+            {NAV_LINKS.map((l, i) => {
+              const isExpanded = expanded === l.to;
+              const isActive =
+                currentPath === l.to ||
+                (l.children && currentPath.startsWith(l.to + "/"));
+              const num = String(i + 1).padStart(2, "0");
+
+              return (
+                <motion.li
+                  key={l.to}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{
+                    delay: 0.3 + i * 0.05,
+                    duration: 0.5,
+                    ease: [0.2, 0.8, 0.2, 1],
+                  }}
+                  className="border-b border-paper/10"
+                >
+                  <div className="flex items-center justify-between gap-3 py-3.5">
+                    <Link
+                      to={l.to}
+                      onClick={onClose}
+                      className="group flex items-baseline gap-4 flex-1 min-w-0"
+                    >
+                      <span className="text-[10px] tracking-[0.22em] text-gold tabular-nums w-7 shrink-0">
+                        {num}
+                      </span>
+                      <span
+                        className={[
+                          "font-display flex-1 truncate transition-colors",
+                          isActive ? "text-gold" : "text-paper group-hover:text-gold",
+                        ].join(" ")}
+                        style={{
+                          fontSize: 28,
+                          fontWeight: 400,
+                          letterSpacing: "-0.02em",
+                          lineHeight: 1.1,
+                        }}
+                      >
+                        {l.label}
+                      </span>
+                      {!l.children && (
+                        <ArrowUpRight
+                          size={16}
+                          className="text-paper/40 group-hover:text-gold group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0"
+                        />
+                      )}
+                    </Link>
+                    {l.children && (
+                      <button
+                        onClick={() => setExpanded(isExpanded ? null : l.to)}
+                        aria-label={isExpanded ? "Collapse" : "Expand"}
+                        aria-expanded={isExpanded}
+                        className="w-9 h-9 rounded-full border border-paper/25 flex items-center justify-center text-paper hover:bg-gold hover:border-gold hover:text-ink transition-colors shrink-0"
+                      >
+                        <Plus
+                          size={14}
+                          className={[
+                            "transition-transform duration-300",
+                            isExpanded ? "rotate-45" : "rotate-0",
+                          ].join(" ")}
+                        />
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Children accordion */}
+                  {l.children && (
+                    <AnimatePresence initial={false}>
+                      {isExpanded && (
+                        <motion.div
+                          key="sub"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{
+                            duration: 0.4,
+                            ease: [0.2, 0.8, 0.2, 1],
+                          }}
+                          className="overflow-hidden"
+                        >
+                          <ul className="pb-4 pl-11 flex flex-col gap-1">
+                            {l.children.map((c) => {
+                              const cActive = currentPath === c.to;
+                              return (
+                                <li key={c.to}>
+                                  <Link
+                                    to={c.to}
+                                    onClick={onClose}
+                                    className={[
+                                      "flex items-center justify-between py-1.5 text-[12px] tracking-[0.16em] uppercase transition-colors",
+                                      cActive
+                                        ? "text-gold"
+                                        : "text-paper/65 hover:text-gold",
+                                    ].join(" ")}
+                                  >
+                                    <span>{c.label}</span>
+                                    <ArrowUpRight size={12} />
+                                  </Link>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  )}
+                </motion.li>
+              );
+            })}
+          </ul>
+
+          {/* Enquire CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+            className="mt-6"
+          >
+            <Link
+              to="/contact"
+              onClick={onClose}
+              className="group relative inline-flex items-center justify-between gap-2 w-full h-12 px-5 rounded-full bg-gold text-ink font-medium text-[12px] tracking-[0.10em] uppercase overflow-hidden transition-transform duration-300 hover:-translate-y-0.5"
+              style={{
+                boxShadow: "0 16px 40px -16px rgba(196,169,106,0.6)",
+              }}
+            >
+              <span>Enquire now</span>
+              <ArrowUpRight
+                size={16}
+                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </Link>
+          </motion.div>
+
+          {/* Contact tiles */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.78, duration: 0.6 }}
+            className="mt-6"
+          >
+            <div className="flex items-center gap-3 mb-3">
+              <span className="h-px w-8 bg-gold" />
+              <span className="eyebrow text-paper/60">Direct</span>
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              <ContactTile
+                href="tel:+919986666774"
+                icon={<Phone size={14} />}
+                label="Call"
+              />
+              <ContactTile
+                href="mailto:hello@velociti.com"
+                icon={<Mail size={14} />}
+                label="Email"
+              />
+              <ContactTile
+                href="https://wa.me/919986666774"
+                external
+                icon={<MessageCircle size={14} />}
+                label="WhatsApp"
+              />
+            </div>
+          </motion.div>
+        </nav>
+
+        {/* Brand block (footer) */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.85, duration: 0.6 }}
+          className="relative px-6 py-5 border-t border-paper/15"
+        >
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <div className="font-display text-paper text-xl font-light leading-tight">
+                Vivanterra
+              </div>
+              <div className="eyebrow text-paper/60 mt-0.5">Real Estate</div>
+            </div>
+            <div className="text-right">
+              <div className="text-[10px] tracking-[0.22em] text-gold tabular-nums">
+                EST. BENGALURU
+              </div>
+              <div className="text-[10px] tracking-[0.22em] text-paper/50 tabular-nums mt-0.5">
+                © {new Date().getFullYear()}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </motion.aside>
+    </motion.div>
+  );
+}
+
+function ContactTile({
+  href,
+  icon,
+  label,
+  external,
+}: {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+  external?: boolean;
+}) {
+  const cls =
+    "flex flex-col items-center justify-center gap-1.5 h-16 rounded-sm border border-paper/15 text-paper hover:bg-gold hover:text-ink hover:border-gold transition-colors";
+  const inner = (
+    <>
+      {icon}
+      <span className="text-[10px] tracking-[0.16em] uppercase">{label}</span>
+    </>
+  );
+  return external ? (
+    <a href={href} target="_blank" rel="noreferrer" className={cls}>
+      {inner}
+    </a>
+  ) : (
+    <a href={href} className={cls}>
+      {inner}
+    </a>
   );
 }
