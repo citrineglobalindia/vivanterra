@@ -211,20 +211,24 @@ export default function LeadPopup() {
             exit={{ opacity: 0, y: 40, scale: 0.96 }}
             transition={{ duration: 0.7, ease: [0.2, 0.8, 0.2, 1] }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-5xl max-h-[92vh] overflow-hidden bg-paper grid md:grid-cols-12 ring-1 ring-gold/30"
+            className="relative w-full max-w-[960px] max-h-[88vh] overflow-hidden bg-paper grid md:grid-cols-12 ring-1 ring-gold/30"
             style={{
               boxShadow:
                 "0 60px 140px -40px rgba(78,115,83,0.7), 0 0 0 1px rgba(196,169,106,0.25), 0 0 80px -20px rgba(196,169,106,0.25)",
             }}
           >
-            {/* Close button */}
+            {/* Close button — high contrast, always visible */}
             <button
               type="button"
               onClick={() => closeIt(true)}
               aria-label="Close"
-              className="absolute top-4 right-4 z-30 w-11 h-11 rounded-full border border-paper/40 bg-ink/50 backdrop-blur flex items-center justify-center text-paper hover:bg-gold hover:text-ink hover:border-gold transition-all duration-300"
+              className="absolute top-3 right-3 md:top-4 md:right-4 z-50 w-10 h-10 md:w-11 md:h-11 rounded-full bg-ink text-paper flex items-center justify-center hover:bg-gold hover:text-ink transition-all duration-300 hover:rotate-90"
+              style={{
+                boxShadow:
+                  "0 0 0 1px rgba(196,169,106,0.5), 0 8px 24px -8px rgba(14,14,16,0.5)",
+              }}
             >
-              <X size={16} />
+              <X size={16} strokeWidth={2.4} />
             </button>
 
             {/* ── Image side ────────────────────────────── */}
@@ -336,11 +340,11 @@ export default function LeadPopup() {
             </div>
 
             {/* ── Form side ───────────────────────────── */}
-            <div className="md:col-span-7 px-6 py-9 md:px-12 md:py-14 overflow-y-auto relative">
+            <div className="md:col-span-7 px-6 pt-10 pb-7 md:px-10 md:pt-10 md:pb-8 overflow-y-auto relative">
               {/* Soft gold halo behind headline */}
               <div
                 aria-hidden
-                className="absolute -top-32 -right-32 w-[500px] h-[500px] pointer-events-none"
+                className="absolute -top-24 -right-24 w-[400px] h-[400px] pointer-events-none"
                 style={{
                   background:
                     "radial-gradient(ellipse at center, rgba(196,169,106,0.10) 0%, rgba(196,169,106,0) 60%)",
@@ -352,9 +356,9 @@ export default function LeadPopup() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
-                className="flex items-center gap-3 mb-6 relative"
+                className="flex items-center gap-3 mb-4 relative"
               >
-                <Sparkles size={14} className="text-gold" />
+                <Sparkles size={13} className="text-gold" />
                 <span className="eyebrow text-muted-soft">
                   Reserve your invitation
                 </span>
@@ -367,31 +371,21 @@ export default function LeadPopup() {
                 transition={{ duration: 0.8, delay: 0.25, ease: [0.2, 0.8, 0.2, 1] }}
                 className="font-display text-ink relative"
                 style={{
-                  fontSize: "clamp(30px, 3.6vw, 50px)",
+                  fontSize: "clamp(26px, 2.8vw, 38px)",
                   fontWeight: 300,
                   letterSpacing: "-0.02em",
-                  lineHeight: 1.04,
+                  lineHeight: 1.05,
                 }}
               >
-                Be the first to receive
+                Receive a <span className="italic text-gold">private brief</span>
                 <br />
-                a <span className="italic text-gold">private brief</span>.
+                before public release.
               </motion.h2>
-
-              <motion.p
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.4 }}
-                className="mt-5 text-muted-soft leading-relaxed text-sm md:text-base max-w-md relative"
-              >
-                We share new residences with a small list of interested clients
-                before they reach the public. Leave your details to be included.
-              </motion.p>
 
               <form
                 onSubmit={handleSubmit(onSubmit)}
                 noValidate
-                className="mt-9 space-y-7 relative"
+                className="mt-7 space-y-5 relative"
               >
                 <Field index={0} num="01" label="Name" error={errors.name?.message}>
                   <input
@@ -433,21 +427,20 @@ export default function LeadPopup() {
                   variants={fieldFx}
                   initial="hidden"
                   animate="show"
-                  className="pt-1"
                 >
-                  <label className="flex items-start gap-3 cursor-pointer text-muted-soft text-sm leading-relaxed">
+                  <label className="flex items-start gap-2.5 cursor-pointer text-muted-soft text-[13px] leading-snug">
                     <input
                       type="checkbox"
-                      className="mt-[3px] w-4 h-4 accent-[var(--gold)]"
+                      className="mt-[3px] w-4 h-4 accent-[var(--gold)] shrink-0"
                       {...register("consent")}
                     />
                     <span>
-                      I'd like to receive private briefs from Vivanterra Real
-                      Estate. We'll never share your details.
+                      I'd like to receive private briefs. We'll never share your
+                      details.
                     </span>
                   </label>
                   {errors.consent && (
-                    <p className="mt-2 text-[12px] tracking-wide text-[hsl(var(--destructive))]">
+                    <p className="mt-1 text-[12px] tracking-wide text-[hsl(var(--destructive))]">
                       {errors.consent.message as string}
                     </p>
                   )}
@@ -458,7 +451,7 @@ export default function LeadPopup() {
                   variants={fieldFx}
                   initial="hidden"
                   animate="show"
-                  className="flex flex-wrap items-center gap-5 pt-3"
+                  className="flex flex-wrap items-center gap-5 pt-1"
                 >
                   <button
                     type="submit"
@@ -510,7 +503,7 @@ export default function LeadPopup() {
 /* ── Bits ────────────────────────────────────────────── */
 
 const inputCls =
-  "w-full bg-transparent border-0 border-b border-ink/20 focus:border-gold py-3 text-base md:text-lg text-ink outline-none transition-colors placeholder:text-ink/30";
+  "w-full bg-transparent border-0 border-b border-ink/20 focus:border-gold py-2 text-base text-ink outline-none transition-colors placeholder:text-ink/30";
 
 function Field({
   num,
@@ -532,7 +525,7 @@ function Field({
       initial="hidden"
       animate="show"
     >
-      <div className="flex items-baseline gap-3 mb-2">
+      <div className="flex items-baseline gap-3 mb-1.5">
         <span className="text-[10px] tracking-[0.22em] text-gold tabular-nums">
           {num}
         </span>
@@ -540,7 +533,7 @@ function Field({
       </div>
       {children}
       {error && (
-        <p className="mt-2 text-[12px] tracking-wide text-[hsl(var(--destructive))]">
+        <p className="mt-1 text-[12px] tracking-wide text-[hsl(var(--destructive))]">
           {error}
         </p>
       )}
