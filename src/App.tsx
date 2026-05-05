@@ -15,6 +15,7 @@ import Contact from "./pages/Contact.tsx";
 import { useLenis } from "@/hooks/useLenis";
 import Loader from "@/components/ui/Loader";
 import Concierge from "@/components/ui/Concierge";
+import LeadPopup from "@/components/ui/LeadPopup";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ const App = () => {
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Concierge />
+          <LeadPopup />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
