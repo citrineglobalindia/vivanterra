@@ -170,9 +170,7 @@ export default function Nav() {
             transition={{ duration: 0.6, ease: [0.77, 0, 0.18, 1] }}
           >
             <div className="container-x max-w-page flex h-[72px] items-center justify-between">
-              <span className="font-display italic" style={{ fontSize: 24 }}>
-                Vivanterra
-              </span>
+              <img src={logoLight} alt="Vivanterra" className="h-8 w-auto" draggable={false} />
               <button onClick={() => setOpen(false)} aria-label="Close menu" className="p-2 -mr-2">
                 <X size={22} />
               </button>
