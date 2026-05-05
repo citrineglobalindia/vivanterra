@@ -19,6 +19,8 @@ export default {
         ink: "var(--ink)",
         paper: "var(--paper)",
         gold: "var(--gold)",
+        sage: "var(--sage)",
+        sand: "var(--sand)",
         line: "var(--line)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
