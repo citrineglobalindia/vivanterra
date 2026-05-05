@@ -30,17 +30,17 @@
     --popover-foreground: 137 19% 25%;
     --primary: 137 19% 38%;            /* deep sage */
     --primary-foreground: 40 33% 97%;
-    --secondary: 36 18% 88%;
-    --secondary-foreground: 240 8% 7%;
-    --muted-bg: 36 14% 90%;
-    --muted-foreground: 35 5% 51%;
-    --accent: 36 36% 62%;
-    --accent-foreground: 240 8% 7%;
-    --destructive: 0 70% 50%;
-    --destructive-foreground: 36 28% 95%;
-    --border: 36 14% 86%;
-    --input: 36 14% 86%;
-    --ring: 36 36% 62%;
+    --secondary: 40 25% 88%;
+    --secondary-foreground: 137 19% 25%;
+    --muted-bg: 40 20% 92%;
+    --muted-foreground: 130 7% 45%;
+    --accent: 40 36% 59%;
+    --accent-foreground: 137 19% 25%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 40 33% 97%;
+    --border: 40 18% 86%;
+    --input: 40 18% 86%;
+    --ring: 137 19% 38%;
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
