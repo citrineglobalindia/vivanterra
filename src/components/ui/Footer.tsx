@@ -61,7 +61,7 @@ export default function Footer() {
 
         <div className="mt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-xs text-paper/60">
           <div className="flex flex-wrap items-center gap-6">
-            <span>© {new Date().getFullYear()} Velociti Real Estate. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} Vivanterra Real Estate. All rights reserved.</span>
             <a href="#" className="nav-link">Privacy</a>
             <a href="#" className="nav-link">Cookies</a>
             <a href="#" className="nav-link">Sitemap</a>

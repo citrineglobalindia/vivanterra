@@ -17,17 +17,17 @@ const SLIDES = [
   {
     eyebrow: "01 / Lifestyle Residences",
     headline: "A new vocabulary\nof living\nshaped by\nlight & material.",
-    video: "https://videos.pexels.com/video-files/3773486/3773486-uhd_2560_1440_30fps.mp4",
+    video: "https://videos.pexels.com/video-files/3773486/3773486-hd_1920_1080_30fps.mp4",
   },
   {
     eyebrow: "02 / Waterfront Architecture",
     headline: "Quiet luxury\ndrawn from\nthe horizon\nof the gulf.",
-    video: "https://videos.pexels.com/video-files/2169880/2169880-uhd_2560_1440_30fps.mp4",
+    video: "https://videos.pexels.com/video-files/2169880/2169880-hd_1920_1080_30fps.mp4",
   },
   {
     eyebrow: "03 / Private Sanctuary",
     headline: "Spaces composed\nwith patience,\nrestraint and\nrare materials.",
-    video: "https://videos.pexels.com/video-files/4763824/4763824-uhd_2560_1440_24fps.mp4",
+    video: "https://videos.pexels.com/video-files/4763824/4763824-hd_1920_1080_24fps.mp4",
   },
 ];
 
@@ -52,7 +52,10 @@ export default function Hero() {
   }, [active]);
 
   return (
-    <section id="top" className="relative h-[100svh] w-full overflow-hidden bg-ink text-paper">
+    <section
+      id="top"
+      className="relative h-[100svh] w-full overflow-hidden bg-ink text-paper isolate z-10"
+    >
       <Swiper
         modules={[Autoplay, EffectFade, Pagination]}
         effect="fade"
@@ -66,16 +69,22 @@ export default function Hero() {
       >
         {SLIDES.map((s, i) => (
           <SwiperSlide key={i}>
-            <div className="relative h-full w-full">
+            <div className="relative h-full w-full bg-ink">
               <video
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-700"
                 src={s.video}
                 playsInline
                 muted
                 loop
                 autoPlay
-                preload="metadata"
-                poster=""
+                preload="auto"
+                onLoadedData={(e) =>
+                  (e.currentTarget.style.opacity = "1")
+                }
+                onCanPlay={(e) => {
+                  e.currentTarget.style.opacity = "1";
+                  void e.currentTarget.play().catch(() => {});
+                }}
               />
               <div
                 className="absolute inset-0"
