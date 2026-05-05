@@ -26,16 +26,28 @@ export default function Footer() {
     <footer className="bg-ink text-paper pt-24 md:pt-32 pb-10" id="footer">
       <div className="max-w-page container-x">
         <div className="overflow-hidden">
-          <motion.h2
-            className="font-display leading-[0.85] text-paper select-none"
-            style={{ fontSize: "clamp(120px, 22vw, 320px)", fontWeight: 300, letterSpacing: "-0.04em" }}
+          <motion.div
             initial={{ y: "30%", opacity: 0 }}
             whileInView={{ y: "0%", opacity: 1 }}
             viewport={{ once: true, margin: "-10% 0px" }}
             transition={{ duration: 1.1, ease: [0.2, 0.8, 0.2, 1] }}
           >
-            VIVANTERRA
-          </motion.h2>
+            <h2
+              className="font-display text-paper select-none whitespace-nowrap block w-full"
+              style={{
+                fontSize: "clamp(56px, 15vw, 220px)",
+                fontWeight: 300,
+                letterSpacing: "-0.03em",
+                lineHeight: 0.9,
+              }}
+            >
+              VIVANTERRA
+            </h2>
+            <div className="mt-3 md:mt-4 flex items-center gap-4">
+              <span className="h-px w-10 md:w-16 bg-gold" />
+              <span className="eyebrow text-paper/70">Real Estate</span>
+            </div>
+          </motion.div>
         </div>
 
         <div className="hairline mt-16" />
