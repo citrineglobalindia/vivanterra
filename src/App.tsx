@@ -13,7 +13,6 @@ import Career from "./pages/Career.tsx";
 import Blogs from "./pages/Blogs.tsx";
 import Contact from "./pages/Contact.tsx";
 import { useLenis } from "@/hooks/useLenis";
-import Cursor from "@/components/ui/Cursor";
 import Loader from "@/components/ui/Loader";
 
 const queryClient = new QueryClient();
@@ -26,7 +25,6 @@ const App = () => {
         <Toaster />
         <Sonner />
         <Loader />
-        <Cursor />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
