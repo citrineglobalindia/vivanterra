@@ -78,9 +78,9 @@ export default function CTA() {
             </Reveal>
             <Reveal delay={0.2}>
               <div className="space-y-3 text-paper/85 text-[15px] mb-10">
-                <p>Studio Meridian, Al Wasl Road 248, Dubai</p>
-                <p>+971 4 000 0000</p>
-                <p>hello@meridianestates.com</p>
+                <p>4th Floor, Cassini Towers, 13th Cross Rd,<br/>Sadashiva Nagar, Bengaluru 560080</p>
+                <p>+91 99866 66774</p>
+                <p>hello@velociti.com</p>
               </div>
             </Reveal>
             <Reveal delay={0.3}>

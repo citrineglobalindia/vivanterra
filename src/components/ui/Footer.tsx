@@ -17,7 +17,7 @@ const COLS = [
   },
   {
     title: "Contact",
-    links: ["Book a viewing", "Private clients", "Press enquiries", "hello@meridianestates.com"],
+    links: ["Book a viewing", "Private clients", "Press enquiries", "hello@velociti.com"],
   },
 ];
 
@@ -34,7 +34,7 @@ export default function Footer() {
             viewport={{ once: true, margin: "-10% 0px" }}
             transition={{ duration: 1.1, ease: [0.2, 0.8, 0.2, 1] }}
           >
-            MERIDIAN
+            IVANTERRA
           </motion.h2>
         </div>
 
@@ -61,7 +61,7 @@ export default function Footer() {
 
         <div className="mt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-xs text-paper/60">
           <div className="flex flex-wrap items-center gap-6">
-            <span>© {new Date().getFullYear()} Meridian Estates. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} Velociti Real Estate. All rights reserved.</span>
             <a href="#" className="nav-link">Privacy</a>
             <a href="#" className="nav-link">Cookies</a>
             <a href="#" className="nav-link">Sitemap</a>

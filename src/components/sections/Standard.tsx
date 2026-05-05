@@ -31,7 +31,7 @@ export default function Standard() {
       />
       <div className="sticky top-0 h-screen flex items-center">
         <div className="max-w-page container-x w-full">
-          <div className="eyebrow text-paper/60 mb-10">The Meridian Standard</div>
+          <div className="eyebrow text-paper/60 mb-10">The ivanterra Standard</div>
           <p
             className="font-display text-paper/30 max-w-[1100px]"
             style={{

@@ -9,34 +9,38 @@
 
 @layer base {
   :root {
-    /* Brand palette (raw hex/rgba per spec) */
-    --ink: #0e0e10;
-    --paper: #f6f3ee;
-    --gold: #c4a573;
-    --muted: #8a857d;
-    --line: rgba(246, 243, 238, 0.12);
-    --line-dark: rgba(14, 14, 16, 0.12);
+    /* ivanterra brand palette
+       Note: --ink is the brand "dark" (deep sage), --paper is the cream base.
+       Existing components use these tokens — flipping the values rebrands the site. */
+    --ink: #4E7353;          /* DEEP SAGE — headers, primary surfaces */
+    --paper: #FAF8F4;        /* CREAM — page background, card fills */
+    --gold: #C4A96A;         /* WARM GOLD — accent, rules, premium moments */
+    --sage: #7A9E7E;         /* SAGE — accents, borders, highlights */
+    --sand: #C9B99A;         /* SAND — backgrounds, dividers, subtle fills */
+    --muted: #6B7A6E;        /* muted sage-gray for secondary text */
+    --line: rgba(78, 115, 83, 0.16);       /* on cream */
+    --line-dark: rgba(78, 115, 83, 0.18);
 
-    /* Shadcn token bridge (kept so existing primitives keep working) */
-    --background: 36 28% 95%;
-    --foreground: 240 8% 7%;
-    --card: 36 28% 95%;
-    --card-foreground: 240 8% 7%;
-    --popover: 36 28% 95%;
-    --popover-foreground: 240 8% 7%;
-    --primary: 240 8% 7%;
-    --primary-foreground: 36 28% 95%;
-    --secondary: 36 18% 88%;
-    --secondary-foreground: 240 8% 7%;
-    --muted-bg: 36 14% 90%;
-    --muted-foreground: 35 5% 51%;
-    --accent: 36 36% 62%;
-    --accent-foreground: 240 8% 7%;
-    --destructive: 0 70% 50%;
-    --destructive-foreground: 36 28% 95%;
-    --border: 36 14% 86%;
-    --input: 36 14% 86%;
-    --ring: 36 36% 62%;
+    /* Shadcn token bridge (HSL) */
+    --background: 40 33% 97%;          /* cream */
+    --foreground: 137 19% 25%;         /* deep sage */
+    --card: 40 33% 97%;
+    --card-foreground: 137 19% 25%;
+    --popover: 40 33% 97%;
+    --popover-foreground: 137 19% 25%;
+    --primary: 137 19% 38%;            /* deep sage */
+    --primary-foreground: 40 33% 97%;
+    --secondary: 40 25% 88%;
+    --secondary-foreground: 137 19% 25%;
+    --muted-bg: 40 20% 92%;
+    --muted-foreground: 130 7% 45%;
+    --accent: 40 36% 59%;
+    --accent-foreground: 137 19% 25%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 40 33% 97%;
+    --border: 40 18% 86%;
+    --input: 40 18% 86%;
+    --ring: 137 19% 38%;
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
@@ -61,8 +65,8 @@
   }
 
   body {
-    background-color: var(--ink);
-    color: var(--paper);
+    background-color: var(--paper);
+    color: var(--ink);
     font-family: 'Inter', system-ui, sans-serif;
     font-weight: 400;
     line-height: 1.55;
@@ -71,7 +75,7 @@
 
   ::selection {
     background: var(--gold);
-    color: var(--ink);
+    color: var(--paper);
   }
 
   /* Hide native cursor on desktop where custom cursor is active */
@@ -230,10 +234,14 @@
   .text-ink { color: var(--ink); }
   .text-paper { color: var(--paper); }
   .text-gold { color: var(--gold); }
+  .text-sage { color: var(--sage); }
+  .text-sand { color: var(--sand); }
   .text-muted-soft { color: var(--muted); }
   .bg-ink { background-color: var(--ink); }
   .bg-paper { background-color: var(--paper); }
   .bg-gold { background-color: var(--gold); }
+  .bg-sage { background-color: var(--sage); }
+  .bg-sand { background-color: var(--sand); }
   .border-line { border-color: var(--line); }
   .border-line-dark { border-color: var(--line-dark); }
 }
