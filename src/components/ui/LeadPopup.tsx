@@ -5,16 +5,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useLocation } from "react-router-dom";
 import { toast } from "sonner";
-import { ArrowUpRight, Loader2, X } from "lucide-react";
+import { ArrowUpRight, Loader2, Sparkles, X } from "lucide-react";
 
 /* ============================================================
    Vivanterra LeadPopup — invitation-only early-access modal.
-   Triggers (whichever fires first):
+   Cinematic split: image with slow zoom + gold monogram + film grain
+   on one side, editorial form with staggered fields on the other.
+
+   Triggers (first to fire wins):
      • 18 seconds on page
      • 45% scroll
-     • Desktop exit-intent (cursor leaves toward viewport top)
-   Suppressed for 7 days after dismiss/submit.
-   Excluded on /contact (user is already mid-enquiry).
+     • Desktop exit-intent
+   Suppressed for 7 days after dismiss/submit. Skipped on /contact.
    ============================================================ */
 
 const SEEN_KEY = "vivanterra:lead:dismissed";
@@ -24,7 +26,7 @@ const TIME_TRIGGER_MS = 18_000;
 const SCROLL_TRIGGER = 0.45;
 
 const HERO_IMG =
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80";
+  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=85";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please share your name"),
@@ -41,9 +43,7 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-function nowMs() {
-  return Date.now();
-}
+const nowMs = () => Date.now();
 
 function recentlyDismissed(): boolean {
   try {
@@ -66,6 +66,15 @@ function markDismissed(key: string) {
   }
 }
 
+const fieldFx = {
+  hidden: { opacity: 0, y: 14 },
+  show: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, delay: 0.08 * i + 0.25, ease: [0.2, 0.8, 0.2, 1] },
+  }),
+};
+
 export default function LeadPopup() {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
@@ -82,7 +91,7 @@ export default function LeadPopup() {
     mode: "onTouched",
   });
 
-  /* ── Trigger setup ──────────────────────────────────── */
+  /* Trigger setup */
   useEffect(() => {
     if (pathname === "/contact") return;
     if (recentlyDismissed()) return;
@@ -97,20 +106,16 @@ export default function LeadPopup() {
       setOpen(true);
     };
 
-    /* Time trigger */
     timeT = window.setTimeout(fire, TIME_TRIGGER_MS);
 
-    /* Scroll trigger */
     scrollH = () => {
       const h = document.documentElement;
       const max = h.scrollHeight - h.clientHeight;
       if (max <= 0) return;
-      const r = h.scrollTop / max;
-      if (r >= SCROLL_TRIGGER) fire();
+      if (h.scrollTop / max >= SCROLL_TRIGGER) fire();
     };
     window.addEventListener("scroll", scrollH, { passive: true });
 
-    /* Exit intent — desktop only */
     const isFine =
       typeof window.matchMedia === "function" &&
       window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -140,9 +145,10 @@ export default function LeadPopup() {
     window.addEventListener("keydown", onKey);
 
     const t = window.setTimeout(() => {
-      const first = dialogRef.current?.querySelector<HTMLInputElement>("input[name='name']");
+      const first =
+        dialogRef.current?.querySelector<HTMLInputElement>("input[name='name']");
       first?.focus();
-    }, 200);
+    }, 700);
 
     return () => {
       document.body.style.overflow = prev;
@@ -176,77 +182,145 @@ export default function LeadPopup() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
+          transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
           className="fixed inset-0 z-[9995] flex items-center justify-center p-4 md:p-8"
           aria-modal="true"
           role="dialog"
           aria-labelledby="lead-title"
           onClick={() => closeIt(true)}
         >
-          {/* Backdrop */}
+          {/* Rich backdrop with film-grain */}
           <div
             aria-hidden
-            className="absolute inset-0 bg-ink/70 backdrop-blur-sm"
+            className="absolute inset-0 bg-ink/80 backdrop-blur-[6px]"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
+            style={{
+              backgroundImage:
+                "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.7'/></svg>\")",
+            }}
           />
 
           {/* Dialog */}
           <motion.div
             ref={dialogRef}
-            initial={{ opacity: 0, y: 30, scale: 0.97 }}
+            initial={{ opacity: 0, y: 40, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 30, scale: 0.97 }}
-            transition={{ duration: 0.55, ease: [0.2, 0.8, 0.2, 1] }}
+            exit={{ opacity: 0, y: 40, scale: 0.96 }}
+            transition={{ duration: 0.7, ease: [0.2, 0.8, 0.2, 1] }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-5xl max-h-[92vh] overflow-hidden bg-paper border border-line-dark shadow-[0_40px_120px_-30px_rgba(78,115,83,0.55)] grid md:grid-cols-12"
+            className="relative w-full max-w-5xl max-h-[92vh] overflow-hidden bg-paper grid md:grid-cols-12 ring-1 ring-gold/30"
+            style={{
+              boxShadow:
+                "0 60px 140px -40px rgba(78,115,83,0.7), 0 0 0 1px rgba(196,169,106,0.25), 0 0 80px -20px rgba(196,169,106,0.25)",
+            }}
           >
             {/* Close button */}
             <button
               type="button"
               onClick={() => closeIt(true)}
               aria-label="Close"
-              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full border border-ink/20 bg-paper/80 backdrop-blur flex items-center justify-center text-ink hover:bg-ink hover:text-paper hover:border-ink transition-colors"
+              className="absolute top-4 right-4 z-30 w-11 h-11 rounded-full border border-paper/40 bg-ink/50 backdrop-blur flex items-center justify-center text-paper hover:bg-gold hover:text-ink hover:border-gold transition-all duration-300"
             >
               <X size={16} />
             </button>
 
             {/* ── Image side ────────────────────────────── */}
             <div className="hidden md:block md:col-span-5 relative bg-ink overflow-hidden">
-              <img
+              {/* Slow ken-burns */}
+              <motion.img
                 src={HERO_IMG}
                 alt=""
-                className="absolute inset-0 w-full h-full object-cover opacity-70"
+                className="absolute inset-0 w-full h-full object-cover"
+                initial={{ scale: 1.18, opacity: 0 }}
+                animate={{ scale: 1, opacity: 0.78 }}
+                transition={{ duration: 8, ease: "easeOut" }}
                 loading="eager"
               />
+
+              {/* Sage→ink atmospheric gradient */}
               <div
                 aria-hidden
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(160deg, rgba(78,115,83,0.45) 0%, rgba(14,14,16,0.55) 100%)",
+                    "linear-gradient(150deg, rgba(78,115,83,0.55) 0%, rgba(14,14,16,0.30) 45%, rgba(14,14,16,0.85) 100%)",
                 }}
               />
-              <div
+
+              {/* Pulsing gold ambient glow */}
+              <motion.div
                 aria-hidden
-                className="absolute inset-0 pointer-events-none"
+                className="absolute -top-1/4 -right-1/4 w-[80%] h-[80%] pointer-events-none"
                 style={{
                   background:
-                    "radial-gradient(ellipse at top right, rgba(196,169,106,0.18) 0%, rgba(196,169,106,0) 60%)",
-                  filter: "blur(30px)",
+                    "radial-gradient(ellipse at center, rgba(196,169,106,0.30) 0%, rgba(196,169,106,0.08) 40%, rgba(0,0,0,0) 70%)",
+                  filter: "blur(40px)",
+                }}
+                animate={{ opacity: [0.7, 1, 0.7] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              />
+
+              {/* Film grain */}
+              <div
+                aria-hidden
+                className="absolute inset-0 opacity-[0.10] mix-blend-overlay pointer-events-none"
+                style={{
+                  backgroundImage:
+                    "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.7'/></svg>\")",
                 }}
               />
-              {/* Corner brackets */}
-              <span className="absolute top-6 left-6 w-6 h-6 border-l border-t border-paper/50" />
-              <span className="absolute bottom-6 left-6 w-6 h-6 border-l border-b border-paper/50" />
+
+              {/* Refined corner marks */}
+              <span className="absolute top-6 left-6 w-6 h-6 border-l border-t border-gold/60" />
+              <span className="absolute bottom-6 left-6 w-6 h-6 border-l border-b border-gold/60" />
+              <span className="absolute top-6 right-6 w-6 h-6 border-r border-t border-gold/60" />
+
+              {/* Top monogram + invitation seal */}
+              <motion.div
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="absolute top-8 left-8 right-8 flex items-start justify-between"
+              >
+                <div className="relative w-12 h-12 rounded-full border border-gold/70 flex items-center justify-center backdrop-blur-sm">
+                  <span
+                    className="font-display italic text-gold"
+                    style={{ fontSize: 22, lineHeight: 1, fontWeight: 400 }}
+                  >
+                    V
+                  </span>
+                  <span className="absolute -inset-1 rounded-full border border-gold/20" />
+                </div>
+                <div className="text-right text-paper/80">
+                  <div className="text-[10px] tracking-[0.22em] text-gold tabular-nums">
+                    INVITATION
+                  </div>
+                  <div className="text-[10px] tracking-[0.22em] text-paper/60 tabular-nums mt-1">
+                    No. 001 / 100
+                  </div>
+                </div>
+              </motion.div>
 
               {/* Caption */}
-              <div className="absolute bottom-8 left-8 right-8 text-paper">
-                <span className="text-[10px] tracking-[0.22em] text-gold tabular-nums">
-                  EARLY ACCESS · 2026
-                </span>
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
+                className="absolute bottom-10 left-8 right-8 text-paper"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="h-px w-10 bg-gold" />
+                  <span className="text-[10px] tracking-[0.22em] text-gold tabular-nums">
+                    EARLY ACCESS · 2026
+                  </span>
+                </div>
                 <p
-                  className="font-display italic font-light mt-3"
+                  className="font-display italic font-light"
                   style={{
-                    fontSize: "clamp(22px, 2.4vw, 32px)",
+                    fontSize: "clamp(22px, 2.4vw, 30px)",
                     lineHeight: 1.18,
                     letterSpacing: "-0.01em",
                   }}
@@ -257,44 +331,69 @@ export default function LeadPopup() {
                   <br />
                   it is shown."
                 </p>
-              </div>
+                <p className="eyebrow text-paper/60 mt-5">— The studio</p>
+              </motion.div>
             </div>
 
             {/* ── Form side ───────────────────────────── */}
-            <div className="md:col-span-7 px-6 py-10 md:px-12 md:py-14 overflow-y-auto">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="h-px w-10 bg-gold" />
+            <div className="md:col-span-7 px-6 py-9 md:px-12 md:py-14 overflow-y-auto relative">
+              {/* Soft gold halo behind headline */}
+              <div
+                aria-hidden
+                className="absolute -top-32 -right-32 w-[500px] h-[500px] pointer-events-none"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at center, rgba(196,169,106,0.10) 0%, rgba(196,169,106,0) 60%)",
+                  filter: "blur(20px)",
+                }}
+              />
+
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="flex items-center gap-3 mb-6 relative"
+              >
+                <Sparkles size={14} className="text-gold" />
                 <span className="eyebrow text-muted-soft">
                   Reserve your invitation
                 </span>
-              </div>
+              </motion.div>
 
-              <h2
+              <motion.h2
                 id="lead-title"
-                className="font-display text-ink"
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.25, ease: [0.2, 0.8, 0.2, 1] }}
+                className="font-display text-ink relative"
                 style={{
-                  fontSize: "clamp(30px, 3.6vw, 48px)",
+                  fontSize: "clamp(30px, 3.6vw, 50px)",
                   fontWeight: 300,
                   letterSpacing: "-0.02em",
-                  lineHeight: 1.05,
+                  lineHeight: 1.04,
                 }}
               >
                 Be the first to receive
                 <br />
                 a <span className="italic text-gold">private brief</span>.
-              </h2>
+              </motion.h2>
 
-              <p className="mt-5 text-muted-soft leading-relaxed text-sm md:text-base max-w-md">
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.4 }}
+                className="mt-5 text-muted-soft leading-relaxed text-sm md:text-base max-w-md relative"
+              >
                 We share new residences with a small list of interested clients
                 before they reach the public. Leave your details to be included.
-              </p>
+              </motion.p>
 
               <form
                 onSubmit={handleSubmit(onSubmit)}
                 noValidate
-                className="mt-9 space-y-7"
+                className="mt-9 space-y-7 relative"
               >
-                <Field label="Name" error={errors.name?.message} num="01">
+                <Field index={0} num="01" label="Name" error={errors.name?.message}>
                   <input
                     type="text"
                     autoComplete="name"
@@ -304,7 +403,7 @@ export default function LeadPopup() {
                   />
                 </Field>
 
-                <Field label="Email" error={errors.email?.message} num="02">
+                <Field index={1} num="02" label="Email" error={errors.email?.message}>
                   <input
                     type="email"
                     autoComplete="email"
@@ -315,9 +414,10 @@ export default function LeadPopup() {
                 </Field>
 
                 <Field
+                  index={2}
+                  num="03"
                   label="Phone (optional)"
                   error={errors.phone?.message}
-                  num="03"
                 >
                   <input
                     type="tel"
@@ -328,7 +428,13 @@ export default function LeadPopup() {
                   />
                 </Field>
 
-                <div className="pt-1">
+                <motion.div
+                  custom={3}
+                  variants={fieldFx}
+                  initial="hidden"
+                  animate="show"
+                  className="pt-1"
+                >
                   <label className="flex items-start gap-3 cursor-pointer text-muted-soft text-sm leading-relaxed">
                     <input
                       type="checkbox"
@@ -345,25 +451,44 @@ export default function LeadPopup() {
                       {errors.consent.message as string}
                     </p>
                   )}
-                </div>
+                </motion.div>
 
-                <div className="flex flex-wrap items-center gap-5 pt-3">
+                <motion.div
+                  custom={4}
+                  variants={fieldFx}
+                  initial="hidden"
+                  animate="show"
+                  className="flex flex-wrap items-center gap-5 pt-3"
+                >
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btn btn-dark disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="group relative inline-flex items-center gap-2 h-12 px-7 rounded-full bg-ink text-paper font-medium text-[12px] tracking-[0.10em] uppercase overflow-hidden transition-transform duration-300 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
+                    style={{
+                      boxShadow:
+                        "0 20px 50px -20px rgba(78,115,83,0.55), 0 0 0 1px rgba(196,169,106,0.35)",
+                    }}
                   >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="animate-spin" size={16} />
-                        Reserving
-                      </>
-                    ) : (
-                      <>
-                        Reserve my invitation
-                        <ArrowUpRight className="btn-arrow" size={16} />
-                      </>
-                    )}
+                    <span
+                      aria-hidden
+                      className="absolute inset-0 bg-gold scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]"
+                    />
+                    <span className="relative z-10 inline-flex items-center gap-2 group-hover:text-ink transition-colors duration-500">
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="animate-spin" size={16} />
+                          Reserving
+                        </>
+                      ) : (
+                        <>
+                          Reserve my invitation
+                          <ArrowUpRight
+                            size={16}
+                            className="transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                          />
+                        </>
+                      )}
+                    </span>
                   </button>
                   <button
                     type="button"
@@ -372,7 +497,7 @@ export default function LeadPopup() {
                   >
                     Maybe later
                   </button>
-                </div>
+                </motion.div>
               </form>
             </div>
           </motion.div>
@@ -390,16 +515,23 @@ const inputCls =
 function Field({
   num,
   label,
+  index,
   error,
   children,
 }: {
   num: string;
   label: string;
+  index: number;
   error?: string;
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <motion.div
+      custom={index}
+      variants={fieldFx}
+      initial="hidden"
+      animate="show"
+    >
       <div className="flex items-baseline gap-3 mb-2">
         <span className="text-[10px] tracking-[0.22em] text-gold tabular-nums">
           {num}
@@ -412,6 +544,6 @@ function Field({
           {error}
         </p>
       )}
-    </div>
+    </motion.div>
   );
 }
