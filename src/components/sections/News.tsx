@@ -25,7 +25,7 @@ const NEWS = [
 
 export default function News() {
   return (
-    <section id="developments" className="bg-paper text-ink py-24 md:py-[180px]">
+    <section id="developments" className="bg-sand-soft text-ink py-24 md:py-[180px] section-glow">
       <div className="max-w-page container-x">
         <div className="mb-16 md:mb-24">
           <Reveal>

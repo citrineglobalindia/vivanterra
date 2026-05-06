@@ -23,7 +23,7 @@ export default function Residences() {
   const [progress, setProgress] = useState(0);
 
   return (
-    <section id="residences" className="bg-paper text-ink py-24 md:py-[180px]">
+    <section id="residences" className="bg-cream-warm text-ink py-24 md:py-[180px] section-glow">
       <div className="max-w-page container-x">
         <div className="flex items-end justify-between gap-8 mb-16 md:mb-24">
           <div>

@@ -25,7 +25,7 @@ export default function PageShell({ eyebrow, title, intro, children }: PageShell
     <main className="bg-paper text-ink">
       <Nav />
 
-      <section className="pt-[140px] md:pt-[180px] pb-24 md:pb-32">
+      <section className="pt-[140px] md:pt-[180px] pb-24 md:pb-32 section-glow">
         <div className="max-w-page container-x">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

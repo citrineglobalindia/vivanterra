@@ -18,6 +18,10 @@
     --sage: #7A9E7E;         /* SAGE — accents, borders, highlights */
     --sand: #C9B99A;         /* SAND — backgrounds, dividers, subtle fills */
     --muted: #6B7A6E;        /* muted sage-gray for secondary text */
+    --cream-warm: #F4EDDF;   /* warmer cream — section variant */
+    --mist:       #E9EFEA;   /* sage-tinted mist — section variant */
+    --sand-soft:  #EDE2CB;   /* soft sand/wheat — section variant */
+    --ink-deep:   #3D5C42;   /* deeper sage — for layered dark sections */
     --line: rgba(78, 115, 83, 0.16);       /* on cream */
     --line-dark: rgba(78, 115, 83, 0.18);
 
@@ -238,12 +242,40 @@
   .text-sand { color: var(--sand); }
   .text-muted-soft { color: var(--muted); }
   .bg-ink { background-color: var(--ink); }
+  .bg-ink-deep { background-color: var(--ink-deep); }
   .bg-paper { background-color: var(--paper); }
   .bg-gold { background-color: var(--gold); }
   .bg-sage { background-color: var(--sage); }
   .bg-sand { background-color: var(--sand); }
+  .bg-cream-warm { background-color: var(--cream-warm); }
+  .bg-mist { background-color: var(--mist); }
+  .bg-sand-soft { background-color: var(--sand-soft); }
   .border-line { border-color: var(--line); }
   .border-line-dark { border-color: var(--line-dark); }
+
+  /* Section-level gold radial wash. Place on parent (relative).
+     Use with `.section-glow::before { ... }` automatic via class. */
+  .section-glow {
+    position: relative;
+  }
+  .section-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at 80% -10%,
+      rgba(196, 169, 106, 0.10) 0%,
+      rgba(196, 169, 106, 0.04) 35%,
+      rgba(0, 0, 0, 0) 70%
+    );
+    filter: blur(30px);
+    z-index: 0;
+  }
+  .section-glow > * {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 /* Reduced motion fallback */

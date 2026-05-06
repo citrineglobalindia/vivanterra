@@ -28,7 +28,7 @@ export default function WhyCity() {
   const y = useTransform(scrollYProgress, [0, 1], reduced ? ["0%", "0%"] : ["8%", "-8%"]);
 
   return (
-    <section ref={ref} className="bg-paper text-ink py-24 md:py-[180px] overflow-hidden">
+    <section ref={ref} className="bg-mist text-ink py-24 md:py-[180px] overflow-hidden section-glow">
       <div className="max-w-page container-x">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           <div className="lg:col-span-6">
