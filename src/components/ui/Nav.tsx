@@ -17,6 +17,7 @@ import logoDark from "@/assets/logo-dark.png";   // green wordmark on cream — 
 type NavItem = {
   label: string;
   to: string;
+  external?: boolean;
   children?: { label: string; to: string }[];
 };
 
@@ -32,7 +33,7 @@ const NAV_LINKS: NavItem[] = [
       { label: "Completed Projects", to: "/projects/completed" },
     ],
   },
-  { label: "Velocity", to: "/velocity" },
+  { label: "Velocity", to: "https://velocitirealestate.com/", external: true },
   { label: "Career", to: "/career" },
   { label: "Blogs", to: "/blogs" },
   { label: "Contact Us", to: "/contact" },
@@ -136,6 +137,17 @@ export default function Nav() {
                       )}
                     </AnimatePresence>
                   </div>
+                ) : l.external ? (
+                  <a
+                    key={l.to}
+                    href={l.to}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="nav-link inline-flex items-center gap-1 text-[12px] uppercase tracking-[0.18em] font-medium"
+                  >
+                    {l.label}
+                    <ArrowUpRight size={12} className="opacity-70" />
+                  </a>
                 ) : (
                   <Link
                     key={l.to}
@@ -312,35 +324,51 @@ function MobileMenu({
                   className="border-b border-paper/10"
                 >
                   <div className="flex items-center justify-between gap-3 py-3.5">
-                    <Link
-                      to={l.to}
-                      onClick={onClose}
-                      className="group flex items-baseline gap-4 flex-1 min-w-0"
-                    >
-                      <span className="text-[10px] tracking-[0.22em] text-gold tabular-nums w-7 shrink-0">
-                        {num}
-                      </span>
-                      <span
-                        className={[
-                          "font-display flex-1 truncate transition-colors",
-                          isActive ? "text-gold" : "text-paper group-hover:text-gold",
-                        ].join(" ")}
-                        style={{
-                          fontSize: 28,
-                          fontWeight: 400,
-                          letterSpacing: "-0.02em",
-                          lineHeight: 1.1,
-                        }}
-                      >
-                        {l.label}
-                      </span>
-                      {!l.children && (
-                        <ArrowUpRight
-                          size={16}
-                          className="text-paper/40 group-hover:text-gold group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0"
-                        />
-                      )}
-                    </Link>
+                    {(() => {
+                      const inner = (
+                        <>
+                          <span className="text-[10px] tracking-[0.22em] text-gold tabular-nums w-7 shrink-0">
+                            {num}
+                          </span>
+                          <span
+                            className={[
+                              "font-display flex-1 truncate transition-colors",
+                              isActive ? "text-gold" : "text-paper group-hover:text-gold",
+                            ].join(" ")}
+                            style={{
+                              fontSize: 28,
+                              fontWeight: 400,
+                              letterSpacing: "-0.02em",
+                              lineHeight: 1.1,
+                            }}
+                          >
+                            {l.label}
+                          </span>
+                          {!l.children && (
+                            <ArrowUpRight
+                              size={16}
+                              className="text-paper/40 group-hover:text-gold group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0"
+                            />
+                          )}
+                        </>
+                      );
+                      const cls = "group flex items-baseline gap-4 flex-1 min-w-0";
+                      return l.external ? (
+                        <a
+                          href={l.to}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={onClose}
+                          className={cls}
+                        >
+                          {inner}
+                        </a>
+                      ) : (
+                        <Link to={l.to} onClick={onClose} className={cls}>
+                          {inner}
+                        </Link>
+                      );
+                    })()}
                     {l.children && (
                       <button
                         onClick={() => setExpanded(isExpanded ? null : l.to)}
