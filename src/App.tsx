@@ -12,7 +12,9 @@ import ProjectsByStatus from "./pages/ProjectsByStatus.tsx";
 import Velocity from "./pages/Velocity.tsx";
 import Career from "./pages/Career.tsx";
 import Blogs from "./pages/Blogs.tsx";
+import BlogDetail from "./pages/BlogDetail.tsx";
 import Contact from "./pages/Contact.tsx";
+import ProjectDetail from "./pages/ProjectDetail.tsx";
 import { useLenis } from "@/hooks/useLenis";
 import Loader from "@/components/ui/Loader";
 import Concierge from "@/components/ui/Concierge";
@@ -48,9 +50,11 @@ function AnimatedRoutes() {
             path="/projects/completed"
             element={<ProjectsByStatus status="Completed" />}
           />
+          <Route path="/projects/:slug" element={<ProjectDetail />} />
           <Route path="/velocity" element={<Velocity />} />
           <Route path="/career" element={<Career />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs/:slug" element={<BlogDetail />} />
           <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

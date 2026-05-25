@@ -3,8 +3,11 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { toast } from "sonner";
+import { submitContactEnquiry, type ContactEnquiry } from "@/lib/contact";
+import { useSearchParams } from "react-router-dom";
+import { getProjectBySlug } from "@/data/projects";
 import {
   ArrowUpRight,
   Clock,
@@ -61,6 +64,10 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 export default function Contact() {
+  const [searchParams] = useSearchParams();
+  const projectSlug = searchParams.get("project") || undefined;
+  const project = projectSlug ? getProjectBySlug(projectSlug) : undefined;
+
   const {
     register,
     handleSubmit,
@@ -68,24 +75,61 @@ export default function Contact() {
     reset,
     watch,
     setValue,
+    setFocus,
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
-    defaultValues: { scope: "residence" },
+    defaultValues: {
+      scope: "residence",
+      message: project
+        ? `I'd like to learn more about ${project.title}.`
+        : undefined,
+    },
     mode: "onTouched",
   });
 
   const scope = watch("scope");
   const budget = watch("budget");
   const [submittedOnce, setSubmittedOnce] = useState(false);
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const onSubmit = async (values: FormValues) => {
-    await new Promise((r) => setTimeout(r, 1100));
-    console.log("contact enquiry", values);
+    const payload: ContactEnquiry = { ...(values as ContactEnquiry), projectSlug };
+    const result = await submitContactEnquiry(payload, {
+      honeypot: honeypotRef.current?.value,
+    });
+
+    if ("reason" in result) {
+      const description =
+        result.reason === "timeout"
+          ? "The request took too long. Please try again in a moment."
+          : result.reason === "server"
+            ? `We couldn't deliver your enquiry (${result.status ?? "error"}). Please try again or email hello@velociti.com directly.`
+            : "We couldn't reach our servers. Please check your connection and try again.";
+      toast.error("Enquiry not sent", { description });
+      return;
+    }
+
     toast.success("Enquiry received", {
-      description: "We typically respond within one business day.",
+      description: result.mock
+        ? "We've logged your message — a concierge will reach out shortly."
+        : "We typically respond within one business day.",
     });
     reset({ scope: "residence" } as FormValues);
+    if (honeypotRef.current) honeypotRef.current.value = "";
     setSubmittedOnce(true);
+  };
+
+  const onInvalid = (errs: typeof errors) => {
+    const order: (keyof FormValues)[] = [
+      "name",
+      "email",
+      "phone",
+      "scope",
+      "budget",
+      "message",
+    ];
+    const first = order.find((k) => errs[k]);
+    if (first) setFocus(first);
   };
 
   return (
@@ -121,10 +165,28 @@ export default function Contact() {
           </h2>
 
           <form
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(onSubmit, onInvalid)}
             noValidate
             className="mt-10 space-y-7"
           >
+            {/* Honeypot — hidden from real users, irresistible to bots. */}
+            <div
+              aria-hidden="true"
+              className="absolute -left-[9999px] top-auto h-0 w-0 overflow-hidden"
+            >
+              <label htmlFor="company-website">
+                Company website (leave blank)
+              </label>
+              <input
+                ref={honeypotRef}
+                id="company-website"
+                name="company_website"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
             <div className="grid sm:grid-cols-2 gap-4">
               <Field error={errors.name?.message}>
                 <input

@@ -4,129 +4,8 @@ import Reveal from "@/components/ui/Reveal";
 import { motion } from "framer-motion";
 import { ArrowUpRight, BookOpen, Clock, Mail, Search } from "lucide-react";
 
-/* ── Data ────────────────────────────────────────────── */
-
-type Category =
-  | "Architecture"
-  | "Craft"
-  | "Investment"
-  | "Studio Notes"
-  | "City";
-
-type Post = {
-  slug: string;
-  title: string;
-  dek: string;
-  category: Category;
-  author: string;
-  date: string;
-  readingTime: string;
-  image: string;
-  featured?: boolean;
-};
-
-const POSTS: Post[] = [
-  {
-    slug: "year-of-materials",
-    title: "Inside the studio: a year of materials.",
-    dek: "Twelve months of stone, brass and oak — our head of design walks through the year's discoveries and the houses they shaped.",
-    category: "Craft",
-    author: "Reema Iyer",
-    date: "April 2026",
-    readingTime: "8 min read",
-    image:
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=85",
-    featured: true,
-  },
-  {
-    slug: "aurelia-bay-tops-out",
-    title: "Aurelia Bay tops out in Sadashiva Nagar.",
-    dek: "The first of our 2027 deliveries reaches its full height ahead of schedule. A note from the site, mid-celebration.",
-    category: "Studio Notes",
-    author: "Karthik Rao",
-    date: "March 2026",
-    readingTime: "5 min read",
-    image:
-      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    slug: "founding-architect",
-    title: "A conversation with our founding architect.",
-    dek: "On patience, restraint and the future of the Bengaluru skyline. Aravind Menon, in conversation with our editorial lead.",
-    category: "Architecture",
-    author: "Sara D'Souza",
-    date: "February 2026",
-    readingTime: "12 min read",
-    image:
-      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    slug: "courtyard-as-thesis",
-    title: "The courtyard, again — a small thesis.",
-    dek: "Why every Vivanterra residence begins, in some form, with a void at its centre. Light, breeze, and the long Indian afternoon.",
-    category: "Architecture",
-    author: "Aravind Menon",
-    date: "February 2026",
-    readingTime: "7 min read",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    slug: "investment-the-long-view",
-    title: "The long view: a residence as compound interest.",
-    dek: "Quiet thoughts on land, location and the kind of architecture that gains rather than loses meaning over time.",
-    category: "Investment",
-    author: "Vivek Pillai",
-    date: "January 2026",
-    readingTime: "9 min read",
-    image:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    slug: "bengaluru-twelfth-floor",
-    title: "Bengaluru, from a twelfth-floor window.",
-    dek: "Fifteen years of watching this city grow — what we've seen and what we hope to keep.",
-    category: "City",
-    author: "Aravind Menon",
-    date: "January 2026",
-    readingTime: "6 min read",
-    image:
-      "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    slug: "joinery-millimetre",
-    title: "Joinery, to the millimetre.",
-    dek: "A field note from our cabinetmaker's workshop — and what 'a hand-finished detail' actually costs to make.",
-    category: "Craft",
-    author: "Reema Iyer",
-    date: "December 2025",
-    readingTime: "5 min read",
-    image:
-      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    slug: "ten-houses-in",
-    title: "Ten houses in, and what we got wrong.",
-    dek: "A candid retrospective from our principal architect on the lessons that shaped the next decade of work.",
-    category: "Studio Notes",
-    author: "Aravind Menon",
-    date: "December 2025",
-    readingTime: "10 min read",
-    image:
-      "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    slug: "stone-from-rajasthan",
-    title: "On choosing stone from Rajasthan.",
-    dek: "Why we travel for the right block — and what we look for when we get there.",
-    category: "Craft",
-    author: "Reema Iyer",
-    date: "November 2025",
-    readingTime: "6 min read",
-    image:
-      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1200&q=85",
-  },
-];
+import { Link } from "react-router-dom";
+import { POSTS, type Category, type Post } from "@/data/posts";
 
 const CATEGORIES: ("All" | Category)[] = [
   "All",
@@ -187,8 +66,8 @@ export default function Blogs() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <a
-            href="#"
+          <Link
+            to={`/blogs/${featured.slug}`}
             className="group grid md:grid-cols-12 gap-8 md:gap-12 items-start"
           >
             <div className="md:col-span-7">
@@ -258,7 +137,7 @@ export default function Blogs() {
                 />
               </span>
             </div>
-          </a>
+          </Link>
         </Reveal>
       </section>
 
@@ -436,7 +315,7 @@ function PostCard({ post, index }: { post: Post; index: number }) {
       }}
       className="group"
     >
-      <a href="#" className="block">
+      <Link to={`/blogs/${post.slug}`} className="block">
         <div className="relative img-zoom aspect-[4/5] overflow-hidden rounded-sm bg-ink/5 mb-6">
           <img
             src={post.image}
@@ -490,7 +369,7 @@ function PostCard({ post, index }: { post: Post; index: number }) {
             className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
           />
         </span>
-      </a>
+      </Link>
     </motion.article>
   );
 }
