@@ -1,23 +1,47 @@
 import { motion } from "framer-motion";
 import { Instagram, Linkedin } from "lucide-react";
+import { Link } from "react-router-dom";
 import Reveal from "./Reveal";
 
-const COLS = [
+type FooterLink = { label: string; to: string; external?: boolean };
+
+const COLS: { title: string; links: FooterLink[] }[] = [
   {
-    title: "Residences",
-    links: ["Aurelia Bay", "The Cypress", "Sable Heights", "Linnea Place", "Olin Park", "Vermilion Court"],
+    title: "Projects",
+    links: [
+      { label: "Aurelia Bay", to: "/projects/aurelia-bay" },
+      { label: "Marigold House", to: "/projects/marigold-house" },
+      { label: "Sandalwood Row", to: "/projects/sandalwood-row" },
+      { label: "Ongoing", to: "/projects/ongoing" },
+      { label: "Upcoming", to: "/projects/upcoming" },
+      { label: "Completed", to: "/projects/completed" },
+    ],
   },
   {
     title: "Studio",
-    links: ["About", "Philosophy", "Craftsmanship", "Sustainability", "Careers"],
+    links: [
+      { label: "About", to: "/about" },
+      { label: "Velocity", to: "/velocity" },
+      { label: "Careers", to: "/career" },
+    ],
   },
   {
-    title: "Press",
-    links: ["Newsroom", "Awards", "Editorial", "Downloads"],
+    title: "Journal",
+    links: [
+      { label: "All essays", to: "/blogs" },
+      { label: "Studio Notes", to: "/blogs" },
+      { label: "Architecture", to: "/blogs" },
+      { label: "Craft", to: "/blogs" },
+    ],
   },
   {
     title: "Contact",
-    links: ["Book a viewing", "Private clients", "Press enquiries", "hello@velociti.com"],
+    links: [
+      { label: "Book a viewing", to: "/contact?scope=visit" },
+      { label: "Private clients", to: "/contact?scope=residence" },
+      { label: "Press enquiries", to: "/contact?scope=press" },
+      { label: "hello@velociti.com", to: "mailto:hello@velociti.com", external: true },
+    ],
   },
 ];
 
@@ -58,10 +82,22 @@ export default function Footer() {
               <div className="eyebrow mb-5">{col.title}</div>
               <ul className="space-y-3">
                 {col.links.map((l) => (
-                  <li key={l}>
-                    <a href="#" className="nav-link text-sm text-paper/80 hover:text-paper">
-                      {l}
-                    </a>
+                  <li key={l.label}>
+                    {l.external ? (
+                      <a
+                        href={l.to}
+                        className="nav-link text-sm text-paper/80 hover:text-paper"
+                      >
+                        {l.label}
+                      </a>
+                    ) : (
+                      <Link
+                        to={l.to}
+                        className="nav-link text-sm text-paper/80 hover:text-paper"
+                      >
+                        {l.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -74,14 +110,11 @@ export default function Footer() {
         <div className="mt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-xs text-paper/60">
           <div className="flex flex-wrap items-center gap-6">
             <span>© {new Date().getFullYear()} Vivanterra Real Estate. All rights reserved.</span>
-            <a href="#" className="nav-link">Privacy</a>
-            <a href="#" className="nav-link">Cookies</a>
-            <a href="#" className="nav-link">Sitemap</a>
+
           </div>
           <div className="flex items-center gap-6">
-            <a href="#" aria-label="Instagram" className="hover:text-paper transition-colors"><Instagram size={16} /></a>
-            <a href="#" aria-label="LinkedIn" className="hover:text-paper transition-colors"><Linkedin size={16} /></a>
-            <a href="#" aria-label="Pinterest" className="hover:text-paper transition-colors text-sm">Pinterest</a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram" className="hover:text-paper transition-colors"><Instagram size={16} /></a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="hover:text-paper transition-colors"><Linkedin size={16} /></a>
             <div className="flex items-center gap-2 uppercase tracking-[0.2em]">
               <button>EN</button><span className="text-paper/30">/</span><button>AR</button>
             </div>

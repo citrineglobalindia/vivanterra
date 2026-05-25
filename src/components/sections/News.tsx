@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import Reveal from "../ui/Reveal";
 import SplitText from "../ui/SplitText";
 
@@ -54,10 +55,10 @@ export default function News() {
                   {n.title}
                 </h3>
                 <p className="text-[14px] text-muted-soft mb-5">{n.dek}</p>
-                <a href="#" className="inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.18em] font-medium nav-link">
+                <Link to="/blogs" className="inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.18em] font-medium nav-link">
                   Read
                   <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
+                </Link>
               </article>
             </Reveal>
           ))}

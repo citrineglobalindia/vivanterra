@@ -5,6 +5,7 @@ import type { Swiper as SwiperClass } from "swiper";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import "swiper/css";
 import "swiper/css/free-mode";
+import { Link } from "react-router-dom";
 import Reveal from "../ui/Reveal";
 import SplitText from "../ui/SplitText";
 
@@ -86,10 +87,10 @@ export default function Residences() {
                     </h3>
                     <p className="text-[13px] text-muted-soft mt-1">{r.location}</p>
                     <div className="hairline-dark my-5" />
-                    <a href="#" className="inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.18em] font-medium nav-link">
+                    <Link to="/projects" className="inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.18em] font-medium nav-link">
                       View
                       <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
-                    </a>
+                    </Link>
                   </div>
                 </article>
               </Reveal>
