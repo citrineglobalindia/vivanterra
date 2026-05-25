@@ -1,3 +1,4 @@
+import Seo from "@/components/seo/Seo";
 import PageShell from "@/components/ui/PageShell";
 import Reveal from "@/components/ui/Reveal";
 import { motion } from "framer-motion";
@@ -92,6 +93,10 @@ export default function About() {
       eyebrow="About — Vivanterra Real Estate"
       title={
         <>
+      <Seo
+        title={"About the studio"}
+        description={"Fifteen years of work in Bengaluru. Twenty-plus residences. A small team and a quieter posture."}
+      />
           Building with <span className="italic text-gold">conviction.</span>
         </>
       }

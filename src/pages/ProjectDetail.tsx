@@ -16,6 +16,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
+import Seo from "@/components/seo/Seo";
 import PageShell from "@/components/ui/PageShell";
 import Reveal from "@/components/ui/Reveal";
 import {
@@ -51,6 +52,13 @@ export default function ProjectDetail() {
   const related = getRelatedProjects(project.slug, 3);
 
   return (
+    <>
+      <Seo
+        title={project.title}
+        description={`${project.tagline} ${project.summary}`}
+        image={project.hero}
+        path={`/projects/${project.slug}`}
+      />
     <PageShell
       eyebrow={`Project — ${project.status}`}
       title={
@@ -212,6 +220,7 @@ export default function ProjectDetail() {
         </section>
       )}
     </PageShell>
+    </>
   );
 }
 

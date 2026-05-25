@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeAll, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import ProjectDetail from "@/pages/ProjectDetail";
 import BlogDetail from "@/pages/BlogDetail";
 import NotFound from "@/pages/NotFound";
@@ -34,6 +35,7 @@ beforeAll(() => {
 
 function renderAt(path: string) {
   return render(
+    <HelmetProvider>
     <MemoryRouter initialEntries={[path]}>
       <Routes>
         <Route path="/projects/:slug" element={<ProjectDetail />} />
@@ -41,7 +43,8 @@ function renderAt(path: string) {
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </MemoryRouter>,
+    </MemoryRouter>
+    </HelmetProvider>,
   );
 }
 

@@ -1,3 +1,4 @@
+import Seo from "@/components/seo/Seo";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -75,6 +76,10 @@ export default function Velocity() {
       eyebrow="Velocity"
       title={
         <>
+      <Seo
+        title={"Velocity — our delivery standard"}
+        description={"Four pillars, six stages. The program that defines how every Vivanterra residence is delivered, from the first walk of the plot to the twelfth month after handover."}
+      />
           A standard <span className="italic text-gold">of our own.</span>
         </>
       }

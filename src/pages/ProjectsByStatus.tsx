@@ -2,6 +2,7 @@ import PageShell from "@/components/ui/PageShell";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowUpRight, MapPin } from "lucide-react";
+import Seo from "@/components/seo/Seo";
 import { getProjects, type ProjectStatus } from "@/data/projects";
 
 interface Props {
@@ -28,6 +29,11 @@ export default function ProjectsByStatus({ status }: Props) {
   const projects = getProjects(status);
 
   return (
+    <>
+      <Seo
+        title={`${status} Projects`}
+        description={`Vivanterra ${status.toLowerCase()} projects — ${c.intro}`}
+      />
     <PageShell
       eyebrow={`Projects — ${status}`}
       title={
@@ -114,5 +120,6 @@ export default function ProjectsByStatus({ status }: Props) {
         </div>
       )}
     </PageShell>
+    </>
   );
 }

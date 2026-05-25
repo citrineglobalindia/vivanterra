@@ -1,3 +1,4 @@
+import Seo from "@/components/seo/Seo";
 import { useMemo, useState } from "react";
 import PageShell from "@/components/ui/PageShell";
 import Reveal from "@/components/ui/Reveal";
@@ -188,6 +189,10 @@ export default function Career() {
       eyebrow="Careers"
       title={
         <>
+      <Seo
+        title={"Careers at the studio"}
+        description={"Open roles at Vivanterra. We move slowly and hire people who have stayed."}
+      />
           Build the <span className="italic text-gold">next chapter.</span>
         </>
       }

@@ -1,4 +1,5 @@
 import { useLocation, Link } from "react-router-dom";
+import Seo from "@/components/seo/Seo";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -16,6 +17,8 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
+    <>
+      <Seo title="Page not found" description="The page you're looking for has been moved, or never existed." />
     <main className="relative min-h-[100svh] flex items-center justify-center bg-ink text-paper overflow-hidden">
       {/* Pulsing gold ambient */}
       <motion.div
@@ -96,6 +99,7 @@ const NotFound = () => {
         </motion.div>
       </div>
     </main>
+    </>
   );
 };
 

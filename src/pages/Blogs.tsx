@@ -1,3 +1,4 @@
+import Seo from "@/components/seo/Seo";
 import { useMemo, useState } from "react";
 import PageShell from "@/components/ui/PageShell";
 import Reveal from "@/components/ui/Reveal";
@@ -51,6 +52,10 @@ export default function Blogs() {
       eyebrow="Journal"
       title={
         <>
+      <Seo
+        title={"Journal"}
+        description={"Notes from the studio — essays, field notes, conversations and progress reports on materials, craft, and city."}
+      />
           Notes from <span className="italic text-gold">the studio.</span>
         </>
       }

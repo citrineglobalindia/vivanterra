@@ -6,6 +6,7 @@ import {
   BookOpen,
   Clock,
 } from "lucide-react";
+import Seo from "@/components/seo/Seo";
 import PageShell from "@/components/ui/PageShell";
 import Reveal from "@/components/ui/Reveal";
 import { getPostBySlug, getRelatedPosts } from "@/data/posts";
@@ -21,6 +22,14 @@ export default function BlogDetail() {
   const related = getRelatedPosts(post.slug, 3);
 
   return (
+    <>
+      <Seo
+        title={post.title}
+        description={post.dek}
+        image={post.image}
+        path={`/blogs/${post.slug}`}
+        type="article"
+      />
     <PageShell
       eyebrow={`Journal — ${post.category}`}
       title={<>{post.title}</>}
@@ -144,5 +153,6 @@ export default function BlogDetail() {
         </section>
       )}
     </PageShell>
+    </>
   );
 }

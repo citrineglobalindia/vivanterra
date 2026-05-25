@@ -1,3 +1,4 @@
+import Seo from "@/components/seo/Seo";
 import PageShell from "@/components/ui/PageShell";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
@@ -30,6 +31,10 @@ export default function Projects() {
       eyebrow="Projects"
       title={
         <>
+      <Seo
+        title={"Projects"}
+        description={"Browse the Vivanterra portfolio by stage — ongoing builds, upcoming launches, and completed residences."}
+      />
           A portfolio in <span className="italic text-gold">progress.</span>
         </>
       }

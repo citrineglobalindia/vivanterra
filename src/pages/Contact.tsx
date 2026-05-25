@@ -1,3 +1,4 @@
+import Seo from "@/components/seo/Seo";
 import PageShell from "@/components/ui/PageShell";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
@@ -137,6 +138,10 @@ export default function Contact() {
       eyebrow="Contact"
       title={
         <>
+      <Seo
+        title={"Begin a conversation"}
+        description={"Tell us about the residence you're imagining. Every enquiry is read by our concierge and answered within one business day."}
+      />
           Begin a <span className="italic text-gold">conversation.</span>
         </>
       }
