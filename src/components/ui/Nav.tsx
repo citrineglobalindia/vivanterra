@@ -33,7 +33,7 @@ const NAV_LINKS: NavItem[] = [
       { label: "Completed Projects", to: "/projects/completed" },
     ],
   },
-  { label: "Velocity", to: "https://velocitirealestate.com/", external: true },
+  { label: "Velocity", to: "/velocity" },
   { label: "Career", to: "/career" },
   { label: "Blogs", to: "/blogs" },
   { label: "Contact Us", to: "/contact" },
@@ -469,17 +469,17 @@ function MobileMenu({
             </div>
             <div className="grid grid-cols-3 gap-2">
               <ContactTile
-                href="tel:+919986666774"
+                href="tel:+918867589797"
                 icon={<Phone size={14} />}
                 label="Call"
               />
               <ContactTile
-                href="mailto:hello@velociti.com"
+                href="mailto:hello@vivanterra.in"
                 icon={<Mail size={14} />}
                 label="Email"
               />
               <ContactTile
-                href="https://wa.me/919986666774"
+                href="https://wa.me/918867589797"
                 external
                 icon={<MessageCircle size={14} />}
                 label="WhatsApp"

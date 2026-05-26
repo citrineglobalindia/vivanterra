@@ -322,7 +322,7 @@ function InlineEnquiryForm({ project }: { project: Project }) {
         result.reason === "timeout"
           ? "The request took too long. Please try again in a moment."
           : result.reason === "server"
-            ? `We couldn't deliver your enquiry (${result.status ?? "error"}). Please try /contact or email hello@velociti.com.`
+            ? `We couldn't deliver your enquiry (${result.status ?? "error"}). Please try /contact or email hello@vivanterra.in.`
             : "We couldn't reach our servers. Please check your connection and try again.";
       toast.error("Enquiry not sent", { description });
       return;

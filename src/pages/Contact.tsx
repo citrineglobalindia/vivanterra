@@ -104,7 +104,7 @@ export default function Contact() {
         result.reason === "timeout"
           ? "The request took too long. Please try again in a moment."
           : result.reason === "server"
-            ? `We couldn't deliver your enquiry (${result.status ?? "error"}). Please try again or email hello@velociti.com directly.`
+            ? `We couldn't deliver your enquiry (${result.status ?? "error"}). Please try again or email hello@vivanterra.in directly.`
             : "We couldn't reach our servers. Please check your connection and try again.";
       toast.error("Enquiry not sent", { description });
       return;
@@ -397,18 +397,18 @@ export default function Contact() {
                 </SidebarRow>
                 <SidebarRow icon={<Phone size={16} />}>
                   <a
-                    href="tel:+919986666774"
+                    href="tel:+918867589797"
                     className="hover:text-gold transition-colors"
                   >
-                    +91 99866 66774
+                    +91 88675 89797
                   </a>
                 </SidebarRow>
                 <SidebarRow icon={<Mail size={16} />}>
                   <a
-                    href="mailto:hello@velociti.com"
+                    href="mailto:hello@vivanterra.in"
                     className="hover:text-gold transition-colors"
                   >
-                    hello@velociti.com
+                    hello@vivanterra.in
                   </a>
                 </SidebarRow>
               </div>

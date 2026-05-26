@@ -79,7 +79,7 @@ export default function PageShell({ eyebrow, title, intro, children }: PageShell
                 <div className="eyebrow text-muted-soft mb-4">In the meantime</div>
                 <p className="text-base text-muted-soft leading-relaxed mb-8">
                   Connect with our team to discuss residences, partnerships, or career
-                  opportunities at Velociti Real Estate.
+                  opportunities at Vivanterra.
                 </p>
                 <Link to="/contact" className="btn btn-dark">
                   Get in touch

@@ -106,26 +106,26 @@ const INTENTS: Intent[] = [
   {
     match: /\b(phone|call|telephone|number|reach)\b/i,
     reply: () => ({
-      text: "You can reach us directly at +91 99866 66774.",
+      text: "You can reach us directly at +91 88675 89797.",
       actions: [
-        { label: "Call now", href: "tel:+919986666774", external: true },
-        { label: "WhatsApp instead", href: "https://wa.me/919986666774", external: true },
+        { label: "Call now", href: "tel:+918867589797", external: true },
+        { label: "WhatsApp instead", href: "https://wa.me/918867589797", external: true },
       ],
     }),
   },
   {
     match: /\b(email|mail|write)\b/i,
     reply: () => ({
-      text: "Drop us a note at hello@velociti.com — we read every message.",
-      actions: [{ label: "Open mail", href: "mailto:hello@velociti.com", external: true }],
+      text: "Drop us a note at hello@vivanterra.in — we read every message.",
+      actions: [{ label: "Open mail", href: "mailto:hello@vivanterra.in", external: true }],
     }),
   },
   {
     match: /\b(whats?app|chat|message|text)\b/i,
     reply: () => ({
-      text: "We're on WhatsApp at +91 99866 66774. Quickest way to reach the team.",
+      text: "We're on WhatsApp at +91 88675 89797. Quickest way to reach the team.",
       actions: [
-        { label: "Open WhatsApp", href: "https://wa.me/919986666774", external: true },
+        { label: "Open WhatsApp", href: "https://wa.me/918867589797", external: true },
       ],
     }),
   },
@@ -133,7 +133,7 @@ const INTENTS: Intent[] = [
     match: /\b(about|who|company|firm|history|story|studio)\b/i,
     reply: () => ({
       text:
-        "Vivanterra is the residential studio of Velociti Real Estate — a small atelier composing private residences with patience, restraint and rare materials.",
+        "Vivanterra is a residential studio — a small atelier composing private residences with patience, restraint and rare materials.",
       actions: [{ label: "Read about us", href: "/about" }],
     }),
   },

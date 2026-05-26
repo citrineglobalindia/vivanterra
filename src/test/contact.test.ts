@@ -4,7 +4,7 @@ import { submitContactEnquiry, type ContactEnquiry } from "@/lib/contact";
 const baseValues: ContactEnquiry = {
   name: "Ada Lovelace",
   email: "ada@example.com",
-  phone: "+91 99866 66774",
+  phone: "+91 88675 89797",
   scope: "residence",
   budget: "5-10",
   message: "Looking for a 4-bed residence in Sadashiva Nagar.",

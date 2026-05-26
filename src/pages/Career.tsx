@@ -501,10 +501,10 @@ export default function Career() {
             </div>
             <div className="md:col-span-4 md:text-right">
               <a
-                href="mailto:careers@velociti.com"
+                href="mailto:careers@vivanterra.in"
                 className="btn btn-light"
               >
-                careers@velociti.com
+                careers@vivanterra.in
                 <ArrowUpRight size={16} className="btn-arrow" />
               </a>
             </div>
@@ -531,7 +531,7 @@ function RoleRow({ role, index }: { role: Role; index: number }) {
       className="border-b border-line-dark group"
     >
       <a
-        href={`mailto:careers@velociti.com?subject=Application — ${encodeURIComponent(
+        href={`mailto:careers@vivanterra.in?subject=Application — ${encodeURIComponent(
           role.title,
         )}`}
         className="grid md:grid-cols-12 gap-4 md:gap-8 py-7 md:py-9 items-baseline hover:bg-ink/[0.03] transition-colors px-2 -mx-2 rounded-sm"
