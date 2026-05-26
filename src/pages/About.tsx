@@ -314,15 +314,42 @@ function FounderBlock({
         className={`lg:col-span-5 ${flip ? "lg:order-2" : ""}`}
         delay={0.05}
       >
-        <div className="relative img-zoom aspect-[4/5] overflow-hidden rounded-sm bg-ink/5">
+        <div className="relative img-zoom aspect-[4/5] overflow-hidden rounded-sm bg-ink">
+          {/* Initials placeholder, sits behind the <img> until the photo loads */}
+          <div
+            aria-hidden
+            className="absolute inset-0 flex items-center justify-center"
+            style={{
+              background:
+                "radial-gradient(ellipse at center top, rgba(196,169,106,0.18) 0%, rgba(196,169,106,0) 65%), linear-gradient(180deg, #2a3a30 0%, #1a2620 100%)",
+            }}
+          >
+            <span
+              className="font-display text-gold/40 select-none"
+              style={{
+                fontSize: "clamp(120px, 18vw, 220px)",
+                fontWeight: 300,
+                letterSpacing: "-0.04em",
+                lineHeight: 1,
+              }}
+            >
+              {founder.name
+                .split(" ")
+                .map((n) => n[0])
+                .join("")
+                .slice(0, 2)
+                .toUpperCase()}
+            </span>
+          </div>
+
           <img
             src={founder.photo}
             alt={`${founder.name}, ${founder.role}`}
             loading="lazy"
-            className="h-full w-full object-cover"
+            className="relative h-full w-full object-cover transition-opacity duration-500"
             onError={(e) => {
-              // Graceful fallback if the photo file isn't deployed yet.
-              (e.currentTarget as HTMLImageElement).style.display = "none";
+              // Photo not deployed — hide so the initials placeholder shows.
+              (e.currentTarget as HTMLImageElement).style.opacity = "0";
             }}
           />
           <div
@@ -330,7 +357,7 @@ function FounderBlock({
             className="absolute inset-0 pointer-events-none"
             style={{
               background:
-                "linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(14,14,16,0.55) 100%)",
+                "linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(14,14,16,0.65) 100%)",
             }}
           />
           <div className="absolute bottom-6 left-6 right-6 text-paper">
