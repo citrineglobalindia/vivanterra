@@ -31,6 +31,8 @@ export type Project = {
   specs: ProjectSpec[];
   /** Optional possession / handover date for ongoing & upcoming projects. */
   possession?: string;
+  /** Display price label (e.g. '₹ 4.5 Cr Onwards'). Falls back to 'Price on request'. */
+  price?: string;
   /** Used when the listing wants to highlight one. */
   featured?: boolean;
 };
@@ -66,6 +68,7 @@ const PROJECTS: Project[] = [
     ],
     possession: "Q1 2027",
     featured: true,
+    price: "₹ 8.5 Cr Onwards*"
   },
   {
     slug: "marigold-house",
@@ -94,6 +97,7 @@ const PROJECTS: Project[] = [
       { label: "Architect", value: "Studio in-house" },
     ],
     possession: "Q3 2027",
+    price: "₹ 3.2 Cr Onwards*"
   },
   {
     slug: "sandalwood-row",
@@ -122,6 +126,7 @@ const PROJECTS: Project[] = [
       { label: "Architect", value: "Aravind Menon, principal" },
     ],
     possession: "Q4 2027",
+    price: "₹ 12 Cr Onwards*"
   },
   {
     slug: "kalpavriksha",
@@ -150,6 +155,7 @@ const PROJECTS: Project[] = [
       { label: "Architect", value: "Studio in-house" },
     ],
     possession: "2029",
+    price: "₹ 6.8 Cr Onwards*"
   },
   {
     slug: "quietude",
@@ -177,6 +183,7 @@ const PROJECTS: Project[] = [
       { label: "Architect", value: "Aravind Menon, principal" },
     ],
     possession: "2029",
+    price: "By invitation"
   },
   {
     slug: "the-frangipani",
@@ -204,6 +211,7 @@ const PROJECTS: Project[] = [
       { label: "Floors", value: "B + G + 7" },
       { label: "Architect", value: "Studio in-house" },
     ],
+    price: "On request"
   },
   {
     slug: "olive-court",
@@ -231,6 +239,7 @@ const PROJECTS: Project[] = [
       { label: "Floors", value: "G + 5" },
       { label: "Architect", value: "Aravind Menon, principal" },
     ],
+    price: "On request"
   },
   {
     slug: "the-veranda",
@@ -257,6 +266,7 @@ const PROJECTS: Project[] = [
       { label: "Floors", value: "G + 1" },
       { label: "Architect", value: "Studio in-house, with conservation consult" },
     ],
+    price: "On request"
   },
 ];
 
@@ -278,4 +288,25 @@ export function getRelatedProjects(slug: string, n = 3): Project[] {
     (p) => p.slug !== slug && p.status !== current.status,
   );
   return [...sameStatus, ...others].slice(0, n);
+}
+
+
+/** Pulls "Configuration" from a project's spec sheet (e.g. "3 & 4 BHK"). */
+export function getProjectConfig(project: Project): string | undefined {
+  return project.specs.find((s) => s.label === "Configuration")?.value;
+}
+
+/** Pulls "Carpet area" from a project's spec sheet. */
+export function getProjectArea(project: Project): string | undefined {
+  return project.specs.find((s) => s.label === "Carpet area")?.value;
+}
+
+/** Pulls "Typology" from a project's spec sheet (e.g. "Full-floor residences"). */
+export function getProjectTypology(project: Project): string | undefined {
+  return project.specs.find((s) => s.label === "Typology")?.value;
+}
+
+/** Display label for the project's price — falls back to "Price on request". */
+export function getProjectPriceLabel(project: Project): string {
+  return project.price ?? "Price on request";
 }
