@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { HelmetProvider } from "react-helmet-async";
+import AdminGuard from "@/components/admin/AdminGuard";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -24,6 +25,11 @@ const Career = lazy(() => import("./pages/Career.tsx"));
 const Blogs = lazy(() => import("./pages/Blogs.tsx"));
 const BlogDetail = lazy(() => import("./pages/BlogDetail.tsx"));
 const Contact = lazy(() => import("./pages/Contact.tsx"));
+
+// Admin
+const AdminLogin = lazy(() => import("./pages/admin/AdminLogin.tsx"));
+const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard.tsx"));
+const AdminEnquiry = lazy(() => import("./pages/admin/AdminEnquiry.tsx"));
 
 const queryClient = new QueryClient();
 
@@ -61,6 +67,25 @@ function AnimatedRoutes() {
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogs/:slug" element={<BlogDetail />} />
             <Route path="/contact" element={<Contact />} />
+
+            {/* Admin */}
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route
+              path="/admin"
+              element={
+                <AdminGuard>
+                  <AdminDashboard />
+                </AdminGuard>
+              }
+            />
+            <Route
+              path="/admin/enquiries/:id"
+              element={
+                <AdminGuard>
+                  <AdminEnquiry />
+                </AdminGuard>
+              }
+            />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

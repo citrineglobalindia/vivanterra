@@ -89,3 +89,32 @@ npm test
 
 - `src/test/contact.test.ts` — `submitContactEnquiry()` helper (endpoint resolution, timeout, network errors, honeypot)
 - `src/test/detail-pages.test.tsx` — ProjectDetail + BlogDetail render correctly for known slugs and redirect to `NotFound` for unknown slugs
+
+## Admin panel
+
+Lives at `/admin` (protected). Powered by Supabase Auth + a `vivanterra_enquiries` table; new enquiries from the public contact form are inserted by `/api/contact` and surfaced in the dashboard.
+
+### One-time setup
+
+1. **Add Vercel environment variables** — Vercel → Project Settings → Environment Variables. Paste in all four from `.env.example` (the two `VITE_*` are exposed to the browser, the two unprefixed ones are read by the serverless function only). Pull values from Supabase → Project Settings → API.
+2. **Create your admin auth user** — Supabase dashboard → Authentication → Users → Add user → Create new user. Email = the one you'll sign in with. Set a strong password. Confirm the email.
+3. **Confirm the email is allow-listed** — the migration seeds `citrineglobalindia@gmail.com` into the `vivanterra_admin_users` table. Add or replace with your own admin emails as needed:
+   ```sql
+   insert into vivanterra_admin_users (email, full_name)
+   values ('you@example.com', 'Your Name');
+   ```
+4. **Redeploy** so Vercel picks up the env vars, then visit `/admin/login`.
+
+### Adding more admins
+
+A signed-in user is treated as an admin only if their email appears in `vivanterra_admin_users`. To grant access, create the auth user in the Supabase dashboard *and* insert their email into that table.
+
+### Data model
+
+- `vivanterra_admin_users(email, full_name, created_at)` — allow-list.
+- `vivanterra_enquiries(id, name, email, phone, scope, budget, message, project_slug, source, status, notes, user_agent, ip_address, created_at, updated_at)` — leads. Status enum: `new`, `contacted`, `qualified`, `closed`, `spam`.
+- RLS only allows read/update to authenticated users whose email is in the allow-list. Inserts are server-side via the service-role key.
+
+### WhatsApp (current state)
+
+Click-to-chat is wired into Nav, Footer, Concierge, the Projects page CTA, and every admin enquiry detail page (deep-links to `wa.me/918867589797`, and to the lead's phone when present). Programmatic WhatsApp notifications (auto-message on new enquiry) are Phase 2 — separate scope.

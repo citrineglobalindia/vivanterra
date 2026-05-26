@@ -47,13 +47,19 @@ export type SubmitOptions = {
 
 const DEFAULT_TIMEOUT_MS = 15_000;
 
+const DEFAULT_PRODUCTION_ENDPOINT = "/api/contact";
+
 function resolveEndpoint(override?: string): string | undefined {
   if (override) return override;
   const fromEnv =
     (import.meta as ImportMeta & {
       env?: Record<string, string | undefined>;
     }).env?.VITE_CONTACT_ENDPOINT;
-  return fromEnv && fromEnv.length > 0 ? fromEnv : undefined;
+  if (fromEnv && fromEnv.length > 0) return fromEnv;
+  // In the browser, default to the same-origin Vercel function. Server-side
+  // (tests, SSR) returns undefined so the mock-mode branch runs instead.
+  if (typeof window !== "undefined") return DEFAULT_PRODUCTION_ENDPOINT;
+  return undefined;
 }
 
 export async function submitContactEnquiry(

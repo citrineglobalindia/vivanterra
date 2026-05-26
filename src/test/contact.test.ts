@@ -18,11 +18,17 @@ function jsonResponse(status: number): Response {
 }
 
 describe("submitContactEnquiry", () => {
-  it("returns a mock success when no endpoint is configured", async () => {
-    const fetchImpl = vi.fn();
-    const result = await submitContactEnquiry(baseValues, { fetchImpl });
-    expect(result).toEqual({ ok: true, mock: true });
-    expect(fetchImpl).not.toHaveBeenCalled();
+  it("returns a mock success when no endpoint is configured (non-browser)", async () => {
+    const originalWindow = (globalThis as { window?: unknown }).window;
+    delete (globalThis as { window?: unknown }).window;
+    try {
+      const fetchImpl = vi.fn();
+      const result = await submitContactEnquiry(baseValues, { fetchImpl });
+      expect(result).toEqual({ ok: true, mock: true });
+      expect(fetchImpl).not.toHaveBeenCalled();
+    } finally {
+      (globalThis as { window?: unknown }).window = originalWindow;
+    }
   });
 
   it("POSTs JSON to the configured endpoint with our payload + metadata", async () => {
