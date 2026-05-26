@@ -41,7 +41,7 @@ const FOUNDERS = [
     slug: "tej-singh",
     name: "Tej Singh",
     role: "Founder",
-    photo: "/founders/tej-singh.jpg",
+    photo: "/founders/tej-singh.jpeg",
     headline: "Crafting Spaces with Intention and Purpose",
     eyebrow: "The Vision",
     statement: [
@@ -53,7 +53,7 @@ const FOUNDERS = [
     slug: "rajath",
     name: "Rajath",
     role: "Co-Founder",
-    photo: "/founders/rajath.jpg",
+    photo: "/founders/rajath.jpeg",
     headline: "Understanding the Need of the Hour & Nurturing Community",
     eyebrow: "The Pulse",
     statement: [
