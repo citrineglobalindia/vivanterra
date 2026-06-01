@@ -2,6 +2,7 @@ import Seo from "@/components/seo/Seo";
 import Nav from "@/components/ui/Nav";
 import Footer from "@/components/ui/Footer";
 import Hero from "@/components/sections/Hero";
+import Collection from "@/components/sections/Collection";
 import Residences from "@/components/sections/Residences";
 import Standard from "@/components/sections/Standard";
 import WhyCity from "@/components/sections/WhyCity";
@@ -19,6 +20,7 @@ const Index = () => {
       />
       <Nav />
       <Hero />
+      <Collection />
       <Residences />
       <Standard />
       <WhyCity />
