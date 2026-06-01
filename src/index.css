@@ -198,6 +198,10 @@
     display: inline-block;
     overflow: hidden;
     vertical-align: top;
+    /* Give descenders (g, y, p) room inside the clip box without
+       changing the visual line spacing. */
+    padding-bottom: 0.14em;
+    margin-bottom: -0.14em;
   }
   .split-piece {
     display: inline-block;

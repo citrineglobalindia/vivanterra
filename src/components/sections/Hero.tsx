@@ -194,8 +194,8 @@ export default function Hero() {
       </div>
 
       <style>{`
-        h1.font-display { font-size: clamp(38px, 6vw, 96px); font-weight: 300; line-height: 1.0; max-width: 100%; overflow-wrap: break-word; }
-        @media (max-width: 640px) { h1.font-display { font-size: clamp(32px, 9vw, 52px); } }
+        h1.font-display { font-size: clamp(34px, 5.2vw, 84px); font-weight: 300; line-height: 1.1; max-width: 100%; overflow-wrap: break-word; }
+        @media (max-width: 640px) { h1.font-display { font-size: clamp(30px, 8.5vw, 46px); line-height: 1.12; } }
       `}</style>
     </section>
   );
