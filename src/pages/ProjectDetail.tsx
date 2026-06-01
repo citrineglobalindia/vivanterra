@@ -19,11 +19,8 @@ import { toast } from "sonner";
 import Seo from "@/components/seo/Seo";
 import PageShell from "@/components/ui/PageShell";
 import Reveal from "@/components/ui/Reveal";
-import {
-  getProjectBySlug,
-  getRelatedProjects,
-  type Project,
-} from "@/data/projects";
+import { getRelatedProjects, type Project } from "@/data/projects";
+import { useProject } from "@/lib/use-projects";
 import { submitContactEnquiry, type ContactEnquiry } from "@/lib/contact";
 
 const inlineSchema = z.object({
@@ -43,12 +40,21 @@ type InlineValues = z.infer<typeof inlineSchema>;
 
 export default function ProjectDetail() {
   const { slug = "" } = useParams<{ slug: string }>();
-  const project = getProjectBySlug(slug);
+  const { project, loading, notFound } = useProject(slug);
 
-  if (!project) {
+  if (notFound) {
     return <Navigate to="/404" replace />;
   }
 
+  if (!project) {
+    return (
+      <div className="min-h-screen bg-paper flex items-center justify-center">
+        <Loader2 className="animate-spin text-ink/40" size={28} />
+      </div>
+    );
+  }
+
+  void loading;
   const related = getRelatedProjects(project.slug, 3);
 
   return (

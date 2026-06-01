@@ -7,6 +7,8 @@ import {
   LayoutDashboard,
   LogOut,
   Mail,
+  Briefcase,
+  Inbox,
   Megaphone,
   Menu,
   MessageSquare,
@@ -26,6 +28,8 @@ const NAV = [
   { to: "/admin/press", label: "Press Releases", icon: Megaphone, end: false },
   { to: "/admin/gallery", label: "Gallery", icon: Image, end: false },
   { to: "/admin/enquiries", label: "Enquiries", icon: MessageSquare, end: false },
+  { to: "/admin/leads", label: "Leads", icon: Inbox, end: false },
+  { to: "/admin/careers", label: "Careers", icon: Briefcase, end: false },
   { to: "/admin/subscribers", label: "Subscribers", icon: Users, end: false },
   { to: "/admin/settings", label: "Theme", icon: Palette, end: false },
 ];

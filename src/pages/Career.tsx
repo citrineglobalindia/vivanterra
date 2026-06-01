@@ -1,5 +1,6 @@
 import Seo from "@/components/seo/Seo";
-import { useMemo, useState } from "react";
+import { useMemo, useState, type FormEvent } from "react";
+import { toast } from "sonner";
 import PageShell from "@/components/ui/PageShell";
 import Reveal from "@/components/ui/Reveal";
 import { motion } from "framer-motion";
@@ -511,7 +512,125 @@ export default function Career() {
           </div>
         </motion.div>
       </section>
+
+      {/* ───────── Apply form ───────── */}
+      <section id="apply" className="mt-4">
+        <Reveal>
+          <div className="hairline-dark mb-12 md:mb-16" />
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+            <div className="lg:col-span-5">
+              <div className="eyebrow text-gold mb-4">Apply</div>
+              <h2
+                className="font-display text-ink"
+                style={{
+                  fontSize: "clamp(30px, 4vw, 52px)",
+                  fontWeight: 300,
+                  letterSpacing: "-0.02em",
+                  lineHeight: 1,
+                }}
+              >
+                Send us your{" "}
+                <span className="italic text-gold">introduction.</span>
+              </h2>
+              <p className="mt-6 text-muted-soft leading-relaxed">
+                Tell us which role resonates and why. Add a link to your
+                portfolio or a project you are proud of. Every application is
+                read by our team.
+              </p>
+            </div>
+            <div className="lg:col-span-7">
+              <ApplyForm roles={ROLES.map((r) => r.title)} />
+            </div>
+          </div>
+        </Reveal>
+      </section>
     </PageShell>
+  );
+}
+
+/* ── Apply form ──────────────────────────────────────── */
+
+function ApplyForm({ roles }: { roles: string[] }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [position, setPosition] = useState("");
+  const [resume, setResume] = useState("");
+  const [message, setMessage] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [done, setDone] = useState(false);
+
+  async function onSubmit(e: FormEvent) {
+    e.preventDefault();
+    if (name.trim().length < 2 || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      toast.error("Please add your name and a valid email.");
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/career-application", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          position_title: position || "General application",
+          resume_url: resume,
+          message,
+        }),
+      });
+      const data = await res.json().catch(() => ({ ok: false }));
+      if (!res.ok || !data.ok) throw new Error(data.error || "Submission failed");
+      toast.success("Application received", {
+        description: "Thank you — we read every introduction and respond within ten days.",
+      });
+      setName(""); setEmail(""); setPhone(""); setPosition(""); setResume(""); setMessage("");
+      setDone(true);
+    } catch (err) {
+      toast.error("Could not send application", {
+        description:
+          err instanceof Error ? err.message : "Please try again, or email careers@vivanterra.in.",
+      });
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  const inp =
+    "w-full bg-[rgba(78,115,83,0.04)] border border-line-dark rounded-md px-4 py-3 text-[15px] text-ink placeholder:text-ink/45 outline-none focus:border-gold focus:bg-paper transition-colors";
+
+  return (
+    <form onSubmit={onSubmit} noValidate className="space-y-4 bg-paper border border-line-dark rounded-sm p-7 md:p-9">
+      <div className="grid sm:grid-cols-2 gap-4">
+        <input className={inp} value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" autoComplete="name" />
+        <input className={inp} value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" type="email" autoComplete="email" />
+      </div>
+      <div className="grid sm:grid-cols-2 gap-4">
+        <input className={inp} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Phone (optional)" type="tel" autoComplete="tel" />
+        <select className={inp} value={position} onChange={(e) => setPosition(e.target.value)}>
+          <option value="">Which role?</option>
+          {roles.map((r) => (
+            <option key={r} value={r}>{r}</option>
+          ))}
+          <option value="General application">General / other</option>
+        </select>
+      </div>
+      <input className={inp} value={resume} onChange={(e) => setResume(e.target.value)} placeholder="Portfolio or resume link (URL)" type="url" />
+      <textarea className={inp + " resize-none"} rows={4} value={message} onChange={(e) => setMessage(e.target.value)} placeholder="A short note about why our work resonates…" />
+      <div className="flex items-center justify-between gap-4 pt-1">
+        {done ? (
+          <span className="text-sm text-muted-soft italic">Thank you — we will be in touch.</span>
+        ) : <span />}
+        <button
+          type="submit"
+          disabled={submitting}
+          className="inline-flex items-center justify-center gap-2 h-12 px-6 bg-gold text-ink font-semibold text-[11px] tracking-[0.20em] uppercase rounded-sm hover:bg-ink hover:text-paper transition-colors disabled:opacity-60"
+        >
+          {submitting ? "Sending…" : "Send application"}
+        </button>
+      </div>
+    </form>
   );
 }
 

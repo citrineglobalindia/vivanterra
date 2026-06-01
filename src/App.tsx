@@ -37,6 +37,9 @@ const AdminNews = lazy(() => import("./pages/admin/AdminNews.tsx"));
 const AdminPress = lazy(() => import("./pages/admin/AdminPress.tsx"));
 const AdminGallery = lazy(() => import("./pages/admin/AdminGallery.tsx"));
 const AdminEnquiries = lazy(() => import("./pages/admin/AdminEnquiries.tsx"));
+const AdminLeads = lazy(() => import("./pages/admin/AdminLeads.tsx"));
+const AdminCareers = lazy(() => import("./pages/admin/AdminCareers.tsx"));
+const AdminApplications = lazy(() => import("./pages/admin/AdminApplications.tsx"));
 const AdminEnquiry = lazy(() => import("./pages/admin/AdminEnquiry.tsx"));
 const AdminSubscribers = lazy(() => import("./pages/admin/AdminSubscribers.tsx"));
 const AdminSettings = lazy(() => import("./pages/admin/AdminSettings.tsx"));
@@ -92,6 +95,9 @@ function AnimatedRoutes() {
             <Route path="/admin/gallery" element={<AdminGuard><AdminGallery /></AdminGuard>} />
             <Route path="/admin/enquiries" element={<AdminGuard><AdminEnquiries /></AdminGuard>} />
             <Route path="/admin/enquiries/:id" element={<AdminGuard><AdminEnquiry /></AdminGuard>} />
+            <Route path="/admin/leads" element={<AdminGuard><AdminLeads /></AdminGuard>} />
+            <Route path="/admin/careers" element={<AdminGuard><AdminCareers /></AdminGuard>} />
+            <Route path="/admin/applications" element={<AdminGuard><AdminApplications /></AdminGuard>} />
             <Route path="/admin/subscribers" element={<AdminGuard><AdminSubscribers /></AdminGuard>} />
             <Route path="/admin/settings" element={<AdminGuard><AdminSettings /></AdminGuard>} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

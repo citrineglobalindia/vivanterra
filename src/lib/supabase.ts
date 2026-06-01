@@ -161,3 +161,49 @@ export type SubscriberRow = {
   status: "subscribed" | "unsubscribed";
   created_at: string;
 };
+
+export type CareerPosition = {
+  id: string;
+  title: string;
+  department: string | null;
+  location: string | null;
+  type: string | null;
+  summary: string | null;
+  description: string[];
+  published: boolean;
+  sort_order: number;
+  created_at: string;
+  updated_at: string;
+};
+
+export type ApplicationStatus =
+  | "new"
+  | "reviewing"
+  | "interview"
+  | "hired"
+  | "rejected"
+  | "closed";
+export const APPLICATION_STATUSES: ApplicationStatus[] = [
+  "new",
+  "reviewing",
+  "interview",
+  "hired",
+  "rejected",
+  "closed",
+];
+
+export type CareerApplication = {
+  id: string;
+  name: string;
+  email: string;
+  phone: string | null;
+  position_id: string | null;
+  position_title: string | null;
+  message: string | null;
+  resume_url: string | null;
+  source: string;
+  status: ApplicationStatus;
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
+};

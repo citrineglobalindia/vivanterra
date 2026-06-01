@@ -13,8 +13,8 @@ import {
   Phone,
 } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
+import { useProjects } from "@/lib/use-projects";
 import {
-  getProjects,
   getProjectArea,
   getProjectConfig,
   getProjectPriceLabel,
@@ -42,10 +42,14 @@ export default function ProjectListing({
 }) {
   const [filter, setFilter] = useState<Filter>(initialFilter);
   const [page, setPage] = useState(1);
+  const { projects: allProjects } = useProjects();
 
   const projects = useMemo(
-    () => (filter === "All" ? getProjects() : getProjects(filter)),
-    [filter],
+    () =>
+      filter === "All"
+        ? allProjects
+        : allProjects.filter((p) => p.status === filter),
+    [filter, allProjects],
   );
 
   const totalPages = Math.max(1, Math.ceil(projects.length / PAGE_SIZE));
@@ -57,14 +61,13 @@ export default function ProjectListing({
 
   // Counts per filter for the pill badges
   const counts = useMemo(() => {
-    const all = getProjects();
     return {
-      All: all.length,
-      Ongoing: all.filter((p) => p.status === "Ongoing").length,
-      Upcoming: all.filter((p) => p.status === "Upcoming").length,
-      Completed: all.filter((p) => p.status === "Completed").length,
+      All: allProjects.length,
+      Ongoing: allProjects.filter((p) => p.status === "Ongoing").length,
+      Upcoming: allProjects.filter((p) => p.status === "Upcoming").length,
+      Completed: allProjects.filter((p) => p.status === "Completed").length,
     } satisfies Record<Filter, number>;
-  }, []);
+  }, [allProjects]);
 
   return (
     <div>

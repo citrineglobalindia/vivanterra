@@ -13,6 +13,7 @@ import {
   MessageCircle,
   Phone,
   Save,
+  Trash2,
   User,
 } from "lucide-react";
 import Seo from "@/components/seo/Seo";
@@ -75,6 +76,19 @@ export default function AdminEnquiry() {
     } finally {
       setSaving(false);
     }
+  }
+
+  async function remove() {
+    if (!window.confirm("Delete this enquiry permanently?")) return;
+    const { error } = await getSupabase()
+      .from("vivanterra_enquiries")
+      .delete()
+      .eq("id", id);
+    if (error) {
+      setError(error.message);
+      return;
+    }
+    navigate("/admin/enquiries");
   }
 
   if (error) {
@@ -289,6 +303,14 @@ export default function AdminEnquiry() {
                   </span>
                 )}
               </div>
+
+              <button
+                type="button"
+                onClick={remove}
+                className="mt-6 inline-flex items-center gap-1.5 text-[11px] tracking-[0.16em] uppercase text-[hsl(var(--destructive))] hover:underline"
+              >
+                <Trash2 size={12} /> Delete enquiry
+              </button>
 
               <div className="mt-7 pt-5 border-t border-line-dark text-[11px] tracking-[0.16em] uppercase text-muted-soft tabular-nums">
                 <span className="inline-flex items-center gap-1.5">
