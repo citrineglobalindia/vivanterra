@@ -138,7 +138,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-10 flex flex-col justify-end pb-16 md:pb-24">
         <div className="max-w-page container-x">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
-            <div className="md:col-span-9">
+            <div className="md:col-span-10 min-w-0">
               <div className="eyebrow text-paper/80 mb-6">{SLIDES[active].eyebrow}</div>
               <SplitText
                 as="h1"
@@ -152,7 +152,7 @@ export default function Hero() {
                 once={false}
               />
             </div>
-            <div className="md:col-span-3 md:text-right">
+            <div className="md:col-span-2 md:text-right">
               <Magnetic className="inline-block" strength={0.3}>
                 <a href="#residences" className="btn btn-light">
                   Discover the residence
@@ -194,8 +194,8 @@ export default function Hero() {
       </div>
 
       <style>{`
-        h1.font-display { font-size: clamp(56px, 9vw, 140px); font-weight: 300; line-height: 0.95; }
-        @media (max-width: 640px) { h1.font-display { font-size: clamp(40px, 11vw, 64px); } }
+        h1.font-display { font-size: clamp(38px, 6vw, 96px); font-weight: 300; line-height: 1.0; max-width: 100%; overflow-wrap: break-word; }
+        @media (max-width: 640px) { h1.font-display { font-size: clamp(32px, 9vw, 52px); } }
       `}</style>
     </section>
   );
