@@ -13,7 +13,6 @@ export const supabaseConfigured =
 
 let _client: SupabaseClient | null = null;
 
-/** Lazy singleton — only constructed when actually used. */
 export function getSupabase(): SupabaseClient {
   if (!_client) {
     if (!supabaseConfigured) {
@@ -28,6 +27,17 @@ export function getSupabase(): SupabaseClient {
   return _client;
 }
 
+/* ── Types ─────────────────────────────────────────── */
+
+export type LeadStatus = "new" | "contacted" | "qualified" | "closed" | "spam";
+export const ENQUIRY_STATUSES: LeadStatus[] = [
+  "new",
+  "contacted",
+  "qualified",
+  "closed",
+  "spam",
+];
+
 export type Enquiry = {
   id: string;
   name: string;
@@ -38,16 +48,116 @@ export type Enquiry = {
   message: string;
   project_slug: string | null;
   source: string;
-  status: "new" | "contacted" | "qualified" | "closed" | "spam";
+  status: LeadStatus;
   notes: string | null;
   created_at: string;
   updated_at: string;
 };
 
-export const ENQUIRY_STATUSES: Enquiry["status"][] = [
-  "new",
-  "contacted",
-  "qualified",
-  "closed",
-  "spam",
+export type Lead = {
+  id: string;
+  name: string | null;
+  email: string;
+  phone: string | null;
+  kind: "popup" | "newsletter" | "concierge" | "other";
+  message: string | null;
+  page_path: string | null;
+  project_slug: string | null;
+  source: string;
+  status: LeadStatus;
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+export type ProjectStatus = "Ongoing" | "Upcoming" | "Completed";
+export const PROJECT_STATUSES: ProjectStatus[] = [
+  "Ongoing",
+  "Upcoming",
+  "Completed",
 ];
+
+export type Spec = { label: string; value: string };
+
+export type ProjectRow = {
+  id: string;
+  slug: string;
+  title: string;
+  tagline: string | null;
+  status: ProjectStatus;
+  location: string | null;
+  hero: string | null;
+  gallery: string[];
+  summary: string | null;
+  description: string[];
+  specs: Spec[];
+  possession: string | null;
+  price: string | null;
+  featured: boolean;
+  published: boolean;
+  sort_order: number;
+  created_at: string;
+  updated_at: string;
+};
+
+export type PostRow = {
+  id: string;
+  slug: string;
+  title: string;
+  dek: string | null;
+  category: string | null;
+  author: string | null;
+  date_label: string | null;
+  reading_time: string | null;
+  image: string | null;
+  body: string[];
+  featured: boolean;
+  published: boolean;
+  sort_order: number;
+  created_at: string;
+  updated_at: string;
+};
+
+export type NewsRow = {
+  id: string;
+  title: string;
+  dek: string | null;
+  date_label: string | null;
+  image: string | null;
+  link: string | null;
+  published: boolean;
+  sort_order: number;
+  created_at: string;
+  updated_at: string;
+};
+
+export type PressRow = {
+  id: string;
+  title: string;
+  publication: string | null;
+  quote: string | null;
+  date_label: string | null;
+  link: string | null;
+  published: boolean;
+  sort_order: number;
+  created_at: string;
+  updated_at: string;
+};
+
+export type GalleryRow = {
+  id: string;
+  title: string | null;
+  image_url: string;
+  alt: string | null;
+  tag: string | null;
+  sort_order: number;
+  created_at: string;
+};
+
+export type SubscriberRow = {
+  id: string;
+  email: string;
+  source: string;
+  status: "subscribed" | "unsubscribed";
+  created_at: string;
+};

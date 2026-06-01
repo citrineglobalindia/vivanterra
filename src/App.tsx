@@ -29,7 +29,17 @@ const Contact = lazy(() => import("./pages/Contact.tsx"));
 // Admin
 const AdminLogin = lazy(() => import("./pages/admin/AdminLogin.tsx"));
 const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard.tsx"));
+const AdminProjects = lazy(() => import("./pages/admin/AdminProjects.tsx"));
+const AdminProjectEdit = lazy(() => import("./pages/admin/AdminProjectEdit.tsx"));
+const AdminBlogs = lazy(() => import("./pages/admin/AdminBlogs.tsx"));
+const AdminBlogEdit = lazy(() => import("./pages/admin/AdminBlogEdit.tsx"));
+const AdminNews = lazy(() => import("./pages/admin/AdminNews.tsx"));
+const AdminPress = lazy(() => import("./pages/admin/AdminPress.tsx"));
+const AdminGallery = lazy(() => import("./pages/admin/AdminGallery.tsx"));
+const AdminEnquiries = lazy(() => import("./pages/admin/AdminEnquiries.tsx"));
 const AdminEnquiry = lazy(() => import("./pages/admin/AdminEnquiry.tsx"));
+const AdminSubscribers = lazy(() => import("./pages/admin/AdminSubscribers.tsx"));
+const AdminSettings = lazy(() => import("./pages/admin/AdminSettings.tsx"));
 
 const queryClient = new QueryClient();
 
@@ -70,22 +80,20 @@ function AnimatedRoutes() {
 
             {/* Admin */}
             <Route path="/admin/login" element={<AdminLogin />} />
-            <Route
-              path="/admin"
-              element={
-                <AdminGuard>
-                  <AdminDashboard />
-                </AdminGuard>
-              }
-            />
-            <Route
-              path="/admin/enquiries/:id"
-              element={
-                <AdminGuard>
-                  <AdminEnquiry />
-                </AdminGuard>
-              }
-            />
+            <Route path="/admin" element={<AdminGuard><AdminDashboard /></AdminGuard>} />
+            <Route path="/admin/projects" element={<AdminGuard><AdminProjects /></AdminGuard>} />
+            <Route path="/admin/projects/new" element={<AdminGuard><AdminProjectEdit /></AdminGuard>} />
+            <Route path="/admin/projects/:id/edit" element={<AdminGuard><AdminProjectEdit /></AdminGuard>} />
+            <Route path="/admin/blogs" element={<AdminGuard><AdminBlogs /></AdminGuard>} />
+            <Route path="/admin/blogs/new" element={<AdminGuard><AdminBlogEdit /></AdminGuard>} />
+            <Route path="/admin/blogs/:id/edit" element={<AdminGuard><AdminBlogEdit /></AdminGuard>} />
+            <Route path="/admin/news" element={<AdminGuard><AdminNews /></AdminGuard>} />
+            <Route path="/admin/press" element={<AdminGuard><AdminPress /></AdminGuard>} />
+            <Route path="/admin/gallery" element={<AdminGuard><AdminGallery /></AdminGuard>} />
+            <Route path="/admin/enquiries" element={<AdminGuard><AdminEnquiries /></AdminGuard>} />
+            <Route path="/admin/enquiries/:id" element={<AdminGuard><AdminEnquiry /></AdminGuard>} />
+            <Route path="/admin/subscribers" element={<AdminGuard><AdminSubscribers /></AdminGuard>} />
+            <Route path="/admin/settings" element={<AdminGuard><AdminSettings /></AdminGuard>} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

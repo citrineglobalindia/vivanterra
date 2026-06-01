@@ -1,50 +1,88 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  ArrowUpRight,
+  Building2,
   ChevronRight,
-  Filter,
-  Inbox,
+  Image,
   Loader2,
-  Mail,
-  MessageCircle,
-  Phone,
-  Search,
+  MessageSquare,
+  Newspaper,
+  PenSquare,
+  Users,
 } from "lucide-react";
 import Seo from "@/components/seo/Seo";
 import AdminLayout from "@/components/admin/AdminLayout";
-import { ENQUIRY_STATUSES, getSupabase, type Enquiry } from "@/lib/supabase";
+import { getSupabase, type Enquiry } from "@/lib/supabase";
 import { useAdminSession } from "@/lib/admin-auth";
 
-type StatusFilter = "all" | Enquiry["status"];
-
-const STATUS_TONES: Record<Enquiry["status"], string> = {
-  new: "bg-gold/20 text-ink border-gold/40",
-  contacted: "bg-ink/5 text-ink border-ink/20",
-  qualified: "bg-[hsl(110_30%_88%)] text-ink border-[hsl(110_25%_70%)]",
-  closed: "bg-ink text-paper border-ink",
-  spam: "bg-[hsl(0_60%_94%)] text-ink border-[hsl(0_50%_75%)]",
+type Counts = {
+  projects: number;
+  enquiries: number;
+  enquiriesNew: number;
+  leads: number;
+  subscribers: number;
+  posts: number;
+  news: number;
+  press: number;
+  gallery: number;
 };
 
 export default function AdminDashboard() {
   const { email } = useAdminSession();
-  const [enquiries, setEnquiries] = useState<Enquiry[] | null>(null);
+  const [counts, setCounts] = useState<Counts | null>(null);
+  const [recent, setRecent] = useState<Enquiry[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [status, setStatus] = useState<StatusFilter>("all");
-  const [query, setQuery] = useState("");
 
   useEffect(() => {
     let cancelled = false;
     async function load() {
       try {
-        const { data, error } = await getSupabase()
-          .from("vivanterra_enquiries")
-          .select("*")
-          .order("created_at", { ascending: false })
-          .limit(200);
+        const sb = getSupabase();
+        const head = (table: string, filter?: [string, string]) => {
+          let q = sb.from(table).select("*", { count: "exact", head: true });
+          if (filter) q = q.eq(filter[0], filter[1]);
+          return q;
+        };
+        const [
+          projects,
+          enquiries,
+          enquiriesNew,
+          leads,
+          subscribers,
+          posts,
+          news,
+          press,
+          gallery,
+          recentRes,
+        ] = await Promise.all([
+          head("vivanterra_projects"),
+          head("vivanterra_enquiries"),
+          head("vivanterra_enquiries", ["status", "new"]),
+          head("vivanterra_leads"),
+          head("vivanterra_subscribers"),
+          head("vivanterra_posts"),
+          head("vivanterra_news"),
+          head("vivanterra_press_releases"),
+          head("vivanterra_gallery"),
+          sb
+            .from("vivanterra_enquiries")
+            .select("*")
+            .order("created_at", { ascending: false })
+            .limit(5),
+        ]);
         if (cancelled) return;
-        if (error) throw error;
-        setEnquiries((data as Enquiry[]) ?? []);
+        setCounts({
+          projects: projects.count ?? 0,
+          enquiries: enquiries.count ?? 0,
+          enquiriesNew: enquiriesNew.count ?? 0,
+          leads: leads.count ?? 0,
+          subscribers: subscribers.count ?? 0,
+          posts: posts.count ?? 0,
+          news: news.count ?? 0,
+          press: press.count ?? 0,
+          gallery: gallery.count ?? 0,
+        });
+        setRecent((recentRes.data as Enquiry[]) ?? []);
       } catch (err) {
         if (!cancelled)
           setError(err instanceof Error ? err.message : "Failed to load");
@@ -56,249 +94,181 @@ export default function AdminDashboard() {
     };
   }, []);
 
-  const filtered = useMemo(() => {
-    if (!enquiries) return null;
-    const q = query.trim().toLowerCase();
-    return enquiries.filter((e) => {
-      if (status !== "all" && e.status !== status) return false;
-      if (!q) return true;
-      return (
-        e.name.toLowerCase().includes(q) ||
-        e.email.toLowerCase().includes(q) ||
-        (e.message ?? "").toLowerCase().includes(q) ||
-        (e.project_slug ?? "").toLowerCase().includes(q)
-      );
-    });
-  }, [enquiries, status, query]);
-
-  const counts = useMemo(() => {
-    const all = enquiries ?? [];
-    const out: Record<StatusFilter, number> = {
-      all: all.length,
-      new: 0,
-      contacted: 0,
-      qualified: 0,
-      closed: 0,
-      spam: 0,
-    };
-    for (const e of all) out[e.status]++;
-    return out;
-  }, [enquiries]);
-
   return (
     <>
-      <Seo title="Admin — enquiries" description="Vivanterra enquiry inbox." />
-      <AdminLayout email={email} title="Enquiries">
-        {/* Filters */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
-          <div className="flex flex-wrap items-center gap-2">
-            <FilterPill
-              active={status === "all"}
-              count={counts.all}
-              onClick={() => setStatus("all")}
-            >
-              All
-            </FilterPill>
-            {ENQUIRY_STATUSES.map((s) => (
-              <FilterPill
-                key={s}
-                active={status === s}
-                count={counts[s]}
-                onClick={() => setStatus(s)}
-              >
-                {s}
-              </FilterPill>
-            ))}
-          </div>
-
-          <div className="relative w-full lg:w-72">
-            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink/45 pointer-events-none">
-              <Search size={14} />
-            </span>
-            <input
-              type="search"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search name, email, message…"
-              className="w-full bg-[rgba(78,115,83,0.04)] border border-line-dark rounded-full pl-9 pr-4 py-2.5 text-sm text-ink placeholder:text-ink/40 outline-none focus:border-gold focus:bg-paper transition-colors"
-            />
-          </div>
-        </div>
-
-        {/* States */}
+      <Seo title="Admin — dashboard" description="Vivanterra admin overview." />
+      <AdminLayout
+        email={email}
+        title="Overview"
+        subtitle="Quick view of your content and leads."
+      >
         {error && (
-          <div className="p-4 border border-[hsl(var(--destructive))]/30 bg-[hsl(var(--destructive))]/5 text-[hsl(var(--destructive))] text-sm rounded-sm mb-6">
+          <div className="p-4 border border-[hsl(var(--destructive))]/30 bg-[hsl(var(--destructive))]/5 text-[hsl(var(--destructive))] text-sm rounded-md mb-6">
             {error}
           </div>
         )}
 
-        {enquiries === null && !error && (
-          <div className="flex items-center gap-3 text-muted-soft">
-            <Loader2 className="animate-spin" size={16} /> Loading enquiries…
+        {!counts && !error ? (
+          <div className="flex items-center gap-3 text-ink/50">
+            <Loader2 className="animate-spin" size={16} /> Loading…
           </div>
-        )}
+        ) : counts ? (
+          <>
+            {/* Primary stat cards */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+              <StatCard
+                to="/admin/projects"
+                label="Projects"
+                value={counts.projects}
+                icon={<Building2 size={22} />}
+              />
+              <StatCard
+                to="/admin/enquiries"
+                label="Enquiries"
+                value={counts.enquiries}
+                badge={counts.enquiriesNew > 0 ? `${counts.enquiriesNew} new` : undefined}
+                icon={<MessageSquare size={22} />}
+              />
+              <StatCard
+                to="/admin/subscribers"
+                label="Subscribers"
+                value={counts.subscribers}
+                icon={<Users size={22} />}
+              />
+              <StatCard
+                to="/admin/blogs"
+                label="Blog posts"
+                value={counts.posts}
+                icon={<PenSquare size={22} />}
+              />
+            </div>
 
-        {filtered && filtered.length === 0 && (
-          <div className="border border-dashed border-line-dark rounded-sm py-20 text-center text-muted-soft">
-            <Inbox className="mx-auto mb-3 opacity-50" />
-            <p>No enquiries{status !== "all" ? ` with status "${status}"` : " yet"}.</p>
-          </div>
-        )}
+            {/* Secondary */}
+            <div className="grid sm:grid-cols-3 gap-5 mb-12">
+              <MiniStat to="/admin/news" label="News items" value={counts.news} icon={<Newspaper size={16} />} />
+              <MiniStat to="/admin/press" label="Press releases" value={counts.press} icon={<Newspaper size={16} />} />
+              <MiniStat to="/admin/gallery" label="Gallery images" value={counts.gallery} icon={<Image size={16} />} />
+            </div>
 
-        {/* Table */}
-        {filtered && filtered.length > 0 && (
-          <div className="overflow-hidden border border-line-dark rounded-sm">
-            <table className="w-full text-sm">
-              <thead className="bg-ink/5">
-                <tr className="text-left text-[10px] tracking-[0.18em] uppercase text-muted-soft">
-                  <th className="px-4 py-3 font-medium">Received</th>
-                  <th className="px-4 py-3 font-medium">Lead</th>
-                  <th className="px-4 py-3 font-medium hidden md:table-cell">
-                    Scope / Project
-                  </th>
-                  <th className="px-4 py-3 font-medium">Status</th>
-                  <th className="px-4 py-3 font-medium hidden lg:table-cell">
-                    Reach
-                  </th>
-                  <th className="px-4 py-3" />
-                </tr>
-              </thead>
-              <tbody>
-                {filtered.map((e) => (
-                  <Row key={e.id} enquiry={e} />
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+            {/* Recent enquiries */}
+            <div className="bg-paper border border-line-dark rounded-lg overflow-hidden">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-line-dark">
+                <h2 className="font-display text-ink text-lg">Recent enquiries</h2>
+                <Link
+                  to="/admin/enquiries"
+                  className="text-[11px] tracking-[0.16em] uppercase text-ink/60 hover:text-gold inline-flex items-center gap-1"
+                >
+                  View all <ChevronRight size={12} />
+                </Link>
+              </div>
+              {recent.length === 0 ? (
+                <div className="px-6 py-10 text-center text-ink/50 text-sm">
+                  No enquiries yet.
+                </div>
+              ) : (
+                <ul className="divide-y divide-line-dark">
+                  {recent.map((e) => (
+                    <li key={e.id}>
+                      <Link
+                        to={`/admin/enquiries/${e.id}`}
+                        className="flex items-center justify-between gap-4 px-6 py-4 hover:bg-ink/[0.02] transition-colors"
+                      >
+                        <div className="min-w-0">
+                          <div className="font-medium text-ink truncate">
+                            {e.name}
+                          </div>
+                          <div className="text-ink/55 text-xs truncate">
+                            {e.email} · {e.scope ?? "—"}
+                            {e.project_slug ? ` · ${e.project_slug}` : ""}
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-3 shrink-0">
+                          <span className="text-[10px] tracking-[0.14em] uppercase px-2 py-0.5 rounded-full bg-gold/20 text-ink">
+                            {e.status}
+                          </span>
+                          <span className="text-ink/40 text-xs tabular-nums hidden sm:inline">
+                            {new Date(e.created_at).toLocaleDateString("en-IN", {
+                              day: "numeric",
+                              month: "short",
+                            })}
+                          </span>
+                          <ChevronRight size={14} className="text-ink/30" />
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </>
+        ) : null}
       </AdminLayout>
     </>
   );
 }
 
-function FilterPill({
-  active,
-  count,
-  onClick,
-  children,
+function StatCard({
+  to,
+  label,
+  value,
+  icon,
+  badge,
 }: {
-  active: boolean;
-  count: number;
-  onClick: () => void;
-  children: React.ReactNode;
+  to: string;
+  label: string;
+  value: number;
+  icon: React.ReactNode;
+  badge?: string;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-pressed={active}
-      className={[
-        "inline-flex items-center gap-2 px-4 h-9 rounded-full border text-[11px] tracking-[0.16em] uppercase font-medium transition-all",
-        active
-          ? "bg-ink text-paper border-ink"
-          : "border-ink/25 text-ink hover:border-gold hover:text-gold",
-      ].join(" ")}
+    <Link
+      to={to}
+      className="group bg-paper border border-line-dark rounded-lg p-6 hover:border-gold hover:shadow-[0_18px_40px_-24px_rgba(0,0,0,0.18)] transition-all"
     >
-      {!active && <Filter size={11} className="opacity-50" />}
-      <span>{children}</span>
-      <span
-        className={[
-          "tabular-nums text-[10px] px-1.5 py-0.5 rounded-full",
-          active ? "bg-gold/30 text-paper" : "bg-ink/10 text-ink/70",
-        ].join(" ")}
-      >
-        {count}
-      </span>
-    </button>
+      <div className="flex items-start justify-between mb-4">
+        <span className="text-ink/55 text-sm">{label}</span>
+        <span className="text-gold/70 group-hover:text-gold transition-colors">
+          {icon}
+        </span>
+      </div>
+      <div className="flex items-baseline gap-3">
+        <span
+          className="font-display text-ink tabular-nums"
+          style={{ fontSize: "clamp(34px, 4vw, 48px)", fontWeight: 300, lineHeight: 1 }}
+        >
+          {value}
+        </span>
+        {badge && (
+          <span className="text-[10px] tracking-[0.14em] uppercase px-2 py-0.5 rounded-full bg-gold/20 text-ink">
+            {badge}
+          </span>
+        )}
+      </div>
+    </Link>
   );
 }
 
-function Row({ enquiry: e }: { enquiry: Enquiry }) {
+function MiniStat({
+  to,
+  label,
+  value,
+  icon,
+}: {
+  to: string;
+  label: string;
+  value: number;
+  icon: React.ReactNode;
+}) {
   return (
-    <tr className="border-t border-line-dark hover:bg-ink/[0.02] transition-colors">
-      <td className="px-4 py-4 align-top whitespace-nowrap tabular-nums text-muted-soft">
-        {new Date(e.created_at).toLocaleString("en-IN", {
-          dateStyle: "medium",
-          timeStyle: "short",
-        })}
-      </td>
-      <td className="px-4 py-4 align-top">
-        <Link
-          to={`/admin/enquiries/${e.id}`}
-          className="font-medium text-ink hover:text-gold"
-        >
-          {e.name}
-        </Link>
-        <div className="text-muted-soft text-xs mt-0.5 break-all">{e.email}</div>
-        {e.phone && (
-          <div className="text-muted-soft text-xs mt-0.5 tabular-nums">
-            {e.phone}
-          </div>
-        )}
-      </td>
-      <td className="px-4 py-4 align-top hidden md:table-cell">
-        <div className="text-ink text-sm capitalize">{e.scope ?? "—"}</div>
-        {e.project_slug && (
-          <Link
-            to={`/projects/${e.project_slug}`}
-            className="text-xs text-gold hover:underline tabular-nums"
-          >
-            {e.project_slug}
-          </Link>
-        )}
-      </td>
-      <td className="px-4 py-4 align-top">
-        <span
-          className={[
-            "inline-block px-2.5 py-1 rounded-full border text-[10px] tracking-[0.16em] uppercase font-medium",
-            STATUS_TONES[e.status],
-          ].join(" ")}
-        >
-          {e.status}
-        </span>
-      </td>
-      <td className="px-4 py-4 align-top hidden lg:table-cell">
-        <div className="flex items-center gap-2">
-          <a
-            href={`mailto:${e.email}`}
-            className="w-8 h-8 rounded-full border border-line-dark flex items-center justify-center text-ink hover:bg-ink hover:text-paper transition-colors"
-            aria-label="Email"
-            title="Email"
-          >
-            <Mail size={13} />
-          </a>
-          {e.phone && (
-            <>
-              <a
-                href={`tel:${e.phone.replace(/\s/g, "")}`}
-                className="w-8 h-8 rounded-full border border-line-dark flex items-center justify-center text-ink hover:bg-ink hover:text-paper transition-colors"
-                aria-label="Call"
-                title="Call"
-              >
-                <Phone size={13} />
-              </a>
-              <a
-                href={`https://wa.me/${e.phone.replace(/[^\d+]/g, "").replace(/^\+/, "")}`}
-                target="_blank"
-                rel="noreferrer"
-                className="w-8 h-8 rounded-full border border-line-dark flex items-center justify-center text-ink hover:bg-ink hover:text-paper transition-colors"
-                aria-label="WhatsApp"
-                title="WhatsApp"
-              >
-                <MessageCircle size={13} />
-              </a>
-            </>
-          )}
-        </div>
-      </td>
-      <td className="px-4 py-4 align-top text-right">
-        <Link
-          to={`/admin/enquiries/${e.id}`}
-          className="inline-flex items-center gap-1 text-[10px] tracking-[0.18em] uppercase text-ink hover:text-gold transition-colors"
-        >
-          Open <ChevronRight size={12} />
-        </Link>
-      </td>
-    </tr>
+    <Link
+      to={to}
+      className="group flex items-center justify-between bg-paper border border-line-dark rounded-lg px-5 py-4 hover:border-gold transition-colors"
+    >
+      <span className="flex items-center gap-2.5 text-ink/65 text-sm">
+        <span className="text-gold/70">{icon}</span>
+        {label}
+      </span>
+      <span className="font-display text-ink text-xl tabular-nums">{value}</span>
+    </Link>
   );
 }

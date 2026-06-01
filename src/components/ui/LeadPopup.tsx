@@ -185,8 +185,23 @@ export default function LeadPopup() {
   }
 
   async function onSubmit(values: FormValues) {
-    await new Promise((r) => setTimeout(r, 1100));
-    console.log("lead", values);
+    try {
+      await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          phone: values.phone,
+          kind: "popup",
+          message: `Interested in ${values.configuration} at ${values.project}`,
+          page_path: typeof window !== "undefined" ? window.location.pathname : null,
+          source: "lead-popup",
+        }),
+      });
+    } catch {
+      // Non-blocking — still confirm to the user even if the network hiccups.
+    }
     markDismissed(SUBMIT_KEY);
     toast.success("You're on the list", {
       description: "We'll be in touch with our next release.",
