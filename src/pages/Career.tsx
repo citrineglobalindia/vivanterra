@@ -428,7 +428,7 @@ export default function Career() {
                   <span className="text-[10px] tracking-[0.22em] text-gold tabular-nums">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="ml-3 eyebrow text-paper/80">{c.label}</span>
+                  <span className="ml-3 eyebrow text-paper">{c.label}</span>
                 </figcaption>
               </figure>
             </Reveal>

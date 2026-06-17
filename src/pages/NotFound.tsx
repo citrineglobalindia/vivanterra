@@ -51,7 +51,7 @@ const NotFound = () => {
           transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
         >
           <span className="h-px w-10 bg-gold" />
-          <span className="eyebrow text-paper/60">Page Not Found</span>
+          <span className="eyebrow text-paper">Page Not Found</span>
           <span className="h-px w-10 bg-gold" />
         </motion.div>
 

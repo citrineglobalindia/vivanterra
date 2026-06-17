@@ -31,7 +31,7 @@ export default function CTA() {
           {/* Newsletter */}
           <div className="lg:pr-16">
             <Reveal>
-              <div className="eyebrow text-paper/60 mb-6">Correspondence</div>
+              <div className="eyebrow text-paper mb-6">Correspondence</div>
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="font-display mb-10" style={{ fontSize: "clamp(40px, 5.5vw, 84px)", fontWeight: 300, letterSpacing: "-0.02em", lineHeight: 1 }}>
@@ -46,7 +46,7 @@ export default function CTA() {
               ) : (
                 <form onSubmit={onSubmit} className="flex items-end gap-4 max-w-md">
                   <div className="flex-1">
-                    <label htmlFor="email" className="eyebrow text-paper/50 mb-2 block">Email</label>
+                    <label htmlFor="email" className="eyebrow text-paper mb-2 block">Email</label>
                     <input
                       id="email"
                       type="email"
@@ -69,7 +69,7 @@ export default function CTA() {
           {/* Visit */}
           <div className="lg:pl-16">
             <Reveal>
-              <div className="eyebrow text-paper/60 mb-6">In Person</div>
+              <div className="eyebrow text-paper mb-6">In Person</div>
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="font-display mb-10" style={{ fontSize: "clamp(40px, 5.5vw, 84px)", fontWeight: 300, letterSpacing: "-0.02em", lineHeight: 1 }}>

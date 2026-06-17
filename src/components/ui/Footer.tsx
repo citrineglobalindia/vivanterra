@@ -100,7 +100,7 @@ export default function Footer() {
             </h2>
             <div className="mt-3 md:mt-4 flex items-center gap-4">
               <span className="h-px w-10 md:w-16 bg-gold" />
-              <span className="eyebrow text-paper/70">
+              <span className="eyebrow text-paper">
                 Wellness-first real estate · Bengaluru
               </span>
             </div>
@@ -118,7 +118,7 @@ export default function Footer() {
         <div className="mt-16 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-10">
           {/* Visit / contact card — spans 5 cols on desktop */}
           <Reveal className="md:col-span-5">
-            <div className="eyebrow mb-5 text-paper/85">Visit the studio</div>
+            <div className="eyebrow mb-5 text-paper">Visit the studio</div>
             <ContactRow icon={<MapPin size={14} />}>
               {STUDIO_ADDRESS_LINES.map((l, i) => (
                 <span key={i} className="block">
@@ -168,7 +168,7 @@ export default function Footer() {
           <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-10">
             {COLS.map((col) => (
               <Reveal key={col.title}>
-                <div className="eyebrow mb-5 text-paper/85">{col.title}</div>
+                <div className="eyebrow mb-5 text-paper">{col.title}</div>
                 <ul className="space-y-3">
                   {col.links.map((l) => (
                     <li key={l.label}>

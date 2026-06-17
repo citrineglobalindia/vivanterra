@@ -289,7 +289,7 @@ function Stat({
           {value}
         </span>
       </span>
-      <span className="eyebrow text-paper/55 text-[10px]">{label}</span>
+      <span className="eyebrow text-paper text-[10px]">{label}</span>
     </div>
   );
 }

@@ -340,18 +340,34 @@ export default function Concierge() {
           )}
         </AnimatePresence>
 
-        <button
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 260, damping: 18, delay: 0.6 }}
+        >
+        <motion.button
           aria-label={open ? "Close concierge" : "Open concierge"}
           aria-expanded={open}
           onClick={() => setOpen((o) => !o)}
-          className="relative h-14 w-14 md:h-16 md:w-16 rounded-full bg-ink text-paper flex items-center justify-center shadow-[0_18px_40px_-14px_rgba(78,115,83,0.55)] hover:bg-[var(--ink)] transition-transform duration-300 hover:scale-[1.04] active:scale-95"
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.92 }}
+          animate={open ? { y: 0 } : { y: [0, -6, 0] }}
+          transition={open ? { duration: 0.3 } : { duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          className="relative h-12 w-12 md:h-14 md:w-14 rounded-full bg-ink text-paper flex items-center justify-center shadow-[0_18px_40px_-14px_rgba(78,115,83,0.55)]"
         >
           {/* Gold pulse */}
           {!open && (
-            <span
-              aria-hidden
-              className="absolute inset-0 rounded-full border border-gold/60 animate-ping-slow opacity-70"
-            />
+            <>
+              <span
+                aria-hidden
+                className="absolute inset-0 rounded-full border border-gold/60 animate-ping-slow opacity-70"
+              />
+              <span
+                aria-hidden
+                className="absolute inset-0 rounded-full border border-gold/40 animate-ping-slow opacity-50"
+                style={{ animationDelay: "1s" }}
+              />
+            </>
           )}
           <AnimatePresence mode="wait" initial={false}>
             {open ? (
@@ -362,7 +378,7 @@ export default function Concierge() {
                 exit={{ rotate: 45, opacity: 0 }}
                 transition={{ duration: 0.25 }}
               >
-                <X size={20} />
+                <X size={18} />
               </motion.span>
             ) : (
               <motion.span
@@ -372,11 +388,12 @@ export default function Concierge() {
                 exit={{ rotate: -45, opacity: 0 }}
                 transition={{ duration: 0.25 }}
               >
-                <MessageCircle size={22} />
+                <MessageCircle size={19} />
               </motion.span>
             )}
           </AnimatePresence>
-        </button>
+        </motion.button>
+        </motion.div>
       </div>
 
       {/* ───────── Panel ───────── */}

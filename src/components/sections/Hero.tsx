@@ -126,7 +126,7 @@ export default function Hero() {
         className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 z-10 hidden sm:flex flex-col items-center gap-4"
         aria-hidden="true"
       >
-        <span className="eyebrow text-paper/70" style={{ writingMode: "vertical-rl" }}>Scroll</span>
+        <span className="eyebrow text-paper" style={{ writingMode: "vertical-rl" }}>Scroll</span>
         <div className="relative h-24 w-px bg-paper/20 overflow-hidden">
           {!reduced && (
             <span className="absolute inset-x-0 h-1/2 bg-paper animate-scroll-indicator" />
@@ -139,7 +139,7 @@ export default function Hero() {
         <div className="max-w-page container-x">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
             <div className="md:col-span-9 min-w-0">
-              <div className="eyebrow text-paper/80 mb-6">{SLIDES[active].eyebrow}</div>
+              <div className="eyebrow text-paper mb-6">{SLIDES[active].eyebrow}</div>
               <SplitText
                 as="h1"
                 key={active}

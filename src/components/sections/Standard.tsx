@@ -71,7 +71,7 @@ export default function Standard() {
               02
             </span>
             <span className="h-px flex-1 bg-gold/40 max-w-[60px]" />
-            <span className="eyebrow text-paper/60">The Standard</span>
+            <span className="eyebrow text-paper">The Standard</span>
           </div>
           <div className="hidden md:block md:col-span-9 h-px bg-paper/10" />
         </motion.div>
@@ -92,7 +92,7 @@ export default function Standard() {
               className="text-gold/55 -ml-1"
             />
             <div className="lg:mt-auto">
-              <div className="eyebrow text-paper/45 mb-1">Philosophy</div>
+              <div className="eyebrow text-paper mb-1">Philosophy</div>
               <div className="font-display italic text-paper/70 text-sm">
                 Est. 2009
               </div>
@@ -140,7 +140,7 @@ export default function Standard() {
                 <p className="font-display italic text-paper text-lg md:text-xl leading-tight">
                   Tej Singh
                 </p>
-                <p className="eyebrow text-paper/55 text-[10px] mt-1">
+                <p className="eyebrow text-paper text-[10px] mt-1">
                   Founder · Vivanterra
                 </p>
               </div>

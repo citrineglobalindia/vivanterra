@@ -48,7 +48,7 @@ export default function Collection() {
         <Reveal>
           <div className="flex items-center gap-3 mb-5">
             <span className="h-px w-10 bg-gold" />
-            <span className="eyebrow text-paper/60">The Collection</span>
+            <span className="eyebrow text-paper">The Collection</span>
           </div>
         </Reveal>
         <Reveal delay={0.05}>

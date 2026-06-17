@@ -298,7 +298,7 @@ function MobileMenu({
           className="relative px-6 pt-6 flex items-center gap-3"
         >
           <span className="h-px w-8 bg-gold" />
-          <span className="eyebrow text-paper/60">Menu</span>
+          <span className="eyebrow text-paper">Menu</span>
         </motion.div>
 
         {/* Nav list */}
@@ -465,7 +465,7 @@ function MobileMenu({
           >
             <div className="flex items-center gap-3 mb-3">
               <span className="h-px w-8 bg-gold" />
-              <span className="eyebrow text-paper/60">Direct</span>
+              <span className="eyebrow text-paper">Direct</span>
             </div>
             <div className="grid grid-cols-3 gap-2">
               <ContactTile
@@ -500,7 +500,7 @@ function MobileMenu({
               <div className="font-display text-paper text-xl font-light leading-tight">
                 Vivanterra
               </div>
-              <div className="eyebrow text-paper/60 mt-0.5">Real Estate</div>
+              <div className="eyebrow text-paper mt-0.5">Real Estate</div>
             </div>
             <div className="text-right">
               <div className="text-[10px] tracking-[0.22em] text-gold tabular-nums">

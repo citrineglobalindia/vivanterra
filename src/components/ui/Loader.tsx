@@ -70,10 +70,10 @@ export default function Loader() {
               <span className="font-display text-paper text-2xl md:text-3xl font-light tracking-[-0.02em]">
                 Vivanterra
               </span>
-              <span className="eyebrow text-paper/60">Real Estate</span>
+              <span className="eyebrow text-paper">Real Estate</span>
             </motion.div>
             <motion.span
-              className="eyebrow text-paper/50"
+              className="eyebrow text-paper"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.4 }}

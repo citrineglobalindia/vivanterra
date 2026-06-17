@@ -25,7 +25,7 @@ export default function Press() {
           className="flex items-center gap-3"
         >
           <span className="h-px w-8 bg-gold/60" />
-          <span className="eyebrow text-paper/50">In the press</span>
+          <span className="eyebrow text-paper">In the press</span>
         </motion.div>
       </div>
 
