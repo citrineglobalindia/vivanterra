@@ -1,6 +1,6 @@
 import { Suspense, lazy } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { HelmetProvider } from "react-helmet-async";
 import AdminGuard from "@/components/admin/AdminGuard";
@@ -75,7 +75,7 @@ function AnimatedRoutes() {
               element={<ProjectsByStatus status="Completed" />}
             />
             <Route path="/projects/:slug" element={<ProjectDetail />} />
-            <Route path="/velocity" element={<Velocity />} />
+            <Route path="/velociti" element={<Velocity />} />
             <Route path="/career" element={<Career />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogs/:slug" element={<BlogDetail />} />

@@ -44,7 +44,7 @@ type Department =
   | "Design"
   | "Construction"
   | "Studio"
-  | "Velocity"
+  | "Velociti"
   | "Operations";
 
 type Role = {
@@ -104,12 +104,12 @@ const ROLES: Role[] = [
   },
   {
     title: "Sales Director",
-    department: "Velocity",
+    department: "Velociti",
     location: "Bengaluru",
     type: "Full-time",
     posted: "March 2026",
     blurb:
-      "Lead Velocity, our sales atelier. Build the relationships that bring clients to us and never the other way around.",
+      "Lead Velociti, our sales atelier. Build the relationships that bring clients to us and never the other way around.",
   },
   {
     title: "Editorial Lead",
@@ -136,7 +136,7 @@ const DEPARTMENTS: ("All" | Department)[] = [
   "Design",
   "Construction",
   "Studio",
-  "Velocity",
+  "Velociti",
   "Operations",
 ];
 

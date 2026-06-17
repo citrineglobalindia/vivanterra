@@ -33,7 +33,7 @@ const NAV_LINKS: NavItem[] = [
       { label: "Completed Projects", to: "/projects/completed" },
     ],
   },
-  { label: "Velocity", to: "/velocity" },
+  { label: "Velociti", to: "https://velocitirealestate.com/", external: true },
   { label: "Career", to: "/career" },
   { label: "Blogs", to: "/blogs" },
   { label: "Contact Us", to: "/contact" },

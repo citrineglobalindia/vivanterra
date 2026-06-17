@@ -30,7 +30,7 @@ const COLS: { title: string; links: FooterLink[] }[] = [
     title: "Studio",
     links: [
       { label: "About", to: "/about" },
-      { label: "Velocity", to: "/velocity" },
+      { label: "Velociti", to: "https://velocitirealestate.com/", external: true },
       { label: "Careers", to: "/career" },
       { label: "Journal", to: "/blogs" },
     ],

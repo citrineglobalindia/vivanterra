@@ -73,17 +73,17 @@ const STAGES = [
 export default function Velocity() {
   return (
     <PageShell
-      eyebrow="Velocity"
+      eyebrow="Velociti"
       title={
         <>
       <Seo
-        title={"Velocity — our delivery standard"}
+        title={"Velociti — our delivery standard"}
         description={"Four pillars, six stages. The program that defines how every Vivanterra residence is delivered, from the first walk of the plot to the twelfth month after handover."}
       />
           A standard <span className="italic text-gold">of our own.</span>
         </>
       }
-      intro="Velocity is the program that defines how every Vivanterra residence is delivered — from the first walk of the plot to the twelfth month after handover."
+      intro="Velociti is the program that defines how every Vivanterra residence is delivered — from the first walk of the plot to the twelfth month after handover."
     >
       {/* Pillars */}
       <section className="mt-4">
@@ -223,14 +223,14 @@ export default function Velocity() {
                     lineHeight: 1,
                   }}
                 >
-                  Velocity is what makes a Vivanterra residence{" "}
+                  Velociti is what makes a Vivanterra residence{" "}
                   <span className="italic text-gold font-light normal-case">
                     a Vivanterra residence.
                   </span>
                 </h3>
                 <p className="mt-6 text-paper/80 leading-relaxed max-w-xl">
                   We do not move quickly. We move carefully, and at a pace the
-                  building tells us it can hold. Velocity is not a deadline — it
+                  building tells us it can hold. Velociti is not a deadline — it
                   is a standard.
                 </p>
               </div>
