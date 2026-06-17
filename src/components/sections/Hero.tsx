@@ -138,7 +138,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-10 flex flex-col justify-end pb-16 md:pb-24">
         <div className="max-w-page container-x">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
-            <div className="md:col-span-10 min-w-0">
+            <div className="md:col-span-9 min-w-0">
               <div className="eyebrow text-paper/80 mb-6">{SLIDES[active].eyebrow}</div>
               <SplitText
                 as="h1"
@@ -152,9 +152,9 @@ export default function Hero() {
                 once={false}
               />
             </div>
-            <div className="md:col-span-2 md:text-right">
+            <div className="md:col-span-3 md:text-right">
               <Magnetic className="inline-block" strength={0.3}>
-                <a href="#residences" className="btn btn-light">
+                <a href="#residences" className="btn btn-light whitespace-nowrap">
                   Discover the residence
                   <ArrowUpRight className="btn-arrow" size={16} />
                 </a>
