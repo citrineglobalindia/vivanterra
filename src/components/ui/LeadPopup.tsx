@@ -239,7 +239,7 @@ export default function LeadPopup() {
             exit={{ opacity: 0, y: 30, scale: 0.97 }}
             transition={{ duration: 0.55, ease: [0.2, 0.8, 0.2, 1] }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-[460px] max-h-[92vh] overflow-y-auto bg-paper rounded-sm overflow-x-hidden"
+            className="relative w-full max-w-[440px] max-h-[94vh] overflow-y-auto bg-paper rounded-xl overflow-x-hidden"
             style={{
               boxShadow:
                 "0 40px 100px -30px rgba(78,115,83,0.6), 0 0 0 1px rgba(196,169,106,0.25)",
@@ -260,7 +260,7 @@ export default function LeadPopup() {
             </button>
 
             {/* ── Image header ── */}
-            <div className="relative h-[200px] sm:h-[220px] overflow-hidden bg-ink">
+            <div className="relative h-[180px] sm:h-[210px] overflow-hidden bg-ink">
               <motion.img
                 src={HERO_IMG}
                 alt=""
@@ -337,33 +337,35 @@ export default function LeadPopup() {
             <form
               onSubmit={handleSubmit(onSubmit)}
               noValidate
-              className="p-5 sm:p-6 space-y-3"
+              className="p-5 sm:p-7 space-y-3.5"
             >
-              <IconField
-                icon={<User size={16} />}
-                error={errors.name?.message}
-              >
-                <input
-                  type="text"
-                  autoComplete="name"
-                  placeholder="Full Name*"
-                  className={inputCls}
-                  {...register("name")}
-                />
-              </IconField>
+              <div className="grid sm:grid-cols-2 gap-3.5">
+                <IconField
+                  icon={<User size={16} />}
+                  error={errors.name?.message}
+                >
+                  <input
+                    type="text"
+                    autoComplete="name"
+                    placeholder="Full name*"
+                    className={inputCls}
+                    {...register("name")}
+                  />
+                </IconField>
 
-              <IconField
-                icon={<Phone size={16} />}
-                error={errors.phone?.message}
-              >
-                <input
-                  type="tel"
-                  autoComplete="tel"
-                  placeholder="Phone Number*"
-                  className={inputCls}
-                  {...register("phone")}
-                />
-              </IconField>
+                <IconField
+                  icon={<Phone size={16} />}
+                  error={errors.phone?.message}
+                >
+                  <input
+                    type="tel"
+                    autoComplete="tel"
+                    placeholder="Phone*"
+                    className={inputCls}
+                    {...register("phone")}
+                  />
+                </IconField>
+              </div>
 
               <IconField
                 icon={<Mail size={16} />}
@@ -414,7 +416,7 @@ export default function LeadPopup() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="group relative mt-4 w-full h-[52px] rounded-sm bg-ink text-paper font-semibold text-[13px] tracking-[0.18em] uppercase overflow-hidden disabled:opacity-60 disabled:cursor-not-allowed"
+                className="group relative mt-5 w-full h-[54px] rounded-md bg-ink text-paper font-semibold text-[12.5px] tracking-[0.18em] uppercase overflow-hidden disabled:opacity-60 disabled:cursor-not-allowed"
                 style={{
                   boxShadow:
                     "0 0 0 1px rgba(196,169,106,0.4), 0 16px 40px -16px rgba(78,115,83,0.55)",
@@ -456,7 +458,7 @@ export default function LeadPopup() {
 /* ── Bits ────────────────────────────────────────────── */
 
 const inputCls =
-  "w-full bg-transparent border-0 outline-none text-ink text-[14px] py-3 pl-11 pr-3 placeholder:text-ink/45";
+  "w-full bg-transparent border-0 outline-none text-ink text-[14px] py-3.5 pl-11 pr-3 placeholder:text-ink/45";
 
 function IconField({
   icon,
@@ -471,11 +473,12 @@ function IconField({
     <div>
       <div
         className={[
-          "relative rounded-sm border bg-[rgba(78,115,83,0.04)] focus-within:border-gold focus-within:bg-paper transition-colors",
+          "relative rounded-md border bg-[rgba(78,115,83,0.04)] transition-all duration-200",
+          "focus-within:border-gold focus-within:bg-paper focus-within:ring-2 focus-within:ring-gold/20",
           error ? "border-[hsl(var(--destructive))]" : "border-line-dark",
         ].join(" ")}
       >
-        <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink/45 pointer-events-none">
+        <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gold/70 pointer-events-none transition-colors">
           {icon}
         </span>
         {children}
