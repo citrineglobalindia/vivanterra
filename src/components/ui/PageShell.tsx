@@ -25,33 +25,33 @@ export default function PageShell({ eyebrow, title, intro, children }: PageShell
     <main className="bg-paper text-ink">
       <Nav />
 
-      <section className="pt-[140px] md:pt-[180px] pb-24 md:pb-32 section-glow">
+      <section className="pt-[104px] md:pt-[132px] pb-12 md:pb-16 section-glow">
         <div className="max-w-page container-x">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
           >
-            <div className="eyebrow text-gold mb-6">{eyebrow}</div>
+            <div className="eyebrow text-gold mb-4">{eyebrow}</div>
             <h1
               className="font-display text-ink"
               style={{
-                fontSize: "clamp(48px, 8vw, 128px)",
+                fontSize: "clamp(34px, 5vw, 76px)",
                 fontWeight: 300,
-                letterSpacing: "-0.03em",
-                lineHeight: 0.95,
+                letterSpacing: "-0.02em",
+                lineHeight: 1.0,
               }}
             >
               {title}
             </h1>
             {intro && (
-              <p className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-muted-soft">
+              <p className="mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-muted-soft">
                 {intro}
               </p>
             )}
           </motion.div>
 
-          <div className="hairline-dark mt-16 md:mt-24" />
+          <div className="hairline-dark mt-8 md:mt-12" />
         </div>
       </section>
 
