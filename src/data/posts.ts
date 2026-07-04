@@ -9,9 +9,10 @@
 export type Category =
   | "Architecture"
   | "Craft"
-  | "Investment"
   | "Studio Notes"
-  | "City";
+  | "News"
+  | "Updates"
+  | "Inside Vivanterra";
 
 export type Post = {
   slug: string;
@@ -33,7 +34,7 @@ export const POSTS: Post[] = [
     dek: "Twelve months of stone, brass and oak — our head of design walks through the year's discoveries and the houses they shaped.",
     category: "Craft",
     author: "Reema Iyer",
-    date: "April 2026",
+    date: "5 July 2026",
     readingTime: "8 min read",
     image:
       "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=85",
@@ -109,7 +110,7 @@ export const POSTS: Post[] = [
     slug: "investment-the-long-view",
     title: "The long view: a residence as compound interest.",
     dek: "Quiet thoughts on land, location and the kind of architecture that gains rather than loses meaning over time.",
-    category: "Investment",
+    category: "Inside Vivanterra",
     author: "Vivek Pillai",
     date: "January 2026",
     readingTime: "9 min read",
@@ -127,7 +128,7 @@ export const POSTS: Post[] = [
     slug: "bengaluru-twelfth-floor",
     title: "Bengaluru, from a twelfth-floor window.",
     dek: "Fifteen years of watching this city grow — what we've seen and what we hope to keep.",
-    category: "City",
+    category: "News",
     author: "Aravind Menon",
     date: "January 2026",
     readingTime: "6 min read",
