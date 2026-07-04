@@ -6,7 +6,7 @@ const baseValues: ContactEnquiry = {
   email: "ada@example.com",
   phone: "+91 88675 89797",
   scope: "residence",
-  budget: "5-10",
+  budget: "2.1-3",
   message: "Looking for a 4-bed residence in Sadashiva Nagar.",
 };
 

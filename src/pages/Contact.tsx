@@ -31,31 +31,35 @@ const DIRECTIONS_URL =
 const SCOPE_OPTIONS = [
   { value: "residence", label: "Residence" },
   { value: "investor", label: "Investor" },
-  { value: "press", label: "Press" },
+  { value: "press", label: "Office Visit" },
   { value: "career", label: "Career" },
-  { value: "visit", label: "Studio Visit" },
+  { value: "visit", label: "Site Visit" },
 ] as const;
 
 const BUDGET_OPTIONS = [
-  { value: "under-2", label: "Under ₹2 Cr" },
-  { value: "2-5", label: "₹2 — 5 Cr" },
-  { value: "5-10", label: "₹5 — 10 Cr" },
-  { value: "10-plus", label: "₹10 Cr +" },
+  { value: "1-1.5", label: "₹1 — 1.5 Cr" },
+  { value: "1.6-2", label: "₹1.6 — 2 Cr" },
+  { value: "2.1-3", label: "₹2.1 — 3 Cr" },
+  { value: "3-plus", label: "₹3 Cr +" },
 ] as const;
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please share your name"),
-  email: z.string().trim().email("A valid email, please"),
-  phone: z
+  email: z
     .string()
     .trim()
     .optional()
     .refine(
-      (v) => !v || /^[+\d\s\-()]{7,20}$/.test(v),
-      "Check the phone number",
+      (v) => !v || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v),
+      "A valid email, please",
     ),
+  phone: z
+    .string()
+    .trim()
+    .min(7, "Please share a phone number")
+    .regex(/^[+\d\s\-()]{7,20}$/, "Check the phone number"),
   scope: z.enum(["residence", "investor", "press", "career", "visit"]),
-  budget: z.enum(["under-2", "2-5", "5-10", "10-plus"]).optional(),
+  budget: z.enum(["1-1.5", "1.6-2", "2.1-3", "3-plus"]).optional(),
   message: z
     .string()
     .trim()
@@ -166,7 +170,7 @@ export default function Contact() {
               lineHeight: 0.98,
             }}
           >
-            Start with a few lines.
+            Let us know exactly the kind of home you want.
           </h2>
 
           <form
@@ -206,7 +210,7 @@ export default function Contact() {
                 <input
                   type="email"
                   autoComplete="email"
-                  placeholder="Email"
+                  placeholder="Email (optional)"
                   className={inputCls}
                   {...register("email")}
                 />
@@ -217,7 +221,7 @@ export default function Contact() {
               <input
                 type="tel"
                 autoComplete="tel"
-                placeholder="Phone (optional)"
+                placeholder="Phone*"
                 className={inputCls}
                 {...register("phone")}
               />
@@ -225,7 +229,7 @@ export default function Contact() {
 
             {/* Scope chips */}
             <div>
-              <div className="eyebrow text-muted-soft mb-3">Scope</div>
+              <div className="eyebrow text-muted-soft mb-3">Your Interest</div>
               <div className="flex flex-wrap gap-2">
                 {SCOPE_OPTIONS.map((s) => {
                   const active = scope === s.value;
@@ -253,7 +257,7 @@ export default function Contact() {
 
             {/* Budget chips */}
             <div>
-              <div className="eyebrow text-muted-soft mb-3">Indicative Budget</div>
+              <div className="eyebrow text-muted-soft mb-3">Budget Range</div>
               <div className="flex flex-wrap gap-2">
                 {BUDGET_OPTIONS.map((b) => {
                   const active = budget === b.value;
@@ -369,14 +373,14 @@ export default function Contact() {
             />
 
             <div className="relative">
-              <div className="eyebrow text-gold mb-4">Visit the studio</div>
+              <div className="eyebrow text-gold mb-4">Visit our office</div>
               <h3
-                className="font-display uppercase"
+                className="font-display"
                 style={{
-                  fontSize: "clamp(26px, 3.2vw, 38px)",
-                  fontWeight: 700,
-                  letterSpacing: "-0.02em",
-                  lineHeight: 1,
+                  fontSize: "clamp(22px, 2.6vw, 30px)",
+                  fontWeight: 400,
+                  letterSpacing: "-0.01em",
+                  lineHeight: 1.15,
                 }}
               >
                 Sadashiva Nagar · Bengaluru
@@ -506,7 +510,7 @@ export default function Contact() {
             <div className="relative bg-paper/95 backdrop-blur-sm border border-line-dark p-7 rounded-sm">
               <span className="absolute top-0 left-0 w-12 h-px bg-gold" />
               <div className="text-[10px] tracking-[0.22em] text-gold tabular-nums mb-3">
-                STUDIO
+                SITE
               </div>
               <p className="font-display text-ink text-xl font-bold uppercase mb-3 leading-tight tracking-tight">
                 Vivanterra Real Estate

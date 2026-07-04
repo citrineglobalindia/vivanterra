@@ -25,7 +25,7 @@ type Body = {
 };
 
 const SCOPES = ["residence", "investor", "press", "career", "visit"];
-const BUDGETS = ["under-2", "2-5", "5-10", "10-plus"];
+const BUDGETS = ["1-1.5", "1.6-2", "2.1-3", "3-plus"];
 
 function asString(v: unknown, max = 2000): string | undefined {
   if (typeof v !== "string") return undefined;

@@ -19,7 +19,7 @@ export type ContactEnquiry = {
   email: string;
   phone?: string;
   scope: "residence" | "investor" | "press" | "career" | "visit";
-  budget?: "under-2" | "2-5" | "5-10" | "10-plus";
+  budget?: "1-1.5" | "1.6-2" | "2.1-3" | "3-plus";
   message: string;
   /** Slug of the project the enquiry is about, when sent from a detail page. */
   projectSlug?: string;
