@@ -121,9 +121,11 @@ const App = () => {
           <Loader />
           <BrowserRouter>
             <ScrollProgress />
-            <AnimatedRoutes />
-            <Concierge />
-            <LeadPopup />
+            <LaunchGate>
+              <AnimatedRoutes />
+              <Concierge />
+              <LeadPopup />
+            </LaunchGate>
           </BrowserRouter>
         </TooltipProvider>
       </QueryClientProvider>
