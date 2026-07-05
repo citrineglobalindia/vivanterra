@@ -14,17 +14,14 @@ import Reveal from "../ui/Reveal";
  * Placeholder luxury imagery + Vivanterra collection labels — swap the
  * `image` values (or wire to the admin Gallery) with your own photography.
  */
-type Card = { label: string; place: string; image: string };
+type Card = { label: string; place: string; image: string; velociti?: boolean };
 
 const CARDS: Card[] = [
-  { label: "The Penthouse Collection", place: "Sadashiva Nagar", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=85" },
-  { label: "The Atrium", place: "Indiranagar", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" },
-  { label: "Garden Residences", place: "Jayanagar", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85" },
-  { label: "The Courtyard", place: "Cooke Town", image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=85" },
-  { label: "Heritage Restorations", place: "Richmond Town", image: "https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=900&q=85" },
-  { label: "The Wellness Wing", place: "Benson Town", image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=900&q=85" },
-  { label: "Sky Villas", place: "Domlur", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=85" },
-  { label: "The Reading Room", place: "Sadashiva Nagar", image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=900&q=85" },
+  { label: "Bare & Bespoke Residence", place: "Sadashiva Nagar", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=85" },
+  { label: "The Living Edit", place: "Indiranagar", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" },
+  { label: "Sense of Space", place: "Jayanagar", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85" },
+  { label: "Bellevue Nest", place: "Cooke Town", image: "https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=900&q=85", velociti: true },
+  { label: "Elite Serenity", place: "Domlur", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=85", velociti: true },
 ];
 
 export default function Collection() {
@@ -62,7 +59,7 @@ export default function Collection() {
             }}
           >
             A realm of residences,{" "}
-            <span className="italic text-gold">curated with intention.</span>
+            <span className="">curated with intention.</span>
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
@@ -134,8 +131,10 @@ function CollectionCard({ card }: { card: Card }) {
   return (
     <Link
       to="/projects"
+      data-brand={card.velociti ? "Velociti" : undefined}
       className="group relative block h-[440px] md:h-[500px] overflow-hidden rounded-sm bg-paper/5"
     >
+      {card.velociti && <span className="sr-only">A Velociti residence</span>}
       <img
         src={card.image}
         alt={`${card.label}, ${card.place}`}

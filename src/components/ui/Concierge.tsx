@@ -418,7 +418,7 @@ export default function Concierge() {
                   </div>
                   <div>
                     <div className="font-display text-paper text-base leading-tight">
-                      Vivanterra Real Estate <span className="italic text-gold">Concierge</span>
+                      Vivanterra Real Estate <span className="">Concierge</span>
                     </div>
                     <div className="flex items-center gap-2 text-[10px] tracking-[0.18em] uppercase text-paper/60">
                       <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />

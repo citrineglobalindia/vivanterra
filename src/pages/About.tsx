@@ -75,7 +75,7 @@ export default function About() {
         title={
           <>
             More than homes —{" "}
-            <span className="italic text-gold">ecosystems of health.</span>
+            <span className="">ecosystems of health.</span>
           </>
         }
         intro="Vivanterra is a wellness-first real estate studio. We build environments that contribute, every day, to how their residents breathe, rest, and live."
@@ -121,7 +121,7 @@ export default function About() {
                     }}
                   >
                     We build more than homes; we cultivate{" "}
-                    <span className="italic text-gold font-light normal-case">
+                    <span className="font-light normal-case">
                       ecosystems of health.
                     </span>
                   </p>
@@ -147,7 +147,7 @@ export default function About() {
                   }}
                 >
                   To inspire a world where home is{" "}
-                  <span className="italic text-gold font-light normal-case">
+                  <span className="font-light normal-case">
                     the primary source of well-being.
                   </span>
                 </p>
@@ -179,7 +179,7 @@ export default function About() {
               }}
             >
               Two voices,{" "}
-              <span className="italic text-gold">one studio.</span>
+              <span className="">one studio.</span>
             </h2>
           </Reveal>
 
@@ -210,7 +210,7 @@ export default function About() {
               }}
             >
               Four principles that{" "}
-              <span className="italic text-gold">shape every plan.</span>
+              <span className="">shape every plan.</span>
             </h2>
           </Reveal>
 
@@ -272,7 +272,7 @@ export default function About() {
                   }}
                 >
                   Looking for a residence{" "}
-                  <span className="italic text-gold">
+                  <span className="">
                     that breathes with you?
                   </span>
                 </h2>

@@ -66,10 +66,10 @@ export default function Nav() {
   const textTone = onHome ? "text-paper" : "text-ink";
   const scrolledBg = onHome
     ? scrolled
-      ? "rgba(78,115,83,0.92)"
-      : "rgba(78,115,83,0)"
+      ? "rgba(28,38,32,0.96)"
+      : "rgba(28,38,32,0)"
     : scrolled
-      ? "rgba(250,248,244,0.92)"
+      ? "rgba(250,248,244,0.96)"
       : "rgba(250,248,244,0)";
 
   return (
@@ -85,6 +85,11 @@ export default function Nav() {
           initial={false}
           animate={{ backgroundColor: scrolledBg }}
           transition={{ duration: 0.4 }}
+          style={{
+            borderBottom: scrolled
+              ? "1px solid rgba(196,169,106,0.28)"
+              : "1px solid transparent",
+          }}
         />
         <div className="relative max-w-page container-x">
           <div className="flex items-center justify-between h-[72px] md:h-[88px]">

@@ -194,7 +194,7 @@ export default function Career() {
         title={"Careers at the studio"}
         description={"Open roles at Vivanterra. We move slowly and hire people who have stayed."}
       />
-          Build the <span className="italic text-gold">next chapter.</span>
+          Build the <span className="">next chapter.</span>
         </>
       }
       intro="A small atelier in Bengaluru — designers, architects, craftspeople and operators. We hire rarely and quietly. If our work resonates with yours, we'd love to read."
@@ -266,7 +266,7 @@ export default function Career() {
               >
                 {filtered.length} role{filtered.length === 1 ? "" : "s"}
                 <br />
-                <span className="italic text-gold">currently open.</span>
+                <span className="">currently open.</span>
               </h2>
             </Reveal>
           </div>
@@ -348,7 +348,7 @@ export default function Career() {
           >
             How we hire,
             <br />
-            <span className="italic text-gold">step by step.</span>
+            <span className="">step by step.</span>
           </h2>
         </Reveal>
 
@@ -491,7 +491,7 @@ export default function Career() {
               >
                 Write to us anyway.
                 <br />
-                <span className="italic text-gold">
+                <span className="">
                   We read every introduction.
                 </span>
               </h3>
@@ -530,7 +530,7 @@ export default function Career() {
                 }}
               >
                 Send us your{" "}
-                <span className="italic text-gold">introduction.</span>
+                <span className="">introduction.</span>
               </h2>
               <p className="mt-6 text-muted-soft leading-relaxed">
                 Tell us which role resonates and why. Add a link to your

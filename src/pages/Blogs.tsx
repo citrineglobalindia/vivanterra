@@ -54,7 +54,7 @@ export default function Blogs() {
         title={"Journal"}
         description={"Notes from the studio — essays, field notes, conversations and progress reports on materials, craft, and city."}
       />
-          Notes from <span className="italic text-gold">the studio.</span>
+          Notes from <span className="">the studio.</span>
         </>
       }
     >

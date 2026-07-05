@@ -35,7 +35,7 @@ export default function CTA() {
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="font-display mb-10" style={{ fontSize: "clamp(40px, 5.5vw, 84px)", fontWeight: 300, letterSpacing: "-0.02em", lineHeight: 1 }}>
-                Stay in <span className="italic text-gold">correspondence.</span>
+                Stay in <span className="">correspondence.</span>
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
@@ -73,7 +73,7 @@ export default function CTA() {
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="font-display mb-10" style={{ fontSize: "clamp(40px, 5.5vw, 84px)", fontWeight: 300, letterSpacing: "-0.02em", lineHeight: 1 }}>
-                Or visit us <span className="italic text-gold">in private.</span>
+                Or visit us <span className="">in private.</span>
               </h2>
             </Reveal>
             <Reveal delay={0.2}>

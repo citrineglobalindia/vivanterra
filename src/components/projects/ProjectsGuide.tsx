@@ -185,7 +185,7 @@ export default function ProjectsGuide() {
                 }}
               >
                 Questions, asked{" "}
-                <span className="italic text-gold">honestly answered.</span>
+                <span className="">honestly answered.</span>
               </h2>
             </div>
             <div className="md:col-span-4 md:col-start-9">
@@ -230,7 +230,7 @@ export default function ProjectsGuide() {
             }}
           >
             A short guide to{" "}
-            <span className="italic text-gold">
+            <span className="">
               wellness-first living in Bengaluru.
             </span>
           </h2>
@@ -340,7 +340,7 @@ export default function ProjectsGuide() {
             }}
           >
             What's included,{" "}
-            <span className="italic text-gold">at every Vivanterra address.</span>
+            <span className="">at every Vivanterra address.</span>
           </h2>
         </Reveal>
 
@@ -409,7 +409,7 @@ export default function ProjectsGuide() {
                   }}
                 >
                   Begin a conversation about your{" "}
-                  <span className="italic text-gold font-light normal-case">
+                  <span className="font-light normal-case">
                     next residence.
                   </span>
                 </h2>

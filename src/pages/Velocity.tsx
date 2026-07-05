@@ -80,7 +80,7 @@ export default function Velocity() {
         title={"Velociti — our delivery standard"}
         description={"Four pillars, six stages. The program that defines how every Vivanterra residence is delivered, from the first walk of the plot to the twelfth month after handover."}
       />
-          A standard <span className="italic text-gold">of our own.</span>
+          A standard <span className="">of our own.</span>
         </>
       }
       intro="Velociti is the program that defines how every Vivanterra residence is delivered — from the first walk of the plot to the twelfth month after handover."
@@ -155,7 +155,7 @@ export default function Velocity() {
             }}
           >
             From the first walk{" "}
-            <span className="italic text-gold font-light normal-case">
+            <span className="font-light normal-case">
               to the twelfth month.
             </span>
           </h2>
@@ -224,7 +224,7 @@ export default function Velocity() {
                   }}
                 >
                   Velociti is what makes a Vivanterra residence{" "}
-                  <span className="italic text-gold font-light normal-case">
+                  <span className="font-light normal-case">
                     a Vivanterra residence.
                   </span>
                 </h3>

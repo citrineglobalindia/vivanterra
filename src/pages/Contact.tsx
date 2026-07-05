@@ -146,7 +146,7 @@ export default function Contact() {
         title={"Begin a conversation"}
         description={"Tell us about the residence you're imagining. Every enquiry is read by our concierge and answered within one business day."}
       />
-          Begin a <span className="italic text-gold">conversation.</span>
+          Begin a <span className="">conversation.</span>
         </>
       }
       intro="Tell us about the residence you're imagining. Every enquiry is read by our concierge and answered within one business day."
@@ -479,7 +479,7 @@ export default function Contact() {
             >
               Find us in
               <br />
-              <span className="italic text-gold normal-case font-light">
+              <span className="normal-case font-light">
                 Sadashiva Nagar.
               </span>
             </h2>

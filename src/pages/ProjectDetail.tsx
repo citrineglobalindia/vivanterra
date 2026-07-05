@@ -70,7 +70,7 @@ export default function ProjectDetail() {
       title={
         <>
           {project.title}{" "}
-          <span className="italic text-gold font-light normal-case">
+          <span className="font-light normal-case">
             — {project.location.split(",")[0]}.
           </span>
         </>

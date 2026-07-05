@@ -15,7 +15,7 @@ export default function Projects() {
         title={
           <>
             Vivanterra residences{" "}
-            <span className="italic text-gold">in Bengaluru.</span>
+            <span className="">in Bengaluru.</span>
           </>
         }
         intro="Wellness-first apartments and full-floor residences across the city's most considered neighbourhoods — from Sadashiva Nagar to Richmond Town. Filter by stage below, or scroll on for the guide."

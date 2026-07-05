@@ -36,7 +36,7 @@ export default function ProjectsByStatus({ status }: Props) {
         eyebrow={`Residences — ${status}`}
         title={
           <>
-            {status} <span className="italic text-gold">{c.tagline}</span>
+            {status} <span className="">{c.tagline}</span>
           </>
         }
         intro={c.intro}
