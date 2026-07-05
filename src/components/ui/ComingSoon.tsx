@@ -116,7 +116,7 @@ export default function ComingSoon({ target }: { target: number }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-10 eyebrow text-paper/70"
+          className="mt-10 eyebrow text-gold"
         >
           Launching {launchLabel} IST
         </motion.p>
@@ -152,7 +152,7 @@ function TimeCell({ value, label }: { value: string; label: string }) {
       >
         {value}
       </div>
-      <div className="eyebrow text-paper/55 mt-3 text-[10px]">{label}</div>
+      <div className="eyebrow text-paper mt-3 text-[11px]">{label}</div>
     </div>
   );
 }
