@@ -12,6 +12,7 @@ import Loader from "@/components/ui/Loader";
 import Concierge from "@/components/ui/Concierge";
 import LeadPopup from "@/components/ui/LeadPopup";
 import ScrollProgress from "@/components/ui/ScrollProgress";
+import LaunchGate from "@/components/ui/LaunchGate";
 
 // Route-level code splitting — each page becomes its own chunk.
 const Index = lazy(() => import("./pages/Index.tsx"));
