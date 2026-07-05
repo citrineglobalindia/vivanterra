@@ -3,11 +3,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Pagination } from "swiper/modules";
 import type { Swiper as SwiperClass } from "swiper";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import SplitText from "../ui/SplitText";
-import Magnetic from "../ui/Magnetic";
 
 /**
  * Top-of-page editable slide list. Replace `video` URLs with your real files.
@@ -137,29 +135,18 @@ export default function Hero() {
       {/* Content */}
       <div className="absolute inset-0 z-10 flex flex-col justify-end pb-16 md:pb-24">
         <div className="max-w-page container-x">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
-            <div className="md:col-span-9 min-w-0">
-              <div className="eyebrow text-paper mb-6">{SLIDES[active].eyebrow}</div>
-              <SplitText
-                as="h1"
-                key={active}
-                triggerKey={active}
-                text={SLIDES[active].headline}
-                by="char"
-                className="font-display text-paper whitespace-pre-line"
-                duration={1}
-                stagger={0.018}
-                once={false}
-              />
-            </div>
-            <div className="md:col-span-3 md:text-right">
-              <Magnetic className="inline-block" strength={0.3}>
-                <a href="#residences" className="btn btn-light whitespace-nowrap">
-                  Discover the residence
-                  <ArrowUpRight className="btn-arrow" size={16} />
-                </a>
-              </Magnetic>
-            </div>
+          <div className="min-w-0">
+            <SplitText
+              as="h1"
+              key={active}
+              triggerKey={active}
+              text={SLIDES[active].headline}
+              by="char"
+              className="font-display text-paper whitespace-pre-line"
+              duration={1}
+              stagger={0.018}
+              once={false}
+            />
           </div>
 
           {/* Pagination + progress */}
@@ -185,9 +172,6 @@ export default function Hero() {
                   style={{ width: `${progress * 100}%`, transition: "width 0.05s linear" }}
                 />
               </div>
-            </div>
-            <div className="text-xs tabular-nums text-paper/70 font-medium">
-              {String(active + 1).padStart(2, "0")} <span className="text-paper/40">/ {String(SLIDES.length).padStart(2, "0")}</span>
             </div>
           </div>
         </div>
