@@ -15,13 +15,10 @@ type FooterLink = { label: string; to: string; external?: boolean };
 const USEFUL: FooterLink[] = [
   { label: "About Us", to: "/about" },
   { label: "Projects", to: "/projects" },
-  { label: "Ongoing", to: "/projects/ongoing" },
-  { label: "Upcoming", to: "/projects/upcoming" },
-  { label: "Completed", to: "/projects/completed" },
+  { label: "Velociti", to: "https://velocitirealestate.com/", external: true },
   { label: "Career", to: "/career" },
   { label: "Blogs", to: "/blogs" },
   { label: "Contact Us", to: "/contact" },
-  { label: "Velociti", to: "https://velocitirealestate.com/", external: true },
 ];
 
 const POLICIES: FooterLink[] = [
@@ -91,28 +88,7 @@ export default function Footer() {
 
         {/* Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
-          {/* Useful links — two parallel columns: 5 + 4 */}
-          <div>
-            <h3 className="text-[11px] tracking-[0.22em] uppercase text-paper font-medium pb-2 mb-5 border-b border-gold/50 inline-block">
-              Useful Links
-            </h3>
-            <div className="grid grid-cols-[max-content_max-content] gap-x-10 md:gap-x-12">
-              <ul className="space-y-2.5">
-                {USEFUL.slice(0, 5).map((l) => (
-                  <li key={l.label}>
-                    <FooterItem link={l} />
-                  </li>
-                ))}
-              </ul>
-              <ul className="space-y-2.5">
-                {USEFUL.slice(5).map((l) => (
-                  <li key={l.label}>
-                    <FooterItem link={l} />
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <FooterNav title="Useful Links" links={USEFUL} />
 
           <FooterNav title="Policies" links={POLICIES} />
 
