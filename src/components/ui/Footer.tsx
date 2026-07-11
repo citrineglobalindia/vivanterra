@@ -11,14 +11,6 @@ import { Link } from "react-router-dom";
 
 type FooterLink = { label: string; to: string; external?: boolean };
 
-const RESIDENCES: FooterLink[] = [
-  { label: "Bare & Bespoke Residence", to: "/projects/bare-bespoke-residence" },
-  { label: "The Living Edit", to: "/projects/the-living-edit" },
-  { label: "Sense of Space", to: "/projects/sense-of-space" },
-  { label: "Bellevue Nest", to: "/projects/bellevue-nest" },
-  { label: "Elite Serenity", to: "/projects/elite-serenity" },
-  { label: "Elite Pristine", to: "/projects/elite-pristine" },
-];
 
 const USEFUL: FooterLink[] = [
   { label: "About Us", to: "/about" },
@@ -50,6 +42,19 @@ function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
+function FooterItem({ link }: { link: FooterLink }) {
+  const cls = "text-sm text-paper/70 hover:text-gold transition-colors";
+  return link.external ? (
+    <a href={link.to} target="_blank" rel="noreferrer" className={cls}>
+      {link.label}
+    </a>
+  ) : (
+    <Link to={link.to} className={cls}>
+      {link.label}
+    </Link>
+  );
+}
+
 function FooterNav({ title, links }: { title: string; links: FooterLink[] }) {
   return (
     <div>
@@ -59,23 +64,7 @@ function FooterNav({ title, links }: { title: string; links: FooterLink[] }) {
       <ul className="space-y-2.5">
         {links.map((l) => (
           <li key={l.label}>
-            {l.external ? (
-              <a
-                href={l.to}
-                target="_blank"
-                rel="noreferrer"
-                className="text-sm text-paper/70 hover:text-gold transition-colors"
-              >
-                {l.label}
-              </a>
-            ) : (
-              <Link
-                to={l.to}
-                className="text-sm text-paper/70 hover:text-gold transition-colors"
-              >
-                {l.label}
-              </Link>
-            )}
+            <FooterItem link={l} />
           </li>
         ))}
       </ul>
@@ -101,9 +90,30 @@ export default function Footer() {
         <div className="hairline my-12 md:my-14" />
 
         {/* Columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
-          <FooterNav title="Residences" links={RESIDENCES} />
-          <FooterNav title="Useful Links" links={USEFUL} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
+          {/* Useful links — two parallel columns: 5 + 4 */}
+          <div>
+            <h3 className="text-[11px] tracking-[0.22em] uppercase text-paper font-medium pb-2 mb-5 border-b border-gold/50 inline-block">
+              Useful Links
+            </h3>
+            <div className="grid grid-cols-2 gap-x-8">
+              <ul className="space-y-2.5">
+                {USEFUL.slice(0, 5).map((l) => (
+                  <li key={l.label}>
+                    <FooterItem link={l} />
+                  </li>
+                ))}
+              </ul>
+              <ul className="space-y-2.5">
+                {USEFUL.slice(5).map((l) => (
+                  <li key={l.label}>
+                    <FooterItem link={l} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
           <FooterNav title="Policies" links={POLICIES} />
 
           {/* Studio */}
