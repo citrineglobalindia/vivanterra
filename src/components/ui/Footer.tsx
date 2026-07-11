@@ -55,10 +55,10 @@ function FooterItem({ link }: { link: FooterLink }) {
 function FooterNav({ title, links }: { title: string; links: FooterLink[] }) {
   return (
     <div>
-      <h3 className="text-[11px] tracking-[0.22em] uppercase text-paper font-medium pb-2 mb-4 border-b border-gold/50 inline-block">
+      <h3 className="text-[11px] tracking-[0.22em] uppercase text-paper font-medium pb-1.5 mb-3 border-b border-gold/50 inline-block">
         {title}
       </h3>
-      <ul className="space-y-2">
+      <ul className="space-y-1.5">
         {links.map((l) => (
           <li key={l.label}>
             <FooterItem link={l} />
@@ -72,32 +72,32 @@ function FooterNav({ title, links }: { title: string; links: FooterLink[] }) {
 export default function Footer() {
   return (
     <footer className="bg-ink-deep text-paper border-t-2 border-gold" id="footer">
-      <div className="max-w-page container-x py-10 md:py-12">
+      <div className="max-w-page container-x py-8 md:py-9">
         {/* Wordmark */}
         <div className="flex justify-center">
           <Link
             to="/"
             aria-label="Vivanterra — home"
-            className="font-display text-paper text-3xl md:text-5xl tracking-[0.08em] hover:text-gold transition-colors"
+            className="font-display text-paper text-2xl md:text-4xl tracking-[0.08em] hover:text-gold transition-colors"
           >
             VIVANTERRA
           </Link>
         </div>
 
-        <div className="h-px w-full bg-gold/70 mt-6 md:mt-8 mb-8 md:mb-10" />
+        <div className="h-px w-full bg-gold/70 mt-4 md:mt-5 mb-6 md:mb-7" />
 
         {/* Columns */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 md:gap-10">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-7 md:gap-8">
           <FooterNav title="Useful Links" links={USEFUL} />
 
           <FooterNav title="Policies" links={POLICIES} />
 
           {/* Studio */}
           <div>
-            <h3 className="text-[11px] tracking-[0.22em] uppercase text-paper font-medium pb-2 mb-4 border-b border-gold/50 inline-block">
+            <h3 className="text-[11px] tracking-[0.22em] uppercase text-paper font-medium pb-1.5 mb-3 border-b border-gold/50 inline-block">
               Studio
             </h3>
-            <ul className="space-y-3 text-sm text-paper/70">
+            <ul className="space-y-2 text-sm text-paper/70">
               <li className="flex gap-2.5">
                 <MapPin size={15} className="mt-0.5 shrink-0 text-gold" />
                 <span className="leading-relaxed">{ADDRESS}</span>
@@ -123,7 +123,7 @@ export default function Footer() {
             </ul>
 
             {/* Socials */}
-            <div className="flex items-center gap-3 mt-5">
+            <div className="flex items-center gap-2.5 mt-4">
               {[
                 { href: "https://www.instagram.com/", label: "Instagram", Icon: Instagram },
                 { href: "https://www.linkedin.com/", label: "LinkedIn", Icon: Linkedin },
@@ -135,7 +135,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-paper/20 text-paper/75 hover:border-gold hover:text-gold transition-colors"
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-paper/20 text-paper/75 hover:border-gold hover:text-gold transition-colors"
                 >
                   <Icon size={15} />
                 </a>
@@ -144,7 +144,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="h-px w-full bg-paper/45 my-7 md:my-8" />
+        <div className="h-px w-full bg-paper/45 my-5 md:my-6" />
 
         {/* Bottom bar */}
         <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-5 text-xs text-paper/55">
