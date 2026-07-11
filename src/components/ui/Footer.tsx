@@ -96,7 +96,7 @@ export default function Footer() {
             <h3 className="text-[11px] tracking-[0.22em] uppercase text-paper font-medium pb-2 mb-5 border-b border-gold/50 inline-block">
               Useful Links
             </h3>
-            <div className="grid grid-cols-2 gap-x-8">
+            <div className="grid grid-cols-[max-content_max-content] gap-x-10 md:gap-x-12">
               <ul className="space-y-2.5">
                 {USEFUL.slice(0, 5).map((l) => (
                   <li key={l.label}>
