@@ -78,13 +78,13 @@ export default function Footer() {
           <Link
             to="/"
             aria-label="Vivanterra — home"
-            className="font-display text-paper text-3xl md:text-4xl tracking-[0.06em] hover:text-gold transition-colors"
+            className="font-display text-paper text-4xl md:text-6xl tracking-[0.08em] hover:text-gold transition-colors"
           >
             VIVANTERRA
           </Link>
         </div>
 
-        <div className="h-px w-full bg-paper/45 my-12 md:my-14" />
+        <div className="h-px w-full bg-gold/70 mt-10 md:mt-12 mb-12 md:mb-14" />
 
         {/* Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
