@@ -8,7 +8,6 @@ import {
   Phone,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import logoLight from "@/assets/logo-light.png";
 
 type FooterLink = { label: string; to: string; external?: boolean };
 
@@ -86,16 +85,16 @@ function FooterNav({ title, links }: { title: string; links: FooterLink[] }) {
 
 export default function Footer() {
   return (
-    <footer className="bg-ink text-paper" id="footer">
+    <footer className="bg-ink-deep text-paper border-t border-gold/30" id="footer">
       <div className="max-w-page container-x py-16 md:py-20">
         {/* Wordmark */}
         <div className="flex justify-center">
-          <Link to="/" aria-label="Vivanterra — home">
-            <img
-              src={logoLight}
-              alt="Vivanterra"
-              className="h-10 md:h-12 w-auto object-contain"
-            />
+          <Link
+            to="/"
+            aria-label="Vivanterra — home"
+            className="font-display text-paper text-3xl md:text-4xl tracking-[0.06em] hover:text-gold transition-colors"
+          >
+            VIVANTERRA
           </Link>
         </div>
 

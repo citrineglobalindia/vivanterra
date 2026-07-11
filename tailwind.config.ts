@@ -18,6 +18,7 @@ export default {
       },
       colors: {
         ink: "var(--ink)",
+        "ink-deep": "var(--ink-deep)",
         paper: "var(--paper)",
         gold: "var(--gold)",
         sage: "var(--sage)",
