@@ -41,6 +41,11 @@ const staticRoutes = [
   { path: "/career", priority: "0.6", changefreq: "monthly" },
   { path: "/blogs", priority: "0.8", changefreq: "weekly" },
   { path: "/contact", priority: "0.7", changefreq: "yearly" },
+  { path: "/velociti", priority: "0.6", changefreq: "monthly" },
+  { path: "/privacy", priority: "0.3", changefreq: "yearly" },
+  { path: "/terms", priority: "0.3", changefreq: "yearly" },
+  { path: "/disclaimer", priority: "0.3", changefreq: "yearly" },
+  { path: "/rera-disclaimer", priority: "0.3", changefreq: "yearly" },
 ];
 
 const urls = [

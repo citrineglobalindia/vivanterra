@@ -2,125 +2,175 @@ import {
   ArrowUp,
   Instagram,
   Linkedin,
+  Mail,
+  MapPin,
   MessageCircle,
+  Phone,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import logoLight from "@/assets/logo-light.png";
 
 type FooterLink = { label: string; to: string; external?: boolean };
 
-const LINKS: FooterLink[] = [
+const RESIDENCES: FooterLink[] = [
+  { label: "Bare & Bespoke Residence", to: "/projects/bare-bespoke-residence" },
+  { label: "The Living Edit", to: "/projects/the-living-edit" },
+  { label: "Sense of Space", to: "/projects/sense-of-space" },
+  { label: "Bellevue Nest", to: "/projects/bellevue-nest" },
+  { label: "Elite Serenity", to: "/projects/elite-serenity" },
+];
+
+const USEFUL: FooterLink[] = [
+  { label: "About Us", to: "/about" },
   { label: "Projects", to: "/projects" },
-  { label: "About", to: "/about" },
-  { label: "Journal", to: "/blogs" },
-  { label: "Careers", to: "/career" },
-  { label: "Contact", to: "/contact" },
+  { label: "Ongoing", to: "/projects/ongoing" },
+  { label: "Upcoming", to: "/projects/upcoming" },
+  { label: "Completed", to: "/projects/completed" },
+  { label: "Career", to: "/career" },
+  { label: "Blogs", to: "/blogs" },
+  { label: "Contact Us", to: "/contact" },
   { label: "Velociti", to: "https://velocitirealestate.com/", external: true },
+];
+
+const POLICIES: FooterLink[] = [
+  { label: "Privacy Policy", to: "/privacy" },
+  { label: "Terms of Use", to: "/terms" },
+  { label: "Disclaimer", to: "/disclaimer" },
+  { label: "RERA Disclaimer", to: "/rera-disclaimer" },
+  { label: "Sitemap", to: "/sitemap.xml", external: true },
 ];
 
 const EMAIL = "hello@vivanterra.in";
 const PHONE_DISPLAY = "+91 88675 89797";
 const PHONE_TEL = "+918867589797";
 const WHATSAPP_URL = "https://wa.me/918867589797";
+const ADDRESS = "4th Floor, Cassini Towers, 13th Cross Rd, Sadashiva Nagar, Bengaluru 560080";
 
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
+function FooterNav({ title, links }: { title: string; links: FooterLink[] }) {
+  return (
+    <div>
+      <h3 className="text-[11px] tracking-[0.22em] uppercase text-paper font-medium pb-2 mb-5 border-b border-gold/50 inline-block">
+        {title}
+      </h3>
+      <ul className="space-y-2.5">
+        {links.map((l) => (
+          <li key={l.label}>
+            {l.external ? (
+              <a
+                href={l.to}
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm text-paper/70 hover:text-gold transition-colors"
+              >
+                {l.label}
+              </a>
+            ) : (
+              <Link
+                to={l.to}
+                className="text-sm text-paper/70 hover:text-gold transition-colors"
+              >
+                {l.label}
+              </Link>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export default function Footer() {
   return (
     <footer className="bg-ink text-paper" id="footer">
-      <div className="max-w-page container-x py-14 md:py-16">
-        {/* Top: brand + nav */}
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
-          {/* Brand */}
-          <div>
-            <Link
-              to="/"
-              className="font-display text-paper text-2xl md:text-3xl tracking-tight"
-            >
-              VIVANTERRA
-            </Link>
-            <p className="mt-3 text-paper/60 text-sm max-w-xs leading-relaxed">
-              Wellness-first real estate · Bengaluru
-            </p>
-          </div>
+      <div className="max-w-page container-x py-16 md:py-20">
+        {/* Wordmark */}
+        <div className="flex justify-center">
+          <Link to="/" aria-label="Vivanterra — home">
+            <img
+              src={logoLight}
+              alt="Vivanterra"
+              className="h-10 md:h-12 w-auto object-contain"
+            />
+          </Link>
+        </div>
 
-          {/* Nav links */}
-          <nav className="flex flex-wrap gap-x-8 gap-y-3">
-            {LINKS.map((l) =>
-              l.external ? (
+        <div className="hairline my-12 md:my-14" />
+
+        {/* Columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
+          <FooterNav title="Residences" links={RESIDENCES} />
+          <FooterNav title="Useful Links" links={USEFUL} />
+          <FooterNav title="Policies" links={POLICIES} />
+
+          {/* Studio */}
+          <div>
+            <h3 className="text-[11px] tracking-[0.22em] uppercase text-paper font-medium pb-2 mb-5 border-b border-gold/50 inline-block">
+              Studio
+            </h3>
+            <ul className="space-y-3.5 text-sm text-paper/70">
+              <li className="flex gap-2.5">
+                <MapPin size={15} className="mt-0.5 shrink-0 text-gold" />
+                <span className="leading-relaxed">{ADDRESS}</span>
+              </li>
+              <li className="flex gap-2.5">
+                <Phone size={15} className="mt-0.5 shrink-0 text-gold" />
                 <a
-                  key={l.label}
-                  href={l.to}
+                  href={`tel:${PHONE_TEL}`}
+                  className="hover:text-gold transition-colors tabular-nums"
+                >
+                  {PHONE_DISPLAY}
+                </a>
+              </li>
+              <li className="flex gap-2.5">
+                <Mail size={15} className="mt-0.5 shrink-0 text-gold" />
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="hover:text-gold transition-colors break-all"
+                >
+                  {EMAIL}
+                </a>
+              </li>
+            </ul>
+
+            {/* Socials */}
+            <div className="flex items-center gap-3 mt-7">
+              {[
+                { href: "https://www.instagram.com/", label: "Instagram", Icon: Instagram },
+                { href: "https://www.linkedin.com/", label: "LinkedIn", Icon: Linkedin },
+                { href: WHATSAPP_URL, label: "WhatsApp", Icon: MessageCircle },
+              ].map(({ href, label, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-sm text-paper/75 hover:text-gold transition-colors"
+                  aria-label={label}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-paper/20 text-paper/75 hover:border-gold hover:text-gold transition-colors"
                 >
-                  {l.label}
+                  <Icon size={15} />
                 </a>
-              ) : (
-                <Link
-                  key={l.label}
-                  to={l.to}
-                  className="text-sm text-paper/75 hover:text-gold transition-colors"
-                >
-                  {l.label}
-                </Link>
-              ),
-            )}
-          </nav>
-
-          {/* Contact */}
-          <div className="flex flex-col gap-2 text-sm">
-            <a
-              href={`mailto:${EMAIL}`}
-              className="text-paper/75 hover:text-gold transition-colors break-all"
-            >
-              {EMAIL}
-            </a>
-            <a
-              href={`tel:${PHONE_TEL}`}
-              className="text-paper/75 hover:text-gold transition-colors tabular-nums"
-            >
-              {PHONE_DISPLAY}
-            </a>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="hairline my-10" />
+        <div className="hairline my-10 md:my-12" />
 
         {/* Bottom bar */}
-        <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-6 text-xs text-paper/55">
-          <span>© {new Date().getFullYear()} Vivanterra. All rights reserved.</span>
+        <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-5 text-xs text-paper/55">
+          <span className="text-center sm:text-left">
+            © {new Date().getFullYear()} Vivanterra Real Estate. All rights
+            reserved.
+          </span>
 
           <div className="flex items-center gap-5">
-            <a
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Instagram"
-              className="hover:text-gold transition-colors"
-            >
-              <Instagram size={16} />
-            </a>
-            <a
-              href="https://www.linkedin.com/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              className="hover:text-gold transition-colors"
-            >
-              <Linkedin size={16} />
-            </a>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="WhatsApp"
-              className="hover:text-gold transition-colors"
-            >
-              <MessageCircle size={16} />
-            </a>
+            <span className="hidden md:inline text-paper/45">
+              Wellness-first real estate · Bengaluru
+            </span>
             <button
               type="button"
               onClick={scrollToTop}

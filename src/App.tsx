@@ -27,6 +27,12 @@ const Blogs = lazy(() => import("./pages/Blogs.tsx"));
 const BlogDetail = lazy(() => import("./pages/BlogDetail.tsx"));
 const Contact = lazy(() => import("./pages/Contact.tsx"));
 
+// Policies
+const Privacy = lazy(() => import("./pages/legal/Privacy.tsx"));
+const Terms = lazy(() => import("./pages/legal/Terms.tsx"));
+const Disclaimer = lazy(() => import("./pages/legal/Disclaimer.tsx"));
+const Rera = lazy(() => import("./pages/legal/Rera.tsx"));
+
 // Admin
 const AdminLogin = lazy(() => import("./pages/admin/AdminLogin.tsx"));
 const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard.tsx"));
@@ -81,6 +87,12 @@ function AnimatedRoutes() {
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogs/:slug" element={<BlogDetail />} />
             <Route path="/contact" element={<Contact />} />
+
+            {/* Policies */}
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/disclaimer" element={<Disclaimer />} />
+            <Route path="/rera-disclaimer" element={<Rera />} />
 
             {/* Admin */}
             <Route path="/admin/login" element={<AdminLogin />} />
