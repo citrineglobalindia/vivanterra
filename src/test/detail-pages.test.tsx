@@ -50,9 +50,9 @@ function renderAt(path: string) {
 
 describe("ProjectDetail", () => {
   it("renders a known project's title and at least one spec row", () => {
-    renderAt("/projects/aurelia-bay");
+    renderAt("/projects/bare-bespoke-residence");
     // Title appears in the PageShell H1
-    expect(screen.getAllByText(/Aurelia Bay/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Bare & Bespoke Residence/i).length).toBeGreaterThan(0);
     // Specifications section is present
     expect(screen.getByText(/Specifications/i)).toBeInTheDocument();
     // One of the spec labels we wrote

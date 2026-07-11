@@ -39,8 +39,8 @@ export type Project = {
 
 const PROJECTS: Project[] = [
   {
-    slug: "aurelia-bay",
-    title: "Aurelia Bay",
+    slug: "bare-bespoke-residence",
+    title: "Bare & Bespoke Residence",
     tagline: "Eight residences above a quiet courtyard.",
     status: "Ongoing",
     location: "Sadashiva Nagar, Bengaluru",
@@ -54,7 +54,7 @@ const PROJECTS: Project[] = [
     summary:
       "Eight full-floor residences set around a central courtyard, topped out this season and finishing through 2027.",
     description: [
-      "Aurelia Bay is a small, careful building on a leafy corner of Sadashiva Nagar — eight residences, one per floor, all opening onto a shared courtyard at the heart of the plan.",
+      "Bare & Bespoke Residence is a small, careful building on a leafy corner of Sadashiva Nagar — eight residences, one per floor, all opening onto a shared courtyard at the heart of the plan.",
       "Materials follow the courtyard's quiet: kota stone underfoot, brushed brass at the joinery, oak inside the cabinetwork. The penthouse adds a private terrace and a fourth bedroom.",
       "The building topped out ahead of schedule in March 2026 and is now in the long, slow phase of finishes. First handovers begin Q1 2027.",
     ],
@@ -71,8 +71,8 @@ const PROJECTS: Project[] = [
     price: "₹ 8.5 Cr Onwards*"
   },
   {
-    slug: "marigold-house",
-    title: "Marigold House",
+    slug: "the-living-edit",
+    title: "The Living Edit",
     tagline: "A six-storey building on a long, narrow plot.",
     status: "Ongoing",
     location: "Indiranagar, Bengaluru",
@@ -85,7 +85,7 @@ const PROJECTS: Project[] = [
     summary:
       "Twelve compact residences on a narrow Indiranagar plot, organised around a stepped western façade.",
     description: [
-      "Marigold House works hard on a 40-foot frontage. Twelve residences across six floors, each plan turned sideways to take its light from a stepped western façade that softens the afternoon sun.",
+      "The Living Edit works hard on a 40-foot frontage. Twelve residences across six floors, each plan turned sideways to take its light from a stepped western façade that softens the afternoon sun.",
       "The ground floor opens to a stone-paved entry court with a single rain tree. Parking is tucked underground, leaving the street edge to the building's quietest face.",
     ],
     specs: [
@@ -100,8 +100,8 @@ const PROJECTS: Project[] = [
     price: "₹ 3.2 Cr Onwards*"
   },
   {
-    slug: "sandalwood-row",
-    title: "Sandalwood Row",
+    slug: "sense-of-space",
+    title: "Sense of Space",
     tagline: "Five row-houses sharing one long garden.",
     status: "Ongoing",
     location: "Jayanagar, Bengaluru",
@@ -114,7 +114,7 @@ const PROJECTS: Project[] = [
     summary:
       "Five three-storey row-houses sharing a long garden — a quiet rebuttal to the apartment-block default.",
     description: [
-      "Sandalwood Row is what the brief became when we proposed houses, not flats. Five row-houses tuck against the eastern boundary of the site; the entire western edge becomes a long, shared garden with a single old jamun tree at its centre.",
+      "Sense of Space is what the brief became when we proposed houses, not flats. Five row-houses tuck against the eastern boundary of the site; the entire western edge becomes a long, shared garden with a single old jamun tree at its centre.",
       "Each house has its own front door from the street, its own staircase, its own roof.",
     ],
     specs: [
@@ -129,8 +129,8 @@ const PROJECTS: Project[] = [
     price: "₹ 12 Cr Onwards*"
   },
   {
-    slug: "kalpavriksha",
-    title: "Kalpavriksha",
+    slug: "bellevue-nest",
+    title: "Bellevue Nest",
     tagline: "A mid-rise around a hundred-year-old tree.",
     status: "Upcoming",
     location: "Cooke Town, Bengaluru",
@@ -143,7 +143,7 @@ const PROJECTS: Project[] = [
     summary:
       "A ten-residence building wrapped around a protected hundred-year-old rain tree at the centre of the plot.",
     description: [
-      "Kalpavriksha — 'the wish-giving tree' — is named for the rain tree at the centre of the plot. The plan steps back to leave it untouched. Every residence has at least one window onto its canopy.",
+      "Bellevue Nest — 'the wish-giving tree' — is named for the rain tree at the centre of the plot. The plan steps back to leave it untouched. Every residence has at least one window onto its canopy.",
       "Design is complete; we break ground in late 2026.",
     ],
     specs: [
@@ -158,36 +158,8 @@ const PROJECTS: Project[] = [
     price: "₹ 6.8 Cr Onwards*"
   },
   {
-    slug: "quietude",
-    title: "Quietude",
-    tagline: "A four-residence boutique block, by invitation.",
-    status: "Upcoming",
-    location: "Sadashiva Nagar, Bengaluru",
-    hero: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85",
-    gallery: [
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85",
-      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1800&q=85",
-    ],
-    summary:
-      "A by-invitation boutique block of four very large residences — released in private viewings only.",
-    description: [
-      "Quietude will be the smallest building we build in 2027 — four residences of approximately 6,000 sq ft each, on a corner plot in Sadashiva Nagar.",
-      "Released by invitation; please write to us for a viewing.",
-    ],
-    specs: [
-      { label: "Typology", value: "Penthouse residences" },
-      { label: "Units", value: "4" },
-      { label: "Configuration", value: "4 BHK + study + staff" },
-      { label: "Carpet area", value: "~ 6,000 sq ft each" },
-      { label: "Floors", value: "G + 4" },
-      { label: "Architect", value: "Aravind Menon, principal" },
-    ],
-    possession: "2029",
-    price: "By invitation"
-  },
-  {
-    slug: "the-frangipani",
-    title: "The Frangipani",
+    slug: "elite-serenity",
+    title: "Elite Serenity",
     tagline: "Twenty-four residences, delivered 2024.",
     status: "Completed",
     location: "Domlur, Bengaluru",
@@ -200,7 +172,7 @@ const PROJECTS: Project[] = [
     summary:
       "Twenty-four residences across two wings, handed over in late 2024 and now fully occupied.",
     description: [
-      "The Frangipani was our largest delivery to date — twenty-four residences across two wings, with a shared lawn between them.",
+      "Elite Serenity was our largest delivery to date — twenty-four residences across two wings, with a shared lawn between them.",
       "Handed over in October 2024. The building is now fully occupied; the lawn was planted with the residents in attendance.",
     ],
     specs: [
@@ -210,61 +182,6 @@ const PROJECTS: Project[] = [
       { label: "Carpet area", value: "1,800 — 4,000 sq ft" },
       { label: "Floors", value: "B + G + 7" },
       { label: "Architect", value: "Studio in-house" },
-    ],
-    price: "On request"
-  },
-  {
-    slug: "olive-court",
-    title: "Olive Court",
-    tagline: "Six residences around an olive tree.",
-    status: "Completed",
-    location: "Benson Town, Bengaluru",
-    hero: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=85",
-    gallery: [
-      "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=85",
-      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1800&q=85",
-      "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?auto=format&fit=crop&w=1800&q=85",
-    ],
-    summary:
-      "Six floor-through residences in a small G+5 building, delivered 2022.",
-    description: [
-      "Olive Court was a quiet pleasure to build — six residences in a small G+5 building, completed in 2022 and named for the olive tree planted in the entry court the week we broke ground.",
-      "The tree has roughly doubled in height since.",
-    ],
-    specs: [
-      { label: "Typology", value: "Full-floor residences" },
-      { label: "Units", value: "6" },
-      { label: "Configuration", value: "3 BHK" },
-      { label: "Carpet area", value: "2,700 sq ft" },
-      { label: "Floors", value: "G + 5" },
-      { label: "Architect", value: "Aravind Menon, principal" },
-    ],
-    price: "On request"
-  },
-  {
-    slug: "the-veranda",
-    title: "The Veranda",
-    tagline: "Three Indo-Saracenic residences, restored.",
-    status: "Completed",
-    location: "Richmond Town, Bengaluru",
-    hero: "https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=1800&q=85",
-    gallery: [
-      "https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=1800&q=85",
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1800&q=85",
-    ],
-    summary:
-      "An Indo-Saracenic bungalow restored and divided into three large residences, delivered 2021.",
-    description: [
-      "The Veranda is the project we point to when we talk about restoration. A 1924 Indo-Saracenic bungalow on a 24,000 sq ft plot in Richmond Town — restored to its proportions, then divided carefully into three large residences with private verandas.",
-      "Completed in early 2021; the original Burma teak doors are still in use.",
-    ],
-    specs: [
-      { label: "Typology", value: "Restored heritage residences" },
-      { label: "Units", value: "3" },
-      { label: "Configuration", value: "4 BHK + study" },
-      { label: "Carpet area", value: "4,800 — 5,600 sq ft" },
-      { label: "Floors", value: "G + 1" },
-      { label: "Architect", value: "Studio in-house, with conservation consult" },
     ],
     price: "On request"
   },

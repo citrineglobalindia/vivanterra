@@ -33,11 +33,11 @@ const FAQS = [
   },
   {
     q: "When can I expect possession?",
-    a: "Possession dates vary by project. Our nearest deliveries begin Q1 2027 (Aurelia Bay), with subsequent handovers through 2027 and 2029. Upcoming projects are in design or pre-construction with possession from 2029 onward. The current possession date is listed on every project card.",
+    a: "Possession dates vary by project. Our nearest deliveries begin Q1 2027 (Bare & Bespoke Residence), with subsequent handovers through 2027 and 2029. Upcoming projects are in design or pre-construction with possession from 2029 onward. The current possession date is listed on every project card.",
   },
   {
     q: "Are Vivanterra residences for sale or by invitation only?",
-    a: "Most of our residences are openly available — pricing is on request, given the bespoke configurations. A small number of boutique buildings (such as Quietude) are released by invitation to private clients only. The badge on each card and the project page indicates which.",
+    a: "Most of our residences are openly available — pricing is on request, given the bespoke configurations. A small number of boutique buildings are released by invitation to private clients only. The badge on each card and the project page indicates which.",
   },
   {
     q: "What amenities are included in a Vivanterra residence?",
@@ -105,23 +105,23 @@ function FaqItem({
 const LOCATIONS = [
   {
     name: "Sadashiva Nagar",
-    body: "Quiet residential streets, mature trees, and easy proximity to Sankey Tank. Our studio is here; so is Aurelia Bay and Quietude.",
+    body: "Quiet residential streets, mature trees, and easy proximity to Sankey Tank. Our studio is here; so is Bare & Bespoke Residence.",
   },
   {
     name: "Indiranagar",
-    body: "Vivanterra's compact-residence work — Marigold House sits on a narrow plot here, taking light from a stepped western façade.",
+    body: "Vivanterra's compact-residence work — The Living Edit sits on a narrow plot here, taking light from a stepped western façade.",
   },
   {
     name: "Jayanagar",
-    body: "South Bengaluru's most walkable district. Sandalwood Row's five row-houses share a long garden here.",
+    body: "South Bengaluru's most walkable district. Sense of Space's five row-houses share a long garden here.",
   },
   {
     name: "Cooke Town",
-    body: "Heritage roads, century-old trees. Kalpavriksha — our upcoming building wrapped around a hundred-year-old rain tree — is here.",
+    body: "Heritage roads, century-old trees. Bellevue Nest — our upcoming building wrapped around a hundred-year-old rain tree — is here.",
   },
   {
-    name: "Domlur, Benson Town & Richmond Town",
-    body: "Completed projects — The Frangipani in Domlur, Olive Court in Benson Town, and The Veranda's restored 1924 bungalow in Richmond Town.",
+    name: "Domlur",
+    body: "Our completed work — Elite Serenity, a calm, light-filled residence set back from the road.",
   },
 ] as const;
 

@@ -11,12 +11,11 @@ import SplitText from "../ui/SplitText";
 
 /** Editable list — swap one line per project. */
 const RESIDENCES = [
-  { name: "Aurelia Bay", location: "Sadashiva Nagar", image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80" },
-  { name: "The Cypress", location: "Indiranagar", image: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80" },
-  { name: "Sable Heights", location: "Whitefield", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" },
-  { name: "Linnea Place", location: "Koramangala", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" },
-  { name: "Olin Park", location: "Jayanagar", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80" },
-  { name: "Vermilion Court", location: "Sarjapur Road", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" },
+  { name: "Bare & Bespoke Residence", location: "Sadashiva Nagar", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" },
+  { name: "The Living Edit", location: "Indiranagar", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" },
+  { name: "Sense of Space", location: "Jayanagar", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80" },
+  { name: "Bellevue Nest", location: "Cooke Town", image: "https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=1200&q=80" },
+  { name: "Elite Serenity", location: "Domlur", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" },
 ];
 
 export default function Residences() {

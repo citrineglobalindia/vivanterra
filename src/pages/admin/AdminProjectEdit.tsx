@@ -272,7 +272,7 @@ export default function AdminProjectEdit() {
                     set("title", e.target.value);
                     if (!slugTouched) set("slug", slugify(e.target.value));
                   }}
-                  placeholder="Aurelia Bay"
+                  placeholder="Bare & Bespoke Residence"
                 />
               </Field>
               <Field label="Slug (URL)">
@@ -283,7 +283,7 @@ export default function AdminProjectEdit() {
                     setSlugTouched(true);
                     set("slug", e.target.value);
                   }}
-                  placeholder="aurelia-bay"
+                  placeholder="bare-bespoke-residence"
                 />
                 <p className="text-ink/45 text-xs mt-1">
                   Public URL: /projects/{slugify(form.slug) || "…"}

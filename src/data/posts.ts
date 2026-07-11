@@ -42,7 +42,7 @@ export const POSTS: Post[] = [
     body: [
       "We start each year with a small ritual. The whole design team gathers on a Saturday in January, and we lay out everything we worked with the previous year — the stone samples, the brass swatches, the leftover oak offcuts, the failed mock-ups — across two long trestle tables in the studio. We walk around them with coffee. We argue.",
       "It is, in the cleanest sense, the most useful day of our year. Choices that felt brave in March look obvious in December. Choices that felt safe at the time look — sometimes — a little timid in hindsight.",
-      "This year's table held a lot of stone. Kota in three finishes, the warm grey green we now use almost as a default. A pale Makrana that surprised us in the bathrooms of Olive Court. A brown Forest marble we ordered for a single feature wall and ended up extending across an entire kitchen floor.",
+      "This year's table held a lot of stone. Kota in three finishes, the warm grey green we now use almost as a default. A pale Makrana that surprised us in the bathrooms of Elite Serenity. A brown Forest marble we ordered for a single feature wall and ended up extending across an entire kitchen floor.",
       "The brass, as always, was the hardest to settle. We tried four finishes from three foundries. The matte hand-burnished one — the one nobody wanted at first — is the one we kept.",
       "Oak was the quiet hero. We changed our sealant in May, and the floors we laid after that have aged better in six months than the ones we laid in spring have in a year. It is a small thing. It is also the entire game.",
       "If there is a thread through the year, it is this: we have stopped pretending that a material 'just is.' Every material is a hundred decisions, made by a hundred people, before it reaches us. Our job is to choose well, and then to choose again.",
@@ -50,8 +50,8 @@ export const POSTS: Post[] = [
     ],
   },
   {
-    slug: "aurelia-bay-tops-out",
-    title: "Aurelia Bay tops out in Sadashiva Nagar.",
+    slug: "bare-bespoke-residence-tops-out",
+    title: "Bare & Bespoke Residence tops out in Sadashiva Nagar.",
     dek: "The first of our 2027 deliveries reaches its full height ahead of schedule. A note from the site, mid-celebration.",
     category: "Studio Notes",
     author: "Karthik Rao",
@@ -60,7 +60,7 @@ export const POSTS: Post[] = [
     image:
       "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=85",
     body: [
-      "Aurelia Bay topped out on Thursday — six weeks ahead of the schedule we set ourselves a year ago, which is a sentence we do not often get to type.",
+      "Bare & Bespoke Residence topped out on Thursday — six weeks ahead of the schedule we set ourselves a year ago, which is a sentence we do not often get to type.",
       "The site team gathered on the eighth floor at sunset. There was the usual short speech, a pause to remember everyone who had worked through last year's monsoon, and a long slow look out over the rooftops of Sadashiva Nagar — which from this height take on a quality you cannot really photograph.",
       "Toppings-out are strange occasions. The hard, visible work is done; the long, slow, invisible work of finishes is just beginning. We sometimes describe it as the moment a building stops being a structure and starts becoming a home.",
       "From here, we move into the finishes phase. Joinery installs begin in May. Stone-laying through the summer. The lift cars arrive in September; the lobbies are stitched together in October.",
@@ -102,7 +102,7 @@ export const POSTS: Post[] = [
       "This is not a stylistic tic — though I admit it has, by now, become something close to a signature. It is a response to a climate and a habit. The Indian afternoon is long, slow, and bright. It needs a room with no roof to dissipate into.",
       "The courtyard does work that no other room can. It moves air. It draws light into the deep middle of the plan. It holds rain. It is the only place in the house from which you can see weather change.",
       "It is also — and we say this without apology — a beautiful waste of space. A modern apartment is, by most metrics, optimised. A courtyard is the part of the plan we did not optimise. That is its purpose.",
-      "Every one of our buildings has one. They are different sizes. They do different jobs. Sandalwood Row's is a garden the whole row shares. Aurelia Bay's is a square open to the sky from the second floor up. Kalpavriksha's is, in the end, a tree.",
+      "Every one of our buildings has one. They are different sizes. They do different jobs. Sense of Space's is a garden the whole row shares. Bare & Bespoke Residence's is a square open to the sky from the second floor up. Bellevue Nest's is, in the end, a tree.",
       "If you take only one thing from us, take this: leave a void.",
     ],
   },
