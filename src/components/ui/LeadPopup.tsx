@@ -22,18 +22,15 @@ import {
    Image header with gold badge + property line, icon-prefixed
    form, configuration select, full-width CTA.
 
-   Triggers (first to fire wins):
-     • 3 seconds on page
-     • 45% scroll
-     • Desktop exit-intent
+   Trigger:
+     • Exactly 60 seconds on page
    Suppressed for 7 days after dismiss/submit. Homepage only.
    ============================================================ */
 
 const SEEN_KEY = "vivanterra:lead:dismissed:v3";
 const SUBMIT_KEY = "vivanterra:lead:submitted:v3";
 const DISMISS_DAYS = 7;
-const TIME_TRIGGER_MS = 3_000;
-const SCROLL_TRIGGER = 0.45;
+const TIME_TRIGGER_MS = 60_000;
 
 const HERO_IMG =
   "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85";
@@ -115,40 +112,16 @@ export default function LeadPopup() {
     if (pathname !== "/") return;
     if (recentlyDismissed()) return;
 
-    let timeT: number | null = null;
-    let scrollH: ((e: Event) => void) | null = null;
-    let exitH: ((e: MouseEvent) => void) | null = null;
-
     const fire = () => {
       if (!armedRef.current) return;
       armedRef.current = false;
       setOpen(true);
     };
 
-    timeT = window.setTimeout(fire, TIME_TRIGGER_MS);
-
-    scrollH = () => {
-      const h = document.documentElement;
-      const max = h.scrollHeight - h.clientHeight;
-      if (max <= 0) return;
-      if (h.scrollTop / max >= SCROLL_TRIGGER) fire();
-    };
-    window.addEventListener("scroll", scrollH, { passive: true });
-
-    const isFine =
-      typeof window.matchMedia === "function" &&
-      window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    if (isFine) {
-      exitH = (e: MouseEvent) => {
-        if (e.clientY <= 4 && e.relatedTarget === null) fire();
-      };
-      document.addEventListener("mouseout", exitH);
-    }
+    const timeT = window.setTimeout(fire, TIME_TRIGGER_MS);
 
     return () => {
-      if (timeT) window.clearTimeout(timeT);
-      if (scrollH) window.removeEventListener("scroll", scrollH);
-      if (exitH) document.removeEventListener("mouseout", exitH);
+      window.clearTimeout(timeT);
     };
   }, [pathname]);
 
