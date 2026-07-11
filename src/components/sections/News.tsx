@@ -50,7 +50,6 @@ export default function News() {
                 <div className="img-zoom aspect-[4/5] overflow-hidden rounded-sm bg-ink/5 mb-6">
                   <img src={n.image} alt={n.title} loading="lazy" className="h-full w-full object-cover" />
                 </div>
-                <div className="eyebrow text-ink/60 mb-3">{n.date}</div>
                 <h3 className="font-display mb-3" style={{ fontSize: 22, fontWeight: 400, letterSpacing: "-0.02em", lineHeight: 1.2 }}>
                   {n.title}
                 </h3>

@@ -92,10 +92,10 @@ export default function Footer() {
 
           <FooterNav title="Policies" links={POLICIES} />
 
-          {/* Studio */}
+          {/* Get in touch */}
           <div>
             <h3 className="text-[11px] tracking-[0.22em] uppercase text-paper font-medium pb-1.5 mb-3 border-b border-gold/50 inline-block">
-              Studio
+              Get In Touch
             </h3>
             <ul className="space-y-2 text-sm text-paper/70">
               <li className="flex gap-2.5">
