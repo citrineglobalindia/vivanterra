@@ -5,7 +5,6 @@ import Hero from "@/components/sections/Hero";
 import Collection from "@/components/sections/Collection";
 import WhyCity from "@/components/sections/WhyCity";
 import News from "@/components/sections/News";
-import CTA from "@/components/sections/CTA";
 
 const Index = () => {
   return (
@@ -20,7 +19,6 @@ const Index = () => {
       <Collection />
       <WhyCity />
       <News />
-      <CTA />
       <Footer />
     </main>
   );
