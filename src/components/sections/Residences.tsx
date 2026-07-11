@@ -14,7 +14,7 @@ const RESIDENCES = [
   { name: "Bare & Bespoke Residence", location: "Yelahanka", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" },
   { name: "The Living Edit", location: "Shivaram Karanth Layout", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" },
   { name: "Sense of Space", location: "Sadashiva Nagar", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80" },
-  { name: "Bellevue Nest", location: "Thimmegowdana Hosahalli", image: "https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=1200&q=80" },
+  { name: "Bellevue Nest", location: "IVC Road", image: "https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=1200&q=80" },
   { name: "Elite Serenity", location: "Devanahalli", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" },
 ];
 

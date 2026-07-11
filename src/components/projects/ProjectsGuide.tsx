@@ -25,7 +25,7 @@ const FAQS = [
   },
   {
     q: "Where are Vivanterra residences located in Bengaluru?",
-    a: "Our completed, ongoing and upcoming projects sit across Bengaluru — Yelahanka, Shivaram Karanth Layout, Sadashiva Nagar, Thimmegowdana Hosahalli, Rajankunte and Devanahalli. We choose sites for their mature greenery, walkability, and quiet adjacency to the city's cultural fabric.",
+    a: "Our completed, ongoing and upcoming projects sit across Bengaluru — Yelahanka, Shivaram Karanth Layout, Sadashiva Nagar, IVC Road, Rajankunte and Devanahalli. We choose sites for their mature greenery, walkability, and quiet adjacency to the city's cultural fabric.",
   },
   {
     q: "What configurations and unit sizes do you offer?",
@@ -116,7 +116,7 @@ const LOCATIONS = [
     body: "Quiet residential streets, mature trees, and easy proximity to Sankey Tank. Our studio is here; so is Sense of Space, currently under construction.",
   },
   {
-    name: "Thimmegowdana Hosahalli",
+    name: "IVC Road",
     body: "Green, low-rise and unhurried. Bellevue Nest — completed and handed over — sits wrapped around a hundred-year-old rain tree.",
   },
   {

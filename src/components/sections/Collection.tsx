@@ -18,7 +18,7 @@ const CARDS: Card[] = [
   { label: "Bare & Bespoke Residence", place: "Yelahanka", slug: "bare-bespoke-residence", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=85" },
   { label: "The Living Edit", place: "Shivaram Karanth Layout", slug: "the-living-edit", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" },
   { label: "Sense of Space", place: "Sadashiva Nagar", slug: "sense-of-space", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85" },
-  { label: "Bellevue Nest", place: "Thimmegowdana Hosahalli", slug: "bellevue-nest", image: "https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=900&q=85", velociti: true },
+  { label: "Bellevue Nest", place: "IVC Road", slug: "bellevue-nest", image: "https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=900&q=85", velociti: true },
   { label: "Elite Serenity", place: "Devanahalli", slug: "elite-serenity", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=85", velociti: true },
   { label: "Elite Pristine", place: "Rajankunte", slug: "elite-pristine", image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=900&q=85", velociti: true },
 ];

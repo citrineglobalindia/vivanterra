@@ -133,7 +133,7 @@ const PROJECTS: Project[] = [
     title: "Bellevue Nest",
     tagline: "A mid-rise around a hundred-year-old tree.",
     status: "Completed",
-    location: "Thimmegowdana Hosahalli, Bengaluru",
+    location: "IVC Road, Bengaluru",
     hero: "https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=1800&q=85",
     gallery: [
       "https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=1800&q=85",
