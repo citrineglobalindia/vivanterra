@@ -25,7 +25,7 @@ const FAQS = [
   },
   {
     q: "Where are Vivanterra residences located in Bengaluru?",
-    a: "Our active and completed projects are concentrated in Bengaluru's most considered neighbourhoods — Sadashiva Nagar, Indiranagar, Jayanagar, Cooke Town, Domlur, Benson Town and Richmond Town. We choose sites for their mature greenery, walkability, and quiet adjacency to the city's cultural fabric.",
+    a: "Our active and completed projects are concentrated in Bengaluru's most considered neighbourhoods — Sadashiva Nagar, Indiranagar, Jayanagar, Cooke Town and Domlur. We choose sites for their mature greenery, walkability, and quiet adjacency to the city's cultural fabric.",
   },
   {
     q: "What configurations and unit sizes do you offer?",
