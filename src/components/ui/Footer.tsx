@@ -84,7 +84,7 @@ export default function Footer() {
           </Link>
         </div>
 
-        <div className="hairline my-12 md:my-14" />
+        <div className="h-px w-full bg-paper/20 my-12 md:my-14" />
 
         {/* Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
@@ -144,7 +144,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="hairline my-10 md:my-12" />
+        <div className="h-px w-full bg-paper/20 my-10 md:my-12" />
 
         {/* Bottom bar */}
         <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-5 text-xs text-paper/55">
