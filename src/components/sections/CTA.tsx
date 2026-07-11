@@ -56,7 +56,7 @@ export default function CTA() {
                     />
                   </div>
                   <Magnetic className="inline-block shrink-0">
-                    <button type="submit" className="btn btn-light shrink-0">
+                    <button type="submit" className="btn btn-dark shrink-0">
                       Subscribe
                       <ArrowUpRight className="btn-arrow" size={16} />
                     </button>
