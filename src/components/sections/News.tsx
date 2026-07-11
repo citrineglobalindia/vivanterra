@@ -34,7 +34,7 @@ export default function News() {
           </Reveal>
           <SplitText
             as="h2"
-            text="Stories from the studio."
+            text="The Vivanterra Journal."
             className="font-display text-ink"
             by="word"
           />
