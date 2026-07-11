@@ -50,8 +50,8 @@ export const POSTS: Post[] = [
     ],
   },
   {
-    slug: "bare-bespoke-residence-tops-out",
-    title: "Bare & Bespoke Residence tops out in Sadashiva Nagar.",
+    slug: "sense-of-space-tops-out",
+    title: "Sense of Space tops out in Sadashiva Nagar.",
     dek: "The first of our 2027 deliveries reaches its full height ahead of schedule. A note from the site, mid-celebration.",
     category: "Studio Notes",
     author: "Karthik Rao",
@@ -60,7 +60,7 @@ export const POSTS: Post[] = [
     image:
       "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=85",
     body: [
-      "Bare & Bespoke Residence topped out on Thursday — six weeks ahead of the schedule we set ourselves a year ago, which is a sentence we do not often get to type.",
+      "Sense of Space topped out on Thursday — six weeks ahead of the schedule we set ourselves a year ago, which is a sentence we do not often get to type.",
       "The site team gathered on the eighth floor at sunset. There was the usual short speech, a pause to remember everyone who had worked through last year's monsoon, and a long slow look out over the rooftops of Sadashiva Nagar — which from this height take on a quality you cannot really photograph.",
       "Toppings-out are strange occasions. The hard, visible work is done; the long, slow, invisible work of finishes is just beginning. We sometimes describe it as the moment a building stops being a structure and starts becoming a home.",
       "From here, we move into the finishes phase. Joinery installs begin in May. Stone-laying through the summer. The lift cars arrive in September; the lobbies are stitched together in October.",

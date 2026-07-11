@@ -25,7 +25,7 @@ const FAQS = [
   },
   {
     q: "Where are Vivanterra residences located in Bengaluru?",
-    a: "Our active and completed projects are concentrated in Bengaluru's most considered neighbourhoods — Sadashiva Nagar, Indiranagar, Jayanagar, Cooke Town and Domlur. We choose sites for their mature greenery, walkability, and quiet adjacency to the city's cultural fabric.",
+    a: "Our completed, ongoing and upcoming projects sit across Bengaluru — Yelahanka, Shivaram Karanth Layout, Sadashiva Nagar, Thimmegowdana Hosahalli and Devanahalli. We choose sites for their mature greenery, walkability, and quiet adjacency to the city's cultural fabric.",
   },
   {
     q: "What configurations and unit sizes do you offer?",
@@ -33,7 +33,7 @@ const FAQS = [
   },
   {
     q: "When can I expect possession?",
-    a: "Possession dates vary by project. Our nearest deliveries begin Q1 2027 (Bare & Bespoke Residence), with subsequent handovers through 2027 and 2029. Upcoming projects are in design or pre-construction with possession from 2029 onward. The current possession date is listed on every project card.",
+    a: "Bellevue Nest and Elite Serenity are complete and handed over. Sense of Space is under construction, with possession from 2027. Our upcoming residences — Bare & Bespoke and The Living Edit — are in design or pre-construction; the current possession date is listed on every project card.",
   },
   {
     q: "Are Vivanterra residences for sale or by invitation only?",
@@ -104,24 +104,24 @@ function FaqItem({
 
 const LOCATIONS = [
   {
+    name: "Yelahanka",
+    body: "North Bengaluru's calmest quarter — wide roads, lakes and open sky. Bare & Bespoke, our upcoming residence, is here.",
+  },
+  {
+    name: "Shivaram Karanth Layout",
+    body: "A planned, low-density layout on the city's northern edge. The Living Edit takes its light from a stepped western façade here.",
+  },
+  {
     name: "Sadashiva Nagar",
-    body: "Quiet residential streets, mature trees, and easy proximity to Sankey Tank. Our studio is here; so is Bare & Bespoke Residence.",
+    body: "Quiet residential streets, mature trees, and easy proximity to Sankey Tank. Our studio is here; so is Sense of Space, currently under construction.",
   },
   {
-    name: "Indiranagar",
-    body: "Vivanterra's compact-residence work — The Living Edit sits on a narrow plot here, taking light from a stepped western façade.",
+    name: "Thimmegowdana Hosahalli",
+    body: "Green, low-rise and unhurried. Bellevue Nest — completed and handed over — sits wrapped around a hundred-year-old rain tree.",
   },
   {
-    name: "Jayanagar",
-    body: "South Bengaluru's most walkable district. Sense of Space's five row-houses share a long garden here.",
-  },
-  {
-    name: "Cooke Town",
-    body: "Heritage roads, century-old trees. Bellevue Nest — our upcoming building wrapped around a hundred-year-old rain tree — is here.",
-  },
-  {
-    name: "Domlur",
-    body: "Our completed work — Elite Serenity, a calm, light-filled residence set back from the road.",
+    name: "Devanahalli",
+    body: "Open country close to the airport corridor. Elite Serenity, completed, is a calm, light-filled residence set back from the road.",
   },
 ] as const;
 
@@ -269,7 +269,7 @@ export default function ProjectsGuide() {
                 pricing.
               </li>
               <li>
-                Mature locations — Sadashiva Nagar, Indiranagar and Jayanagar
+                Mature locations — Sadashiva Nagar, Yelahanka and Devanahalli
                 have appreciated steadily for two decades.
               </li>
               <li>

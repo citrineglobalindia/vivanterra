@@ -42,8 +42,8 @@ const PROJECTS: Project[] = [
     slug: "bare-bespoke-residence",
     title: "Bare & Bespoke Residence",
     tagline: "Eight residences above a quiet courtyard.",
-    status: "Ongoing",
-    location: "Sadashiva Nagar, Bengaluru",
+    status: "Upcoming",
+    location: "Yelahanka, Bengaluru",
     hero: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85",
     gallery: [
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85",
@@ -54,7 +54,7 @@ const PROJECTS: Project[] = [
     summary:
       "Eight full-floor residences set around a central courtyard, topped out this season and finishing through 2027.",
     description: [
-      "Bare & Bespoke Residence is a small, careful building on a leafy corner of Sadashiva Nagar — eight residences, one per floor, all opening onto a shared courtyard at the heart of the plan.",
+      "Bare & Bespoke Residence is a small, careful building on a leafy corner of Yelahanka — eight residences, one per floor, all opening onto a shared courtyard at the heart of the plan.",
       "Materials follow the courtyard's quiet: kota stone underfoot, brushed brass at the joinery, oak inside the cabinetwork. The penthouse adds a private terrace and a fourth bedroom.",
       "The building topped out ahead of schedule in March 2026 and is now in the long, slow phase of finishes. First handovers begin Q1 2027.",
     ],
@@ -74,8 +74,8 @@ const PROJECTS: Project[] = [
     slug: "the-living-edit",
     title: "The Living Edit",
     tagline: "A six-storey building on a long, narrow plot.",
-    status: "Ongoing",
-    location: "Indiranagar, Bengaluru",
+    status: "Upcoming",
+    location: "Shivaram Karanth Layout, Bengaluru",
     hero: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1800&q=85",
     gallery: [
       "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1800&q=85",
@@ -83,7 +83,7 @@ const PROJECTS: Project[] = [
       "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1800&q=85",
     ],
     summary:
-      "Twelve compact residences on a narrow Indiranagar plot, organised around a stepped western façade.",
+      "Twelve compact residences on a narrow Shivaram Karanth Layout plot, organised around a stepped western façade.",
     description: [
       "The Living Edit works hard on a 40-foot frontage. Twelve residences across six floors, each plan turned sideways to take its light from a stepped western façade that softens the afternoon sun.",
       "The ground floor opens to a stone-paved entry court with a single rain tree. Parking is tucked underground, leaving the street edge to the building's quietest face.",
@@ -104,7 +104,7 @@ const PROJECTS: Project[] = [
     title: "Sense of Space",
     tagline: "Five row-houses sharing one long garden.",
     status: "Ongoing",
-    location: "Jayanagar, Bengaluru",
+    location: "Sadashiva Nagar, Bengaluru",
     hero: "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?auto=format&fit=crop&w=1800&q=85",
     gallery: [
       "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?auto=format&fit=crop&w=1800&q=85",
@@ -132,8 +132,8 @@ const PROJECTS: Project[] = [
     slug: "bellevue-nest",
     title: "Bellevue Nest",
     tagline: "A mid-rise around a hundred-year-old tree.",
-    status: "Upcoming",
-    location: "Cooke Town, Bengaluru",
+    status: "Completed",
+    location: "Thimmegowdana Hosahalli, Bengaluru",
     hero: "https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=1800&q=85",
     gallery: [
       "https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=1800&q=85",
@@ -154,7 +154,6 @@ const PROJECTS: Project[] = [
       { label: "Floors", value: "B + G + 5" },
       { label: "Architect", value: "Studio in-house" },
     ],
-    possession: "2029",
     price: "₹ 6.8 Cr Onwards*"
   },
   {
@@ -162,7 +161,7 @@ const PROJECTS: Project[] = [
     title: "Elite Serenity",
     tagline: "Twenty-four residences, delivered 2024.",
     status: "Completed",
-    location: "Domlur, Bengaluru",
+    location: "Devanahalli, Bengaluru",
     hero: "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1800&q=85",
     gallery: [
       "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1800&q=85",
