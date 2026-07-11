@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Reveal from "../ui/Reveal";
 
 /**
- * The Collection — all five Vivanterra residences shown at once in a
+ * The Collection — all six Vivanterra residences shown at once in a
  * responsive grid (replaces the infinite marquee, which cropped cards).
  */
 type Card = {
@@ -20,6 +20,7 @@ const CARDS: Card[] = [
   { label: "Sense of Space", place: "Sadashiva Nagar", slug: "sense-of-space", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85" },
   { label: "Bellevue Nest", place: "Thimmegowdana Hosahalli", slug: "bellevue-nest", image: "https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=900&q=85", velociti: true },
   { label: "Elite Serenity", place: "Devanahalli", slug: "elite-serenity", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=85", velociti: true },
+  { label: "Elite Pristine", place: "Rajankunte", slug: "elite-pristine", image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=900&q=85", velociti: true },
 ];
 
 export default function Collection() {
@@ -68,9 +69,9 @@ export default function Collection() {
         </Reveal>
       </div>
 
-      {/* All five residences */}
+      {/* All six residences */}
       <div className="relative max-w-page container-x">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-4 md:gap-5">
           {CARDS.map((c, i) => (
             <Reveal key={c.slug} delay={0.05 * i}>
               <CollectionCard card={c} />

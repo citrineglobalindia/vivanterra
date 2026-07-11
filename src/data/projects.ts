@@ -184,6 +184,35 @@ const PROJECTS: Project[] = [
     ],
     price: "On request"
   },
+  {
+    slug: "elite-pristine",
+    title: "Elite Pristine",
+    tagline: "Sixteen residences at the edge of the green belt.",
+    status: "Completed",
+    location: "Rajankunte, Bengaluru",
+    hero: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1800&q=85",
+    gallery: [
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1800&q=85",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1800&q=85",
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1800&q=85",
+    ],
+    summary:
+      "Sixteen residences on the northern green belt at Rajankunte — completed, handed over and fully occupied.",
+    description: [
+      "Elite Pristine sits where the city thins out into farmland. Sixteen residences, low to the ground, arranged so that every home looks onto open sky rather than onto its neighbour.",
+      "The palette is deliberately plain — lime plaster, local stone, a deep timber soffit at the entrance. The planting was chosen for the water it does not need.",
+      "Completed and handed over. The building is fully occupied.",
+    ],
+    specs: [
+      { label: "Typology", value: "Apartment residences" },
+      { label: "Units", value: "16" },
+      { label: "Configuration", value: "2 & 3 BHK" },
+      { label: "Carpet area", value: "1,500 — 2,600 sq ft" },
+      { label: "Floors", value: "G + 4" },
+      { label: "Architect", value: "Studio in-house" },
+    ],
+    price: "On request"
+  },
 ];
 
 export function getProjects(status?: ProjectStatus): Project[] {

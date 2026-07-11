@@ -25,7 +25,7 @@ const FAQS = [
   },
   {
     q: "Where are Vivanterra residences located in Bengaluru?",
-    a: "Our completed, ongoing and upcoming projects sit across Bengaluru — Yelahanka, Shivaram Karanth Layout, Sadashiva Nagar, Thimmegowdana Hosahalli and Devanahalli. We choose sites for their mature greenery, walkability, and quiet adjacency to the city's cultural fabric.",
+    a: "Our completed, ongoing and upcoming projects sit across Bengaluru — Yelahanka, Shivaram Karanth Layout, Sadashiva Nagar, Thimmegowdana Hosahalli, Rajankunte and Devanahalli. We choose sites for their mature greenery, walkability, and quiet adjacency to the city's cultural fabric.",
   },
   {
     q: "What configurations and unit sizes do you offer?",
@@ -33,7 +33,7 @@ const FAQS = [
   },
   {
     q: "When can I expect possession?",
-    a: "Bellevue Nest and Elite Serenity are complete and handed over. Sense of Space is under construction, with possession from 2027. Our upcoming residences — Bare & Bespoke and The Living Edit — are in design or pre-construction; the current possession date is listed on every project card.",
+    a: "Bellevue Nest, Elite Serenity and Elite Pristine are complete and handed over. Sense of Space is under construction, with possession from 2027. Our upcoming residences — Bare & Bespoke and The Living Edit — are in design or pre-construction; the current possession date is listed on every project card.",
   },
   {
     q: "Are Vivanterra residences for sale or by invitation only?",
@@ -118,6 +118,10 @@ const LOCATIONS = [
   {
     name: "Thimmegowdana Hosahalli",
     body: "Green, low-rise and unhurried. Bellevue Nest — completed and handed over — sits wrapped around a hundred-year-old rain tree.",
+  },
+  {
+    name: "Rajankunte",
+    body: "Where the city thins into farmland. Elite Pristine, completed, sits low against the northern green belt.",
   },
   {
     name: "Devanahalli",

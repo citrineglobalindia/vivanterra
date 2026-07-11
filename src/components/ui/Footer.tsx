@@ -18,6 +18,7 @@ const RESIDENCES: FooterLink[] = [
   { label: "Sense of Space", to: "/projects/sense-of-space" },
   { label: "Bellevue Nest", to: "/projects/bellevue-nest" },
   { label: "Elite Serenity", to: "/projects/elite-serenity" },
+  { label: "Elite Pristine", to: "/projects/elite-pristine" },
 ];
 
 const USEFUL: FooterLink[] = [
