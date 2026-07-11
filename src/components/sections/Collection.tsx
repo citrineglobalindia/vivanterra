@@ -1,27 +1,25 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, FreeMode } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/free-mode";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Reveal from "../ui/Reveal";
 
 /**
- * The Collection — a continuous, infinite horizontal marquee of tall
- * residence cards (DAMAC-style "curated collaborations" interaction).
- * Smoothly auto-scrolls forever; drag to nudge, hover to slow.
- *
- * Placeholder luxury imagery + Vivanterra collection labels — swap the
- * `image` values (or wire to the admin Gallery) with your own photography.
+ * The Collection — all five Vivanterra residences shown at once in a
+ * responsive grid (replaces the infinite marquee, which cropped cards).
  */
-type Card = { label: string; place: string; image: string; velociti?: boolean };
+type Card = {
+  label: string;
+  place: string;
+  slug: string;
+  image: string;
+  velociti?: boolean;
+};
 
 const CARDS: Card[] = [
-  { label: "Bare & Bespoke Residence", place: "Sadashiva Nagar", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=85" },
-  { label: "The Living Edit", place: "Indiranagar", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" },
-  { label: "Sense of Space", place: "Jayanagar", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85" },
-  { label: "Bellevue Nest", place: "Cooke Town", image: "https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=900&q=85", velociti: true },
-  { label: "Elite Serenity", place: "Domlur", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=85", velociti: true },
+  { label: "Bare & Bespoke Residence", place: "Sadashiva Nagar", slug: "bare-bespoke-residence", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=85" },
+  { label: "The Living Edit", place: "Indiranagar", slug: "the-living-edit", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" },
+  { label: "Sense of Space", place: "Jayanagar", slug: "sense-of-space", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85" },
+  { label: "Bellevue Nest", place: "Cooke Town", slug: "bellevue-nest", image: "https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=900&q=85", velociti: true },
+  { label: "Elite Serenity", place: "Domlur", slug: "elite-serenity", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=85", velociti: true },
 ];
 
 export default function Collection() {
@@ -70,42 +68,15 @@ export default function Collection() {
         </Reveal>
       </div>
 
-      {/* Infinite marquee */}
-      <div
-        className="relative"
-        style={{
-          maskImage:
-            "linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)",
-          WebkitMaskImage:
-            "linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)",
-        }}
-      >
-        <Swiper
-          modules={[Autoplay, FreeMode]}
-          loop
-          loopAdditionalSlides={CARDS.length}
-          allowTouchMove
-          grabCursor
-          freeMode={{ enabled: true, momentum: false }}
-          speed={6000}
-          autoplay={{
-            delay: 0,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }}
-          slidesPerView="auto"
-          spaceBetween={20}
-          className="!ease-linear px-5"
-        >
+      {/* All five residences */}
+      <div className="relative max-w-page container-x">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
           {CARDS.map((c, i) => (
-            <SwiperSlide
-              key={c.label + i}
-              className="!w-[240px] sm:!w-[280px] md:!w-[320px]"
-            >
+            <Reveal key={c.slug} delay={0.05 * i}>
               <CollectionCard card={c} />
-            </SwiperSlide>
+            </Reveal>
           ))}
-        </Swiper>
+        </div>
       </div>
 
       {/* CTA */}
@@ -130,9 +101,9 @@ export default function Collection() {
 function CollectionCard({ card }: { card: Card }) {
   return (
     <Link
-      to="/projects"
+      to={`/projects/${card.slug}`}
       data-brand={card.velociti ? "Velociti" : undefined}
-      className="group relative block h-[440px] md:h-[500px] overflow-hidden rounded-sm bg-paper/5"
+      className="group relative block h-[340px] sm:h-[420px] md:h-[480px] overflow-hidden rounded-sm bg-paper/5"
     >
       {card.velociti && <span className="sr-only">A Velociti residence</span>}
       <img
@@ -146,25 +117,25 @@ function CollectionCard({ card }: { card: Card }) {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 35%, rgba(14,14,16,0.78) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0) 35%, rgba(14,14,16,0.78) 100%)",
         }}
       />
-      {/* Logo-style wordmark, centered (echoes the reference's brand plates) */}
-      <div className="absolute inset-x-0 top-10 flex flex-col items-center text-center px-6">
+      {/* Wordmark, centered */}
+      <div className="absolute inset-x-0 top-8 md:top-10 flex flex-col items-center text-center px-4">
         <span
           className="font-display text-paper/95 tracking-[0.04em]"
-          style={{ fontSize: "clamp(15px, 1.4vw, 18px)", fontWeight: 400 }}
+          style={{ fontSize: "clamp(14px, 1.1vw, 18px)", fontWeight: 400 }}
         >
           {card.label}
         </span>
         <span className="mt-2 h-px w-8 bg-gold/70" />
       </div>
       {/* Bottom place + discover */}
-      <div className="absolute bottom-0 inset-x-0 p-6">
+      <div className="absolute bottom-0 inset-x-0 p-5 md:p-6">
         <div className="text-[10px] tracking-[0.22em] uppercase text-gold mb-1.5">
           {card.place}
         </div>
-        <span className="inline-flex items-center gap-1 text-[11px] tracking-[0.16em] uppercase text-paper/0 group-hover:text-paper/85 transition-colors duration-500">
+        <span className="inline-flex items-center gap-1 text-[11px] tracking-[0.16em] uppercase text-paper/70 group-hover:text-paper transition-colors duration-500">
           Discover
           <ArrowUpRight size={13} />
         </span>
