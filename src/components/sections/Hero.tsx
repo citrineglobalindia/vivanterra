@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Pagination } from "swiper/modules";
 import type { Swiper as SwiperClass } from "swiper";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import SplitText from "../ui/SplitText";
@@ -35,7 +35,6 @@ export default function Hero() {
   const [active, setActive] = useState(0);
   const [progress, setProgress] = useState(0);
   const swiperRef = useRef<SwiperClass | null>(null);
-  const reduced = useReducedMotion();
 
   useEffect(() => {
     const start = performance.now();
@@ -118,19 +117,6 @@ export default function Hero() {
 
       {/* Animated corner brackets */}
       <CornerMarks />
-
-      {/* Vertical scroll indicator (top-right) */}
-      <div
-        className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 z-10 hidden sm:flex flex-col items-center gap-4"
-        aria-hidden="true"
-      >
-        <span className="eyebrow text-paper" style={{ writingMode: "vertical-rl" }}>Scroll</span>
-        <div className="relative h-24 w-px bg-paper/20 overflow-hidden">
-          {!reduced && (
-            <span className="absolute inset-x-0 h-1/2 bg-paper animate-scroll-indicator" />
-          )}
-        </div>
-      </div>
 
       {/* Content */}
       <div className="absolute inset-0 z-10 flex flex-col justify-end pb-16 md:pb-24">
