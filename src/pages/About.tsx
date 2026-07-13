@@ -233,46 +233,6 @@ export default function About() {
           </div>
         </section>
 
-        {/* ───────── 04 · CTA ───────── */}
-        <section>
-          <div className="hairline-dark mb-12 md:mb-16" />
-          <Reveal>
-            <div className="grid md:grid-cols-12 gap-10 items-end">
-              <div className="md:col-span-7">
-                <div className="eyebrow text-gold mb-5">
-                  Begin a conversation
-                </div>
-                <h2
-                  className="font-display text-ink"
-                  style={{
-                    fontSize: "clamp(28px, 3.4vw, 44px)",
-                    fontWeight: 300,
-                    letterSpacing: "-0.02em",
-                    lineHeight: 1.05,
-                  }}
-                >
-                  Looking for a residence{" "}
-                  <span className="">
-                    that breathes with you?
-                  </span>
-                </h2>
-              </div>
-              <div className="md:col-span-4 md:col-start-9">
-                <div className="text-base text-muted-soft leading-relaxed mb-6">
-                  Reach out to discuss residences, partnerships, or career
-                  opportunities at Vivanterra.
-                </div>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-2 btn btn-dark"
-                >
-                  Get in touch
-                  <ArrowUpRight size={16} className="btn-arrow" />
-                </Link>
-              </div>
-            </div>
-          </Reveal>
-        </section>
       </PageShell>
     </>
   );
