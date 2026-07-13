@@ -74,7 +74,7 @@ export default function About() {
         eyebrow="About — Vivanterra"
         title={
           <>
-            More than homes —{" "}
+            More than homes,{" "}
             <span className="">ecosystems of health.</span>
           </>
         }
