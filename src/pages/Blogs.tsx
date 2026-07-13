@@ -47,7 +47,6 @@ export default function Blogs() {
 
   return (
     <PageShell
-      eyebrow="Journal"
       title={
         <>
       <Seo
@@ -60,7 +59,6 @@ export default function Blogs() {
     >
       {/* ───────── 02 · Filter + Search ───────── */}
       <section className="mb-12 md:mb-16">
-        <div className="hairline-dark mb-12 md:mb-16" />
 
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
           {/* Search */}
