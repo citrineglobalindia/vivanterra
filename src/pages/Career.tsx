@@ -294,8 +294,7 @@ export default function Career() {
       </section>
 
       {/* ───────── 03 · Hiring process ───────── */}
-      <section className="mb-24 md:mb-32">
-        <div className="hairline-dark mb-16 md:mb-20" />
+      <section className="mb-24 md:mb-32 pt-12 md:pt-16">
 
         <Reveal>
           <div className="flex items-center gap-3 mb-12">
