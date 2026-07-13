@@ -147,28 +147,6 @@ const PROCESS = [
   { n: "04", title: "An offer, or a thank-you", body: "Either way, you'll hear from us within ten days. We promise the courtesy." },
 ];
 
-const CULTURE_IMAGES = [
-  {
-    src: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1100&q=85",
-    label: "The studio",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1100&q=85",
-    label: "On site",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1100&q=85",
-    label: "Material library",
-  },
-];
-
-const PERKS = [
-  { icon: <Briefcase size={14} />, label: "Health & dental — for you and family" },
-  { icon: <Clock size={14} />, label: "Six-week paid sabbatical at year three" },
-  { icon: <Sparkles size={14} />, label: "Annual learning budget — books, courses, travel" },
-  { icon: <Layers size={14} />, label: "ESOPs after twelve months" },
-];
-
 /* ── Component ───────────────────────────────────────── */
 
 export default function Career() {
@@ -365,80 +343,6 @@ export default function Career() {
             </Reveal>
           ))}
         </div>
-      </section>
-
-      {/* ───────── 04 · Life at the studio ───────── */}
-      <section className="mb-24 md:mb-32">
-        <div className="hairline-dark mb-16 md:mb-20" />
-
-        <Reveal>
-          <div className="flex items-center gap-3 mb-12">
-            <span className="eyebrow text-muted-soft">Life at the studio</span>
-          </div>
-        </Reveal>
-
-        <div className="grid md:grid-cols-12 gap-6 md:gap-8 mb-10">
-          {CULTURE_IMAGES.map((c, i) => (
-            <Reveal
-              key={c.src}
-              delay={i * 0.1}
-              className={
-                i === 0
-                  ? "md:col-span-7"
-                  : i === 1
-                    ? "md:col-span-5"
-                    : "md:col-span-12"
-              }
-            >
-              <figure className="relative img-zoom overflow-hidden rounded-sm bg-ink/5">
-                <div
-                  className={[
-                    "w-full",
-                    i === 2 ? "aspect-[16/7]" : "aspect-[4/5] md:aspect-[5/6]",
-                  ].join(" ")}
-                >
-                  <img
-                    src={c.src}
-                    alt={c.label}
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div
-                  aria-hidden
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(14,14,16,0.55) 100%)",
-                  }}
-                />
-                <figcaption className="absolute bottom-5 left-5 text-paper">
-                  <span className="text-[10px] tracking-[0.22em] text-gold tabular-nums">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="ml-3 eyebrow text-paper">{c.label}</span>
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </div>
-
-        {/* Perks strip */}
-        <Reveal delay={0.15}>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-12">
-            {PERKS.map((p) => (
-              <div
-                key={p.label}
-                className="flex items-start gap-3 p-5 border border-line-dark rounded-sm bg-paper hover:border-gold transition-colors"
-              >
-                <span className="mt-0.5 w-8 h-8 rounded-full bg-ink/5 text-gold flex items-center justify-center shrink-0">
-                  {p.icon}
-                </span>
-                <span className="text-sm text-ink leading-snug">{p.label}</span>
-              </div>
-            ))}
-          </div>
-        </Reveal>
       </section>
 
       {/* ───────── 05 · Spontaneous CTA ───────── */}
