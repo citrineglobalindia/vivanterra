@@ -404,37 +404,6 @@ export default function Career() {
         </motion.div>
       </section>
 
-      {/* ───────── Apply form ───────── */}
-      <section id="apply" className="mt-4">
-        <Reveal>
-          <div className="hairline-dark mb-12 md:mb-16" />
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-            <div className="lg:col-span-5">
-              <div className="eyebrow text-gold mb-4">Apply</div>
-              <h2
-                className="font-display text-ink"
-                style={{
-                  fontSize: "clamp(30px, 4vw, 52px)",
-                  fontWeight: 300,
-                  letterSpacing: "-0.02em",
-                  lineHeight: 1,
-                }}
-              >
-                Send us your{" "}
-                <span className="">introduction.</span>
-              </h2>
-              <p className="mt-6 text-muted-soft leading-relaxed">
-                Tell us which role resonates and why. Add a link to your
-                portfolio or a project you are proud of. Every application is
-                read by our team.
-              </p>
-            </div>
-            <div className="lg:col-span-7">
-              <ApplyForm roles={ROLES.map((r) => r.title)} />
-            </div>
-          </div>
-        </Reveal>
-      </section>
     </PageShell>
   );
 }
