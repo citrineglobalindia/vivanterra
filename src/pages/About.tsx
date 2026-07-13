@@ -83,12 +83,6 @@ export default function About() {
         {/* ───────── 01 · Mission + Vision ───────── */}
         <section className="mb-28 md:mb-40">
           <Reveal>
-            <div className="flex items-center gap-3 mb-10">
-              <span className="h-px w-10 bg-gold" />
-              <span className="eyebrow text-muted-soft">
-                01 / Mission & Vision
-              </span>
-            </div>
           </Reveal>
 
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
@@ -165,10 +159,6 @@ export default function About() {
         <section className="mb-28 md:mb-40">
           <div className="hairline-dark mb-16 md:mb-20" />
           <Reveal>
-            <div className="flex items-center gap-3 mb-10">
-              <span className="h-px w-10 bg-gold" />
-              <span className="eyebrow text-muted-soft">02 / Leadership</span>
-            </div>
             <h2
               className="font-display text-ink mb-14 md:mb-20"
               style={{
@@ -194,12 +184,6 @@ export default function About() {
         <section className="mb-24 md:mb-32">
           <div className="hairline-dark mb-16 md:mb-20" />
           <Reveal>
-            <div className="flex items-center gap-3 mb-10">
-              <span className="h-px w-10 bg-gold" />
-              <span className="eyebrow text-muted-soft">
-                03 / What we practice
-              </span>
-            </div>
             <h2
               className="font-display text-ink mb-14 md:mb-16"
               style={{
