@@ -82,9 +82,6 @@ export default function About() {
       >
         {/* ───────── 01 · Mission + Vision ───────── */}
         <section className="mb-28 md:mb-40">
-          <Reveal>
-          </Reveal>
-
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
             <Reveal className="lg:col-span-6" delay={0.05}>
               <article
