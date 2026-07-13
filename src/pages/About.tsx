@@ -71,7 +71,6 @@ export default function About() {
         description="Vivanterra builds wellness-first residences in Bengaluru — biophilic architecture, sustainable engineering, and ecosystems of community and health."
       />
       <PageShell
-        eyebrow="About — Vivanterra"
         title={
           <>
             More than homes,{" "}

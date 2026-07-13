@@ -6,7 +6,7 @@ import Nav from "./Nav";
 import Footer from "./Footer";
 
 interface PageShellProps {
-  eyebrow: string;
+  eyebrow?: string;
   title: ReactNode;
   intro?: string;
   children?: ReactNode;
@@ -32,7 +32,9 @@ export default function PageShell({ eyebrow, title, intro, children }: PageShell
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
           >
-            <div className="eyebrow text-gold mb-4">{eyebrow}</div>
+            {eyebrow && (
+              <div className="eyebrow text-gold mb-4">{eyebrow}</div>
+            )}
             <h1
               className="font-display text-ink"
               style={{
