@@ -177,7 +177,7 @@ export default function ProjectsGuide() {
             <div className="md:col-span-7">
               <div className="flex items-center gap-3 mb-5">
                 <span className="h-px w-10 bg-gold" />
-                <span className="eyebrow text-muted-soft">04 / FAQ</span>
+                <span className="eyebrow text-muted-soft">FAQ</span>
               </div>
               <h2
                 className="font-display text-ink"
@@ -222,7 +222,7 @@ export default function ProjectsGuide() {
           <div className="hairline-dark mb-10" />
           <div className="flex items-center gap-3 mb-5">
             <span className="h-px w-10 bg-gold" />
-            <span className="eyebrow text-muted-soft">05 / Guide</span>
+            <span className="eyebrow text-muted-soft">Guide</span>
           </div>
           <h2
             className="font-display text-ink mb-12 md:mb-16"
@@ -332,7 +332,7 @@ export default function ProjectsGuide() {
           <div className="hairline-dark mb-10" />
           <div className="flex items-center gap-3 mb-5">
             <span className="h-px w-10 bg-gold" />
-            <span className="eyebrow text-muted-soft">06 / Amenities</span>
+            <span className="eyebrow text-muted-soft">Amenities</span>
           </div>
           <h2
             className="font-display text-ink mb-12"
