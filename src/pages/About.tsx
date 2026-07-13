@@ -165,7 +165,7 @@ export default function About() {
               }}
             >
               Two voices,{" "}
-              <span className="">one studio.</span>
+              <span className="">one goal.</span>
             </h2>
           </Reveal>
 
