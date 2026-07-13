@@ -6,7 +6,7 @@ import SplitText from "../ui/SplitText";
 const NEWS = [
   {
     date: "April 2026",
-    title: "Inside the studio: a year of materials.",
+    title: "Inside Vivanterra: a year of materials.",
     dek: "Our head of design walks through twelve months of stone, brass and oak.",
     image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
   },

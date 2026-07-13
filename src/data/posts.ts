@@ -30,7 +30,7 @@ export type Post = {
 export const POSTS: Post[] = [
   {
     slug: "year-of-materials",
-    title: "Inside the studio: a year of materials.",
+    title: "Inside Vivanterra: a year of materials.",
     dek: "Twelve months of stone, brass and oak — our head of design walks through the year's discoveries and the houses they shaped.",
     category: "Craft",
     author: "Reema Iyer",
