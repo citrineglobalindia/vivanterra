@@ -52,9 +52,9 @@ export default function Blogs() {
         <>
       <Seo
         title={"Journal"}
-        description={"Notes from the studio — essays, field notes, conversations and progress reports on materials, craft, and city."}
+        description={"The Vivanterra Journal — essays, field notes, conversations and progress reports on materials, craft, and city."}
       />
-          Notes from <span className="">the studio.</span>
+          The Vivanterra <span className="">Journal.</span>
         </>
       }
     >
