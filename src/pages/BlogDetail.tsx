@@ -58,28 +58,6 @@ export default function BlogDetail() {
         </div>
       </Reveal>
 
-      {/* Byline */}
-      <Reveal delay={0.05}>
-        <div className="mt-10 flex items-center gap-4">
-          <span className="w-11 h-11 rounded-full bg-ink/5 flex items-center justify-center text-gold">
-            <BookOpen size={15} />
-          </span>
-          <div className="flex flex-col">
-            <span className="text-ink text-sm font-medium">{post.author}</span>
-            <span className="eyebrow text-muted-soft text-[10px]">
-              The studio
-            </span>
-          </div>
-          <span className="ml-auto flex items-center gap-3 text-[11px] tracking-[0.16em] uppercase text-muted-soft">
-            <span>{post.date}</span>
-            <span className="w-1 h-1 rounded-full bg-ink/30" />
-            <span className="inline-flex items-center gap-1">
-              <Clock size={11} className="opacity-60" />
-              {post.readingTime}
-            </span>
-          </span>
-        </div>
-      </Reveal>
 
       {/* Body */}
       <article className="mt-16 md:mt-20 max-w-2xl mx-auto">
@@ -130,11 +108,6 @@ export default function BlogDetail() {
                     <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-paper/90 backdrop-blur-sm text-ink px-3 py-1 text-[10px] tracking-[0.18em] font-medium uppercase rounded-full">
                       {p.category}
                     </span>
-                  </div>
-                  <div className="flex items-center gap-3 text-[11px] tracking-[0.16em] uppercase text-muted-soft mb-2">
-                    <span>{p.date}</span>
-                    <span className="w-1 h-1 rounded-full bg-ink/30" />
-                    <span className="text-ink/70">{p.author}</span>
                   </div>
                   <h3 className="font-display text-ink text-xl group-hover:text-gold transition-colors">
                     {p.title}

@@ -175,12 +175,6 @@ function PostCard({ post, index }: { post: Post; index: number }) {
           </span>
         </div>
 
-        <div className="flex items-center gap-3 text-[11px] tracking-[0.16em] uppercase text-muted-soft mb-3">
-          <span>{post.date}</span>
-          <span className="w-1 h-1 rounded-full bg-ink/30" />
-          <span className="text-ink/70">{post.author}</span>
-        </div>
-
         <h3
           className="font-display text-ink group-hover:text-gold transition-colors"
           style={{

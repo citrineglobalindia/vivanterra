@@ -70,12 +70,11 @@ describe("ProjectDetail", () => {
 });
 
 describe("BlogDetail", () => {
-  it("renders a known post's title, byline, and body paragraphs", () => {
+  it("renders a known post's title and body paragraphs", () => {
     renderAt("/blogs/year-of-materials");
     expect(
       screen.getAllByText(/a year of materials/i).length,
     ).toBeGreaterThan(0);
-    expect(screen.getAllByText(/Reema Iyer/).length).toBeGreaterThan(0);
     // A snippet from the body content we wrote
     expect(
       screen.getByText(/We start each year with a small ritual/i),
