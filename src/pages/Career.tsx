@@ -203,8 +203,7 @@ export default function Career() {
       <section className="mb-24 md:mb-32">
         <Reveal>
           <div className="flex items-center gap-3 mb-12">
-            <span className="h-px w-10 bg-gold" />
-            <span className="eyebrow text-muted-soft">01 / Why Vivanterra</span>
+            <span className="eyebrow text-muted-soft">Why Vivanterra</span>
           </div>
         </Reveal>
 
@@ -248,10 +247,7 @@ export default function Career() {
           <div className="md:col-span-7">
             <Reveal>
               <div className="flex items-center gap-3 mb-5">
-                <span className="h-px w-10 bg-gold" />
-                <span className="eyebrow text-muted-soft">
-                  02 / Open Positions
-                </span>
+                <span className="eyebrow text-muted-soft">Open Positions</span>
               </div>
             </Reveal>
             <Reveal delay={0.1}>
@@ -331,8 +327,7 @@ export default function Career() {
 
         <Reveal>
           <div className="flex items-center gap-3 mb-12">
-            <span className="h-px w-10 bg-gold" />
-            <span className="eyebrow text-muted-soft">03 / The Process</span>
+            <span className="eyebrow text-muted-soft">The Process</span>
           </div>
         </Reveal>
 
@@ -384,8 +379,7 @@ export default function Career() {
 
         <Reveal>
           <div className="flex items-center gap-3 mb-12">
-            <span className="h-px w-10 bg-gold" />
-            <span className="eyebrow text-muted-soft">04 / Life at the studio</span>
+            <span className="eyebrow text-muted-soft">Life at the studio</span>
           </div>
         </Reveal>
 
