@@ -244,11 +244,6 @@ export default function Career() {
 
         <div className="grid md:grid-cols-12 gap-8 mb-10 items-end">
           <div className="md:col-span-7">
-            <Reveal>
-              <div className="flex items-center gap-3 mb-5">
-                <span className="eyebrow text-muted-soft">Open Positions</span>
-              </div>
-            </Reveal>
             <Reveal delay={0.1}>
               <h2
                 className="font-display text-ink"
