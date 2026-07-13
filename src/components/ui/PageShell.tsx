@@ -58,7 +58,7 @@ export default function PageShell({ eyebrow, title, intro, children }: PageShell
       </section>
 
       {children ? (
-        <section className="pb-24 md:pb-32">
+        <section className="pb-14 md:pb-20">
           <div className="max-w-page container-x">{children}</div>
         </section>
       ) : (

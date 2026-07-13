@@ -177,7 +177,7 @@ export default function About() {
         </section>
 
         {/* ───────── 03 · The Principles ───────── */}
-        <section className="mb-24 md:mb-32">
+        <section>
           <div className="hairline-dark mb-16 md:mb-20" />
           <Reveal>
             <h2
