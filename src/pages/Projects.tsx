@@ -11,7 +11,6 @@ export default function Projects() {
         description="Vivanterra residences across Bengaluru — wellness-first apartments and full-floor homes in Yelahanka, Shivaram Karanth Layout, Sadashiva Nagar, IVC Road, Rajankunte and Devanahalli. Ongoing, upcoming and completed projects."
       />
       <PageShell
-        eyebrow="Residences — Bengaluru"
         title={
           <>
             Vivanterra residences{" "}
