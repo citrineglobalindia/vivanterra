@@ -72,14 +72,6 @@ export default function Loader() {
               </span>
               <span className="eyebrow text-paper">Real Estate</span>
             </motion.div>
-            <motion.span
-              className="eyebrow text-paper"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-            >
-              Loading the studio
-            </motion.span>
           </header>
 
           <div className="flex-1" />
