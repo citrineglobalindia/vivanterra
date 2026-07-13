@@ -295,7 +295,7 @@ function FounderBlock({
         className={`lg:col-span-5 ${flip ? "lg:order-2" : ""}`}
         delay={0.05}
       >
-        <div className="relative img-zoom aspect-[4/5] overflow-hidden rounded-sm bg-ink">
+        <div className="relative img-zoom aspect-[3/2] overflow-hidden rounded-sm bg-ink">
           {/* Initials placeholder, sits behind the <img> until the photo loads */}
           <div
             aria-hidden
@@ -327,7 +327,7 @@ function FounderBlock({
             src={founder.photo}
             alt={`${founder.name}, ${founder.role}`}
             loading="lazy"
-            className="relative h-full w-full object-cover transition-opacity duration-500"
+            className="relative h-full w-full object-contain object-center transition-opacity duration-500"
             onError={(e) => {
               // Photo not deployed — hide so the initials placeholder shows.
               (e.currentTarget as HTMLImageElement).style.opacity = "0";
