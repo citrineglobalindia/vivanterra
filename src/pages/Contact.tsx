@@ -340,7 +340,7 @@ export default function Contact() {
 
         {/* ───────── Sidebar ───────── */}
         <aside className="lg:col-span-5 space-y-6">
-          {/* Studio card (dark) */}
+          {/* Office card (dark) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -487,7 +487,7 @@ export default function Contact() {
           <div className="md:col-span-4 md:col-start-9">
             <p className="text-muted-soft leading-relaxed">
               Visits are by appointment. Reach out and we'll arrange a private
-              walk-through at the studio.
+              walk-through at our office.
             </p>
           </div>
         </div>
@@ -495,7 +495,7 @@ export default function Contact() {
         <div className="relative overflow-hidden rounded-sm border border-line-dark">
           <div className="aspect-[16/10] md:aspect-[21/9] w-full bg-paper">
             <iframe
-              title="Vivanterra Real Estate — Sadashiva Nagar studio"
+              title="Vivanterra Real Estate — Sadashiva Nagar office"
               src={MAP_EMBED_SRC}
               className="w-full h-full"
               style={{ border: 0, filter: "grayscale(0.35) contrast(0.92)" }}

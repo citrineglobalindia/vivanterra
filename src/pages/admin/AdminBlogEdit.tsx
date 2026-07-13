@@ -14,7 +14,7 @@ export default function AdminBlogEdit() {
   const isNew = !id || id === "new";
   const nav = useNavigate();
   const { email } = useAdminSession();
-  const [f, setF] = useState({ slug:"", title:"", dek:"", category:"Studio Notes", author:"", date_label:"", reading_time:"", image:"", body:[""], featured:false, published:true });
+  const [f, setF] = useState({ slug:"", title:"", dek:"", category:"Vivanterra Notes", author:"", date_label:"", reading_time:"", image:"", body:[""], featured:false, published:true });
   const [loading, setLoading] = useState(!isNew);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);

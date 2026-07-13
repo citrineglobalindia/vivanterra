@@ -29,7 +29,7 @@ const VALUES = [
   {
     n: "02",
     icon: <Users size={18} />,
-    title: "A small studio voice",
+    title: "A small, close-knit voice",
     body: "Eighteen people, one room. Every project is led by a partner; no idea is lost in a hierarchy.",
   },
   {
@@ -43,7 +43,7 @@ const VALUES = [
 type Department =
   | "Design"
   | "Construction"
-  | "Studio"
+  | "Client & Concierge"
   | "Velociti"
   | "Operations";
 
@@ -95,12 +95,12 @@ const ROLES: Role[] = [
   },
   {
     title: "Client Concierge",
-    department: "Studio",
+    department: "Client & Concierge",
     location: "Bengaluru",
     type: "Full-time",
     posted: "May 2026",
     blurb:
-      "Read and respond to every enquiry the studio receives. Host visits, prepare briefs, coordinate handovers.",
+      "Read and respond to every enquiry Vivanterra receives. Host visits, prepare briefs, coordinate handovers.",
   },
   {
     title: "Sales Director",
@@ -113,7 +113,7 @@ const ROLES: Role[] = [
   },
   {
     title: "Editorial Lead",
-    department: "Studio",
+    department: "Client & Concierge",
     location: "Bengaluru / Remote",
     type: "Contract",
     posted: "April 2026",
@@ -127,7 +127,7 @@ const ROLES: Role[] = [
     type: "Full-time",
     posted: "May 2026",
     blurb:
-      "Keep the studio running quietly: vendors, finance, the long tail of details that makes craft possible.",
+      "Keep Vivanterra running quietly: vendors, finance, the long tail of details that makes craft possible.",
   },
 ];
 
@@ -135,15 +135,15 @@ const DEPARTMENTS: ("All" | Department)[] = [
   "All",
   "Design",
   "Construction",
-  "Studio",
+  "Client & Concierge",
   "Velociti",
   "Operations",
 ];
 
 const PROCESS = [
   { n: "01", title: "We read every CV", body: "No bots. The hiring partner reads what you send within a week." },
-  { n: "02", title: "A first conversation", body: "Forty minutes, on Zoom or at the studio. We listen, we share context." },
-  { n: "03", title: "A studio day", body: "Spend a working day with the team. Bring a project you're proud of." },
+  { n: "02", title: "A first conversation", body: "Forty minutes, on Zoom or at our office. We listen, we share context." },
+  { n: "03", title: "A day with the team", body: "Spend a working day with the team. Bring a project you're proud of." },
   { n: "04", title: "An offer, or a thank-you", body: "Either way, you'll hear from us within ten days. We promise the courtesy." },
 ];
 
@@ -168,7 +168,7 @@ export default function Career() {
       title={
         <>
       <Seo
-        title={"Careers at the studio"}
+        title={"Careers at Vivanterra"}
         description={"Open roles at Vivanterra. We move slowly and hire people who have stayed."}
       />
           Build the <span className="">next chapter.</span>

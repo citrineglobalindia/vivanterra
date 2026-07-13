@@ -94,7 +94,7 @@ const PROJECTS: Project[] = [
       { label: "Configuration", value: "2 & 3 BHK" },
       { label: "Carpet area", value: "1,650 — 2,400 sq ft" },
       { label: "Floors", value: "B + G + 6" },
-      { label: "Architect", value: "Studio in-house" },
+      { label: "Architect", value: "In-house" },
     ],
     possession: "Q3 2027",
     price: "₹ 3.2 Cr Onwards*"
@@ -152,7 +152,7 @@ const PROJECTS: Project[] = [
       { label: "Configuration", value: "3 BHK" },
       { label: "Carpet area", value: "2,800 — 3,200 sq ft" },
       { label: "Floors", value: "B + G + 5" },
-      { label: "Architect", value: "Studio in-house" },
+      { label: "Architect", value: "In-house" },
     ],
     price: "₹ 6.8 Cr Onwards*"
   },
@@ -180,7 +180,7 @@ const PROJECTS: Project[] = [
       { label: "Configuration", value: "2, 3 & 4 BHK" },
       { label: "Carpet area", value: "1,800 — 4,000 sq ft" },
       { label: "Floors", value: "B + G + 7" },
-      { label: "Architect", value: "Studio in-house" },
+      { label: "Architect", value: "In-house" },
     ],
     price: "On request"
   },
@@ -209,7 +209,7 @@ const PROJECTS: Project[] = [
       { label: "Configuration", value: "2 & 3 BHK" },
       { label: "Carpet area", value: "1,500 — 2,600 sq ft" },
       { label: "Floors", value: "G + 4" },
-      { label: "Architect", value: "Studio in-house" },
+      { label: "Architect", value: "In-house" },
     ],
     price: "On request"
   },

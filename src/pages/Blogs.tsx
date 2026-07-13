@@ -12,7 +12,7 @@ const CATEGORIES: ("All" | Category)[] = [
   "All",
   "Architecture",
   "Craft",
-  "Studio Notes",
+  "Vivanterra Notes",
   "News",
   "Updates",
   "Inside Vivanterra",

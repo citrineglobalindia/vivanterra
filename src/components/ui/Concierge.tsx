@@ -58,7 +58,7 @@ const INTENTS: Intent[] = [
   {
     match: /\b(upcoming|launch|new|forthcoming|future)\b/i,
     reply: () => ({
-      text: "A look at what's next from the studio — by invitation.",
+      text: "A look at what's next from Vivanterra — by invitation.",
       actions: [{ label: "Upcoming residences", href: "/projects/upcoming" }],
     }),
   },
@@ -74,7 +74,7 @@ const INTENTS: Intent[] = [
     reply: () => ({
       text:
         "Visits are by private appointment, Monday – Saturday, 10:00 – 19:00 IST. Share your details and a preferred window, and we'll arrange a walk-through.",
-      chips: ["Speak with a person", "Studio location"],
+      chips: ["Speak with a person", "Our location"],
       actions: [{ label: "Request a visit", href: "/contact" }],
     }),
   },
@@ -91,7 +91,7 @@ const INTENTS: Intent[] = [
     match: /\b(location|address|studio|where|directions|office|map|sadashiva)\b/i,
     reply: () => ({
       text:
-        "The studio is at Cassini Towers, Sadashiva Nagar, Bengaluru 560080. Visits by appointment only.",
+        "Our office is at Cassini Towers, Sadashiva Nagar, Bengaluru 560080. Visits by appointment only.",
       actions: [
         {
           label: "Open in Google Maps",
@@ -99,7 +99,7 @@ const INTENTS: Intent[] = [
             "https://www.google.com/maps/dir/?api=1&destination=Velociti+Real+Estate,+Sadashiva+Nagar,+Bengaluru",
           external: true,
         },
-        { label: "Contact the studio", href: "/contact" },
+        { label: "Contact Vivanterra", href: "/contact" },
       ],
     }),
   },
@@ -133,7 +133,7 @@ const INTENTS: Intent[] = [
     match: /\b(about|who|company|firm|history|story|studio)\b/i,
     reply: () => ({
       text:
-        "Vivanterra is a residential studio — a small atelier composing private residences with patience, restraint and rare materials.",
+        "Vivanterra is a residential practice — a small atelier composing private residences with patience, restraint and rare materials.",
       actions: [{ label: "Read about us", href: "/about" }],
     }),
   },
@@ -164,7 +164,7 @@ const INTENTS: Intent[] = [
   {
     match: /\b(blog|blogs?|article|read|journal|insights?)\b/i,
     reply: () => ({
-      text: "Our journal collects field notes from the studio, in print and online.",
+      text: "Our journal collects field notes from Vivanterra, in print and online.",
       actions: [{ label: "Visit the journal", href: "/blogs" }],
     }),
   },
@@ -194,8 +194,8 @@ const FALLBACK = (q: string): Pick<Message, "text" | "chips" | "actions"> => ({
     q.length < 4
       ? "Could you share a little more?"
       : "I'd love to connect you with our team for that — every enquiry is read by a person, never automated.",
-  chips: ["Available residences", "Schedule a visit", "Studio location"],
-  actions: [{ label: "Speak with the studio", href: "/contact" }],
+  chips: ["Available residences", "Schedule a visit", "Our location"],
+  actions: [{ label: "Speak with Vivanterra", href: "/contact" }],
 });
 
 const WELCOME: Message = {
@@ -204,7 +204,7 @@ const WELCOME: Message = {
   ts: Date.now(),
   text:
     "Welcome — I'm the Vivanterra concierge. Tell me what you're looking for and I'll point you in the right direction.",
-  chips: ["Available residences", "Schedule a visit", "Studio location", "Speak with a person"],
+  chips: ["Available residences", "Schedule a visit", "Our location", "Speak with a person"],
 };
 
 function uid() {

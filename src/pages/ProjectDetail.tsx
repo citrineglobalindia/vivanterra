@@ -167,7 +167,7 @@ export default function ProjectDetail() {
                 to={`/contact?project=${project.slug}`}
                 className="inline-flex items-center gap-1 mt-8 text-[12px] tracking-[0.18em] uppercase font-medium text-ink hover:text-gold transition-colors nav-link"
               >
-                Or visit the studio
+                Or visit us
                 <ArrowUpRight size={14} />
               </Link>
             </div>
@@ -184,7 +184,7 @@ export default function ProjectDetail() {
           <div className="hairline-dark mb-10 md:mb-16" />
           <div className="flex items-center gap-3 mb-10">
             <span className="h-px w-10 bg-gold" />
-            <span className="eyebrow text-muted-soft">More from the studio</span>
+            <span className="eyebrow text-muted-soft">More from Vivanterra</span>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
             {related.map((p, i) => (

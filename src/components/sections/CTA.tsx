@@ -51,7 +51,7 @@ export default function CTA() {
                       id="email"
                       type="email"
                       required
-                      placeholder="you@studio.com"
+                      placeholder="you@example.com"
                       className="w-full bg-transparent border-b border-ink/25 pb-3 text-[16px] text-ink outline-none focus:border-ink transition-colors placeholder:text-ink/35"
                     />
                   </div>

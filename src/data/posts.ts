@@ -9,7 +9,7 @@
 export type Category =
   | "Architecture"
   | "Craft"
-  | "Studio Notes"
+  | "Vivanterra Notes"
   | "News"
   | "Updates"
   | "Inside Vivanterra";
@@ -53,7 +53,7 @@ export const POSTS: Post[] = [
     slug: "sense-of-space-tops-out",
     title: "Sense of Space tops out in Sadashiva Nagar.",
     dek: "The first of our 2027 deliveries reaches its full height ahead of schedule. A note from the site, mid-celebration.",
-    category: "Studio Notes",
+    category: "Vivanterra Notes",
     author: "Karthik Rao",
     date: "March 2026",
     readingTime: "5 min read",
@@ -83,7 +83,7 @@ export const POSTS: Post[] = [
       "On patience: 'Every building we have made worth talking about took longer than we first promised. I have stopped fighting that. The honest deadline is the one the building tells you, not the one the brochure does.'",
       "On restraint: 'I have made the mistake, twice, of putting too much into a small house. You cannot un-make that mistake. So now I begin every project by listing everything we will not do.'",
       "On the skyline: 'Bengaluru will get taller. I do not think that is necessarily bad. I think it is bad if every new building is taller for no reason. Height should be a response to a site, not a posture.'",
-      "On the studio: 'I am most proud of the people who have stayed. We do not move fast. The people who like that have stayed; the people who didn't have left, and that is fair. The studio is, at this point, mostly an argument I have been having with the same eight or nine people for ten years.'",
+      "On Vivanterra: 'I am most proud of the people who have stayed. We do not move fast. The people who like that have stayed; the people who didn't have left, and that is fair. The studio is, at this point, mostly an argument I have been having with the same eight or nine people for ten years.'",
       "On what comes next: 'A house in Coorg. A school, perhaps. A small library in the city we have been talking about for two years. We will see.'",
     ],
   },
@@ -163,7 +163,7 @@ export const POSTS: Post[] = [
     slug: "ten-houses-in",
     title: "Ten houses in, and what we got wrong.",
     dek: "A candid retrospective from our principal architect on the lessons that shaped the next decade of work.",
-    category: "Studio Notes",
+    category: "Vivanterra Notes",
     author: "Aravind Menon",
     date: "December 2025",
     readingTime: "10 min read",

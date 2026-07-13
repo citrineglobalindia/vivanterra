@@ -261,7 +261,7 @@ export default function Velocity() {
                 <div className="mt-8 grid grid-cols-3 gap-4 text-paper/70">
                   <Stat icon={<Layers size={14} />} label="Projects" value="20+" />
                   <Stat icon={<MapPin size={14} />} label="Bengaluru" value="15 yrs" />
-                  <Stat icon={<Feather size={14} />} label="Studio team" value="24" />
+                  <Stat icon={<Feather size={14} />} label="Vivanterra team" value="24" />
                 </div>
               </div>
             </div>

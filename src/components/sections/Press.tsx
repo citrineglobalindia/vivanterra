@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Marquee from "../ui/Marquee";
 
 const QUOTES = [
-  { pub: "Wallpaper*", quote: "A studio of unusual restraint." },
+  { pub: "Wallpaper*", quote: "A practice of unusual restraint." },
   { pub: "Architectural Record", quote: "Quiet, exact, deeply considered." },
   { pub: "Monocle", quote: "Reshaping luxury for a slower decade." },
   { pub: "Financial Times", quote: "The most patient developer in the gulf." },

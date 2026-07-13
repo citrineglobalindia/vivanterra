@@ -45,7 +45,7 @@ const FAQS = [
   },
   {
     q: "How do I schedule a private viewing?",
-    a: "Reach out via the Enquire button on any project card, write to hello@vivanterra.in, or message us on WhatsApp at +91 88675 89797. Our concierge will arrange a private walk-through at our Sadashiva Nagar studio or, where possible, on site.",
+    a: "Reach out via the Enquire button on any project card, write to hello@vivanterra.in, or message us on WhatsApp at +91 88675 89797. Our concierge will arrange a private walk-through at our Sadashiva Nagar office or, where possible, on site.",
   },
 ] as const;
 
@@ -113,7 +113,7 @@ const LOCATIONS = [
   },
   {
     name: "Sadashiva Nagar",
-    body: "Quiet residential streets, mature trees, and easy proximity to Sankey Tank. Our studio is here; so is Sense of Space, currently under construction.",
+    body: "Quiet residential streets, mature trees, and easy proximity to Sankey Tank. Our office is here; so is Sense of Space, currently under construction.",
   },
   {
     name: "IVC Road",
