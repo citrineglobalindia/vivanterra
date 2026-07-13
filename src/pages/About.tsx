@@ -78,7 +78,7 @@ export default function About() {
             <span className="">ecosystems of health.</span>
           </>
         }
-        intro="Vivanterra is a wellness-first real estate studio. We build environments that contribute, every day, to how their residents breathe, rest, and live."
+        intro="Because feeling good starts at home. Discover wellness-first residences designed for comfort, calm, and a healthier way of living across Bengaluru's most sought-after neighbourhoods."
       >
         {/* ───────── 01 · Mission + Vision ───────── */}
         <section className="mb-28 md:mb-40">
