@@ -187,7 +187,6 @@ export default function Career() {
 
   return (
     <PageShell
-      eyebrow="Careers"
       title={
         <>
       <Seo
