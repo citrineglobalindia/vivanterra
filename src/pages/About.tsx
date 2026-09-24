@@ -49,18 +49,6 @@ const FOUNDERS = [
       "For me, execution is where philosophy meets reality. Every Vivanterra project is designed through the lens of biophilic architecture, sustainable engineering, and precise spatial harmony. We are deeply committed to turning visionary design into a tangible, high-quality reality — ensuring that from the foundational layout to the final finishing touch, every square foot serves a purpose: to elevate, restore, and sustain your health and peace of mind.",
     ],
   },
-  {
-    slug: "rajath",
-    name: "Rajath",
-    role: "Co-Founder",
-    photo: "/founders/rajath.jpeg",
-    headline: "Understanding the Need of the Hour & Nurturing Community",
-    eyebrow: "The Pulse",
-    statement: [
-      "Today, more than ever, the world is demanding a return to balance. The fast-paced nature of modern life has made us realize that true luxury isn't just about opulence; it is about time, health, and a deep sense of belonging. Understanding this 'need of the hour' is what drives our customer-first approach at Vivanterra. We listen intently to the evolving lifestyle needs of families who seek sanctuary without isolation.",
-      "But a wellness journey shouldn't be walked alone. Beyond the physical boundaries of a home, we are passionately focused on community building. We are creating ecosystems where like-minded individuals can connect, thrive, and share a conscious lifestyle. Vivanterra is built to foster meaningful interactions, vibrant community spaces, and a shared culture of wellness — because a healthy life is happiest when lived together.",
-    ],
-  },
 ] as const;
 
 export default function About() {
@@ -164,7 +152,7 @@ export default function About() {
                 lineHeight: 1,
               }}
             >
-              Two voices,{" "}
+              One vision,{" "}
               <span className="">one goal.</span>
             </h2>
           </Reveal>
