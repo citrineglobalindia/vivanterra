@@ -14,7 +14,7 @@ const RESIDENCES = [
   { name: "Sanctum", location: "Yeshwanthpur", image: "/projects/sanctum.jpg" },
   { name: "The Living Edit", location: "Shivaram Karanth Layout", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" },
   { name: "Bellevue Nest", location: "IVC Road", image: "/projects/bellevue-nest.jpg" },
-  { name: "Veritas Serenity", location: "Devanahalli", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" },
+  { name: "Veritas Serenity", location: "Devanahalli", image: "/projects/veritas-serenity.jpg" },
 ];
 
 export default function Residences() {
