@@ -70,7 +70,7 @@ export default function Collection() {
 
       {/* All six residences */}
       <div className="relative max-w-page container-x">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-4 md:gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-5">
           {CARDS.map((c, i) => (
             <Reveal key={c.slug} delay={0.05 * i}>
               <CollectionCard card={c} />
