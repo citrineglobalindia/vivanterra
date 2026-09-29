@@ -14,11 +14,22 @@ export type Category =
   | "Updates"
   | "Inside Vivanterra";
 
+/** The categories the public filter offers, and the admin picker suggests. */
+export const CATEGORIES: Category[] = [
+  "Architecture",
+  "Craft",
+  "Vivanterra Notes",
+  "News",
+  "Updates",
+  "Inside Vivanterra",
+];
+
 export type Post = {
   slug: string;
   title: string;
   dek: string;
-  category: Category;
+  /** Free text: the admin panel may introduce categories beyond the list above. */
+  category: string;
   author: string;
   date: string;
   readingTime: string;

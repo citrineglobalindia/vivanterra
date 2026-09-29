@@ -9,17 +9,28 @@ import {
 import Seo from "@/components/seo/Seo";
 import PageShell from "@/components/ui/PageShell";
 import Reveal from "@/components/ui/Reveal";
-import { getPostBySlug, getRelatedPosts } from "@/data/posts";
+import { usePost, usePosts, relatedFrom } from "@/lib/use-posts";
 
 export default function BlogDetail() {
   const { slug = "" } = useParams<{ slug: string }>();
-  const post = getPostBySlug(slug);
+  const { post, loading, notFound } = usePost(slug);
+  const { posts } = usePosts();
 
-  if (!post) {
+  // Only redirect once the lookup has actually settled, otherwise a database
+  // post 404s for the moment before its fetch resolves.
+  if (notFound && !loading) {
     return <Navigate to="/404" replace />;
   }
 
-  const related = getRelatedPosts(post.slug, 3);
+  if (!post) {
+    return (
+      <PageShell title={<>Loading…</>}>
+        <div className="py-24 text-center text-muted-soft">Fetching this essay…</div>
+      </PageShell>
+    );
+  }
+
+  const related = relatedFrom(posts, post.slug, 3);
 
   return (
     <>
@@ -105,7 +116,7 @@ export default function BlogDetail() {
                       loading="lazy"
                       className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.05]"
                     />
-                    <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-paper/90 backdrop-blur-sm text-ink px-3 py-1 text-[10px] tracking-[0.18em] font-medium uppercase rounded-full">
+                    <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-white/90 backdrop-blur-sm text-ink px-3 py-1 text-[10px] tracking-[0.18em] font-medium uppercase rounded-full">
                       {p.category}
                     </span>
                   </div>

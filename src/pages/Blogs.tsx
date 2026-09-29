@@ -6,26 +6,26 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Clock, Search } from "lucide-react";
 
 import { Link } from "react-router-dom";
-import { POSTS, type Category, type Post } from "@/data/posts";
-
-const CATEGORIES: ("All" | Category)[] = [
-  "All",
-  "Architecture",
-  "Craft",
-  "Vivanterra Notes",
-  "News",
-  "Updates",
-  "Inside Vivanterra",
-];
+import { CATEGORIES as KNOWN_CATEGORIES, type Post } from "@/data/posts";
+import { usePosts } from "@/lib/use-posts";
 
 /* ── Component ───────────────────────────────────────── */
 
 export default function Blogs() {
-  const [category, setCategory] = useState<(typeof CATEGORIES)[number]>("All");
+  const { posts, loading } = usePosts();
+  const [category, setCategory] = useState<string>("All");
   const [query, setQuery] = useState("");
 
+  // Known categories first, then anything else the admin panel introduced.
+  const categories = useMemo(() => {
+    const present = new Set(posts.map((p) => p.category));
+    const known = KNOWN_CATEGORIES.filter((c) => present.has(c));
+    const extra = [...present].filter((c) => !KNOWN_CATEGORIES.includes(c as never)).sort();
+    return ["All", ...known, ...extra];
+  }, [posts]);
+
   const filtered = useMemo(() => {
-    let xs: Post[] = POSTS;
+    let xs: Post[] = posts;
     if (category !== "All") xs = xs.filter((p) => p.category === category);
     if (query.trim()) {
       const q = query.toLowerCase();
@@ -37,13 +37,13 @@ export default function Blogs() {
       );
     }
     return xs;
-  }, [category, query]);
+  }, [posts, category, query]);
 
   const counts = useMemo(() => {
-    const map: Record<string, number> = { All: POSTS.length };
-    for (const p of POSTS) map[p.category] = (map[p.category] || 0) + 1;
+    const map: Record<string, number> = { All: posts.length };
+    for (const p of posts) map[p.category] = (map[p.category] || 0) + 1;
     return map;
-  }, []);
+  }, [posts]);
 
   return (
     <PageShell
@@ -81,7 +81,7 @@ export default function Blogs() {
         {/* Category chips */}
         <Reveal delay={0.15}>
           <div className="flex flex-wrap gap-2 mt-6">
-            {CATEGORIES.map((c) => {
+            {categories.map((c) => {
               const active = category === c;
               return (
                 <button
@@ -116,7 +116,9 @@ export default function Blogs() {
       <section className="mb-24 md:mb-32">
         {filtered.length === 0 ? (
           <div className="border border-dashed border-line-dark rounded-sm py-16 text-center text-muted-soft">
-            No essays match your search. Try another category or term.
+            {loading
+              ? "Loading essays…"
+              : "No essays match your search. Try another category or term."}
           </div>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
@@ -163,7 +165,7 @@ function PostCard({ post, index }: { post: Post; index: number }) {
             }}
           />
           {/* Category tag */}
-          <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-paper/90 backdrop-blur-sm text-ink px-3 py-1 text-[10px] tracking-[0.18em] font-medium uppercase rounded-full">
+          <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-white/90 backdrop-blur-sm text-ink px-3 py-1 text-[10px] tracking-[0.18em] font-medium uppercase rounded-full">
             {post.category}
           </span>
           {/* Reading time */}
