@@ -105,9 +105,9 @@ const PROJECTS: Project[] = [
     tagline: "A mid-rise around a hundred-year-old tree.",
     status: "Completed",
     location: "IVC Road, Bengaluru",
-    hero: "https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=1800&q=85",
+    hero: "/projects/bellevue-nest.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=1800&q=85",
+      "/projects/bellevue-nest.jpg",
       "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1800&q=85",
       "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=85",
     ],
@@ -133,9 +133,9 @@ const PROJECTS: Project[] = [
     tagline: "Twenty-four residences, delivered 2024.",
     status: "Completed",
     location: "Devanahalli, Bengaluru",
-    hero: "/projects/veritas-serenity.jpg",
+    hero: "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1800&q=85",
     gallery: [
-      "/projects/veritas-serenity.jpg",
+      "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1800&q=85",
       "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1800&q=85",
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85",
     ],
