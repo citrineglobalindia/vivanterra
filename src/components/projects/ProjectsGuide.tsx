@@ -25,7 +25,7 @@ const FAQS = [
   },
   {
     q: "Where are Vivanterra residences located in Bengaluru?",
-    a: "Our completed, ongoing and upcoming projects sit across Bengaluru — Yelahanka, Shivaram Karanth Layout, Sadashiva Nagar, IVC Road, Rajankunte and Devanahalli. We choose sites for their mature greenery, walkability, and quiet adjacency to the city's cultural fabric.",
+    a: "Our completed, ongoing and upcoming projects sit across Bengaluru — Yeshwanthpur, Shivaram Karanth Layout, IVC Road, Rajankunte and Devanahalli. We choose sites for their mature greenery, walkability, and quiet adjacency to the city's cultural fabric.",
   },
   {
     q: "What configurations and unit sizes do you offer?",
@@ -33,7 +33,7 @@ const FAQS = [
   },
   {
     q: "When can I expect possession?",
-    a: "Bellevue Nest, Elite Serenity and Elite Pristine are complete and handed over. Sense of Space is under construction, with possession from 2027. Our upcoming residences — Bare & Bespoke and The Living Edit — are in design or pre-construction; the current possession date is listed on every project card.",
+    a: "Bellevue Nest, Veritas Serenity and Veritas Pristine are complete and handed over. Our upcoming residences — Sanctum and The Living Edit — are in design or pre-construction; the current possession date is listed on every project card.",
   },
   {
     q: "Are Vivanterra residences for sale or by invitation only?",
@@ -104,8 +104,8 @@ function FaqItem({
 
 const LOCATIONS = [
   {
-    name: "Yelahanka",
-    body: "North Bengaluru's calmest quarter — wide roads, lakes and open sky. Bare & Bespoke, our upcoming residence, is here.",
+    name: "Yeshwanthpur",
+    body: "A central, well-connected quarter — Metro at hand, quiet residential streets behind the main roads. Sanctum, our upcoming residence, is here.",
   },
   {
     name: "Shivaram Karanth Layout",
@@ -113,7 +113,7 @@ const LOCATIONS = [
   },
   {
     name: "Sadashiva Nagar",
-    body: "Quiet residential streets, mature trees, and easy proximity to Sankey Tank. Our office is here; so is Sense of Space, currently under construction.",
+    body: "Quiet residential streets, mature trees, and easy proximity to Sankey Tank. Our Bengaluru office is here.",
   },
   {
     name: "IVC Road",
@@ -121,11 +121,11 @@ const LOCATIONS = [
   },
   {
     name: "Rajankunte",
-    body: "Where the city thins into farmland. Elite Pristine, completed, sits low against the northern green belt.",
+    body: "Where the city thins into farmland. Veritas Pristine, completed, sits low against the northern green belt.",
   },
   {
     name: "Devanahalli",
-    body: "Open country close to the airport corridor. Elite Serenity, completed, is a calm, light-filled residence set back from the road.",
+    body: "Open country close to the airport corridor. Veritas Serenity, completed, is a calm, light-filled residence set back from the road.",
   },
 ] as const;
 
@@ -273,7 +273,7 @@ export default function ProjectsGuide() {
                 pricing.
               </li>
               <li>
-                Mature locations — Sadashiva Nagar, Yelahanka and Devanahalli
+                Mature locations — Yeshwanthpur, Rajankunte and Devanahalli
                 have appreciated steadily for two decades.
               </li>
               <li>

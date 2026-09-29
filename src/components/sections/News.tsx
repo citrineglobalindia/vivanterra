@@ -11,12 +11,6 @@ const NEWS = [
     image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    date: "March 2026",
-    title: "Sense of Space tops out in Sadashiva Nagar.",
-    dek: "The first of our 2027 deliveries reaches its full height ahead of schedule.",
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
     date: "February 2026",
     title: "A conversation with our founding architect.",
     dek: "On patience, restraint and the future of Bengaluru's skyline.",

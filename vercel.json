@@ -1,5 +1,30 @@
 {
+  "redirects": [
+    {
+      "source": "/projects/bare-bespoke-residence",
+      "destination": "/projects/sanctum",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/sense-of-space-tops-out",
+      "destination": "/blogs",
+      "permanent": false
+    },
+    {
+      "source": "/projects/elite-serenity",
+      "destination": "/projects/veritas-serenity",
+      "permanent": true
+    },
+    {
+      "source": "/projects/elite-pristine",
+      "destination": "/projects/veritas-pristine",
+      "permanent": true
+    }
+  ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }

@@ -8,7 +8,7 @@ export default function Projects() {
     <>
       <Seo
         title="Residences for sale in Bengaluru"
-        description="Vivanterra residences across Bengaluru — wellness-first apartments and full-floor homes in Yelahanka, Shivaram Karanth Layout, Sadashiva Nagar, IVC Road, Rajankunte and Devanahalli. Ongoing, upcoming and completed projects."
+        description="Vivanterra residences across Bengaluru — wellness-first apartments and full-floor homes in Yeshwanthpur, Shivaram Karanth Layout, IVC Road, Rajankunte and Devanahalli. Ongoing, upcoming and completed projects."
       />
       <PageShell
         title={
@@ -17,7 +17,7 @@ export default function Projects() {
             <span className="">in Bengaluru.</span>
           </>
         }
-        intro="Wellness-first apartments and full-floor residences across the city's most considered neighbourhoods — from Sadashiva Nagar to Devanahalli. Filter by stage below, or scroll on for the guide."
+        intro="Wellness-first apartments and full-floor residences across the city's most considered neighbourhoods — from Yeshwanthpur to Devanahalli. Filter by stage below, or scroll on for the guide."
       >
         <ProjectListing initialFilter="All" />
         <ProjectsGuide />
