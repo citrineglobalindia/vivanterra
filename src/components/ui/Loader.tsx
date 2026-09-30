@@ -3,15 +3,28 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const EXIT_EASE = [0.77, 0, 0.18, 1] as const;
 
+/** Nothing about the intro may keep the site from being usable. */
+const HIDE_AT = 2700;
+const HARD_STOP = 4200;
+
 /**
  * Page intro loader — counts 000 → 100 in giant Playfair, then slides up.
  * Locks scroll while mounted.
+ *
+ * Every step has a fallback, because this overlay sits above the whole site:
+ * requestAnimationFrame is paused in a background tab, and a framer-motion
+ * exit animation that never runs would leave the overlay mounted forever.
  */
 export default function Loader() {
+  // A tab that loads in the background never animates; skip the intro there.
+  const [gone, setGone] = useState(
+    () => typeof document !== "undefined" && document.visibilityState !== "visible",
+  );
   const [count, setCount] = useState(0);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
+    if (gone) return;
     document.body.style.overflow = "hidden";
 
     const start = performance.now();
@@ -26,21 +39,30 @@ export default function Loader() {
     }
     raf = requestAnimationFrame(tick);
 
-    const hide = window.setTimeout(() => setVisible(false), 2700);
-    const unlock = window.setTimeout(() => {
-      document.body.style.overflow = "";
-    }, 3900);
+    const hide = window.setTimeout(() => setVisible(false), HIDE_AT);
+    // Unmount outright, so a stalled exit animation can't strand the overlay.
+    const hardStop = window.setTimeout(() => setGone(true), HARD_STOP);
 
     return () => {
       cancelAnimationFrame(raf);
       window.clearTimeout(hide);
-      window.clearTimeout(unlock);
-      document.body.style.overflow = "";
+      window.clearTimeout(hardStop);
     };
+  }, [gone]);
+
+  // Scroll is unlocked the moment the overlay is gone, whatever route it took.
+  useEffect(() => {
+    if (gone) document.body.style.overflow = "";
+  }, [gone]);
+
+  useEffect(() => () => {
+    document.body.style.overflow = "";
   }, []);
 
+  if (gone) return null;
+
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={() => setGone(true)}>
       {visible && (
         <motion.div
           className="fixed inset-0 z-[10000] bg-ink text-paper flex flex-col"
