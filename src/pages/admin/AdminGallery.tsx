@@ -4,6 +4,7 @@ import Seo from "@/components/seo/Seo";
 import AdminLayout from "@/components/admin/AdminLayout";
 import { getSupabase, type GalleryRow } from "@/lib/supabase";
 import { useAdminSession } from "@/lib/admin-auth";
+import ImageField from "@/components/admin/ImageField";
 
 const input = "w-full bg-paper border border-line-dark rounded-md px-3 py-2 text-sm text-ink outline-none focus:border-gold transition-colors";
 
@@ -32,13 +33,15 @@ export default function AdminGallery() {
       <Seo title="Admin — gallery" description="Media gallery." />
       <AdminLayout email={email} title="Gallery" subtitle="Image library.">
         {error && <div className="p-4 border border-[hsl(var(--destructive))]/30 bg-[hsl(var(--destructive))]/5 text-[hsl(var(--destructive))] text-sm rounded-md mb-6">{error}</div>}
-        <div className="bg-paper border border-line-dark rounded-lg p-5 mb-8 flex flex-col sm:flex-row gap-3">
-          <input className={input} value={url} onChange={(e)=>setUrl(e.target.value)} placeholder="Image URL (https://…)"/>
-          <input className={`${input} sm:max-w-[220px]`} value={title} onChange={(e)=>setTitle(e.target.value)} placeholder="Caption (optional)"/>
-          <button type="button" onClick={add} className="inline-flex items-center justify-center gap-2 h-10 px-5 rounded-md bg-ink text-paper hover:bg-gold hover:text-ink text-[11px] tracking-[0.16em] uppercase font-semibold shrink-0"><Plus size={15}/> Add</button>
+        <div className="bg-paper border border-line-dark rounded-lg p-5 mb-8 space-y-3">
+          <ImageField label="New image" value={url} onChange={setUrl} folder="gallery" aspect="aspect-[16/9]" compact />
+          <div className="flex flex-col sm:flex-row gap-3">
+            <input className={input} value={title} onChange={(e)=>setTitle(e.target.value)} placeholder="Caption (optional)"/>
+            <button type="button" onClick={add} disabled={!url.trim()} className="inline-flex items-center justify-center gap-2 h-10 px-5 rounded-md bg-ink text-paper hover:bg-gold hover:text-ink text-[11px] tracking-[0.16em] uppercase font-semibold shrink-0 disabled:opacity-50"><Plus size={15}/> Add</button>
+          </div>
         </div>
         {rows === null && !error && <div className="flex items-center gap-3 text-ink/50"><Loader2 className="animate-spin" size={16}/> Loading…</div>}
-        {rows && rows.length === 0 && <div className="border border-dashed border-line-dark rounded-lg py-16 text-center text-ink/50"><Image className="mx-auto mb-3 opacity-50"/>No images yet. Paste a URL above to add.</div>}
+        {rows && rows.length === 0 && <div className="border border-dashed border-line-dark rounded-lg py-16 text-center text-ink/50"><Image className="mx-auto mb-3 opacity-50"/>No images yet. Upload one above to add.</div>}
         {rows && rows.length > 0 && (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {rows.map((g) => (

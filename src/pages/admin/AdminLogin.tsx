@@ -1,10 +1,11 @@
 import { useState, type FormEvent } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
-import { Loader2, LogIn } from "lucide-react";
+import { Eye, EyeOff, Loader2, LogIn } from "lucide-react";
 import Seo from "@/components/seo/Seo";
 import { signInWithPassword, useAdminSession } from "@/lib/admin-auth";
 
 export default function AdminLogin() {
+  const [showPassword, setShowPassword] = useState(false);
   const { loading, session, isAdmin, unconfigured } = useAdminSession();
   const location = useLocation();
   const navigate = useNavigate();
@@ -91,15 +92,27 @@ export default function AdminLogin() {
                 <span className="eyebrow text-muted-soft mb-2 inline-block">
                   Password
                 </span>
-                <input
-                  type="password"
-                  required
-                  autoComplete="current-password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-[rgba(78,115,83,0.04)] border border-line-dark rounded-md px-4 py-3 text-[15px] text-ink placeholder:text-ink/45 outline-none focus:border-gold focus:bg-paper transition-colors"
-                  placeholder="••••••••"
-                />
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    required
+                    autoComplete="current-password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full bg-[rgba(78,115,83,0.04)] border border-line-dark rounded-md pl-4 pr-12 py-3 text-[15px] text-ink placeholder:text-ink/45 outline-none focus:border-gold focus:bg-paper transition-colors"
+                    placeholder="••••••••"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((v) => !v)}
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                    aria-pressed={showPassword}
+                    title={showPassword ? "Hide password" : "Show password"}
+                    className="absolute right-1.5 top-1/2 -translate-y-1/2 inline-flex items-center justify-center h-9 w-9 rounded-md text-ink/50 hover:text-gold focus:text-gold outline-none transition-colors"
+                  >
+                    {showPassword ? <EyeOff size={17} /> : <Eye size={17} />}
+                  </button>
+                </div>
               </label>
 
               {error && (

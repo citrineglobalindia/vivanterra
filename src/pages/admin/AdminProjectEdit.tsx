@@ -18,6 +18,7 @@ import {
   type Spec,
 } from "@/lib/supabase";
 import { useAdminSession } from "@/lib/admin-auth";
+import ImageField from "@/components/admin/ImageField";
 
 type FormState = {
   slug: string;
@@ -333,16 +334,18 @@ export default function AdminProjectEdit() {
               />
             </Section>
 
-            <Section title="Gallery image URLs">
+            <Section title="Gallery images">
               <RepeatList
                 items={form.gallery}
                 onChange={(g) => set("gallery", g)}
                 render={(val, onVal) => (
-                  <input
-                    className={input}
+                  <ImageField
+                    label=""
                     value={val}
-                    onChange={(e) => onVal(e.target.value)}
-                    placeholder="https://…"
+                    onChange={onVal}
+                    folder="projects"
+                    aspect="aspect-[16/9]"
+                    compact
                   />
                 )}
                 addLabel="Add image"
@@ -443,19 +446,12 @@ export default function AdminProjectEdit() {
             </Section>
 
             <Section title="Hero image">
-              <Field label="Hero image URL">
-                <input
-                  className={input}
-                  value={form.hero}
-                  onChange={(e) => set("hero", e.target.value)}
-                  placeholder="https://…"
-                />
-              </Field>
-              {form.hero && (
-                <div className="mt-3 aspect-[16/10] rounded-md overflow-hidden bg-ink/5 border border-line-dark">
-                  <img src={form.hero} alt="" className="h-full w-full object-cover" />
-                </div>
-              )}
+              <ImageField
+                label="Hero image"
+                value={form.hero}
+                onChange={(url) => set("hero", url)}
+                folder="projects"
+              />
             </Section>
           </div>
         </div>

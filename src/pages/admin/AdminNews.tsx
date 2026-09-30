@@ -4,6 +4,7 @@ import Seo from "@/components/seo/Seo";
 import AdminLayout from "@/components/admin/AdminLayout";
 import { getSupabase, type NewsRow } from "@/lib/supabase";
 import { useAdminSession } from "@/lib/admin-auth";
+import ImageField from "@/components/admin/ImageField";
 
 const input = "w-full bg-paper border border-line-dark rounded-md px-3 py-2 text-sm text-ink outline-none focus:border-gold transition-colors";
 
@@ -52,7 +53,7 @@ export default function AdminNews() {
               <input className={input} value={r.title} onChange={(e)=>patch(r.id,"title",e.target.value)} placeholder="Title"/>
               <input className={input} value={r.date_label ?? ""} onChange={(e)=>patch(r.id,"date_label",e.target.value)} placeholder="Date (e.g. May 2026)"/>
               <input className={`${input} md:col-span-2`} value={r.dek ?? ""} onChange={(e)=>patch(r.id,"dek",e.target.value)} placeholder="Short description"/>
-              <input className={input} value={r.image ?? ""} onChange={(e)=>patch(r.id,"image",e.target.value)} placeholder="Image URL"/>
+              <div className="md:col-span-2"><ImageField label="Image" value={r.image ?? ""} onChange={(url)=>patch(r.id,"image",url)} folder="news" aspect="aspect-[16/9]" compact /></div>
               <input className={input} value={r.link ?? ""} onChange={(e)=>patch(r.id,"link",e.target.value)} placeholder="Link URL"/>
               <div className="md:col-span-2 flex items-center justify-between pt-1">
                 <label className="flex items-center gap-2 text-sm text-ink cursor-pointer"><input type="checkbox" checked={r.published} onChange={(e)=>patch(r.id,"published",e.target.checked)} className="w-4 h-4 accent-[var(--gold)]"/> Published</label>

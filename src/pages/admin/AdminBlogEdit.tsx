@@ -7,6 +7,7 @@ import { getSupabase, type PostRow } from "@/lib/supabase";
 import { useAdminSession } from "@/lib/admin-auth";
 import { CATEGORIES } from "@/data/posts";
 import { readingTimeFor } from "@/lib/use-posts";
+import ImageField from "@/components/admin/ImageField";
 
 const input =
   "w-full bg-[rgba(78,115,83,0.04)] border border-line-dark rounded-md px-3.5 py-2.5 text-[14px] text-ink placeholder:text-ink/40 outline-none focus:border-gold focus:bg-paper transition-colors";
@@ -443,19 +444,12 @@ export default function AdminBlogEdit() {
             </div>
 
             <div className="bg-paper border border-line-dark rounded-lg p-6">
-              <L label="Cover image URL">
-                <input
-                  className={input}
-                  value={f.image}
-                  onChange={(e) => set("image", e.target.value)}
-                  placeholder="https://… or /bengaluru/…"
-                />
-              </L>
-              {f.image && (
-                <div className="mt-3 aspect-[16/10] rounded-md overflow-hidden bg-ink/5 border border-line-dark">
-                  <img src={f.image} alt="" className="h-full w-full object-cover" />
-                </div>
-              )}
+              <ImageField
+                label="Cover image"
+                value={f.image}
+                onChange={(url) => set("image", url)}
+                folder="blogs"
+              />
             </div>
           </div>
         </div>
