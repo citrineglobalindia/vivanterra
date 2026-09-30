@@ -76,9 +76,9 @@ const PROJECTS: Project[] = [
     tagline: "A six-storey building on a long, narrow plot.",
     status: "Upcoming",
     location: "Shivaram Karanth Layout, Bengaluru",
-    hero: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1800&q=85",
+    hero: "/projects/the-living-edit.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1800&q=85",
+      "/projects/the-living-edit.jpg",
       "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1800&q=85",
       "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1800&q=85",
     ],

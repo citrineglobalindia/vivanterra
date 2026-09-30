@@ -16,7 +16,7 @@ type Card = {
 
 const CARDS: Card[] = [
   { label: "Sanctum", place: "Yeshwanthpur", slug: "sanctum", image: "/projects/sanctum.jpg" },
-  { label: "The Living Edit", place: "Shivaram Karanth Layout", slug: "the-living-edit", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" },
+  { label: "The Living Edit", place: "Shivaram Karanth Layout", slug: "the-living-edit", image: "/projects/the-living-edit.jpg" },
   { label: "Bellevue Nest", place: "IVC Road", slug: "bellevue-nest", image: "/projects/bellevue-nest.jpg", velociti: true },
   { label: "Veritas Serenity", place: "Devanahalli", slug: "veritas-serenity", image: "/projects/veritas-serenity.jpg", velociti: true },
   { label: "Veritas Pristine", place: "Rajankunte", slug: "veritas-pristine", image: "/projects/veritas-pristine.jpg", velociti: true },
